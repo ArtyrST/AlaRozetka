@@ -5,7 +5,8 @@ namespace AlaBackEnd.Controllers
 {
     public class AppDbContext : DbContext
     {
-        public DbSet<ProductEntity> Products { get; set; }
+        public DbSet<ProductLaptopEntity> Products { get; set; }
+        public DbSet<CategoryEntity> categories { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
 
@@ -18,10 +19,17 @@ namespace AlaBackEnd.Controllers
         {
 
             base.OnModelCreating(builder);
-
-            builder.Entity<ProductEntity>()
+            //Product
+            builder.Entity<ProductLaptopEntity>()
                 .HasKey(p => p.Id);
 
+
+
+
+
+            //Category
+            builder.Entity<CategoryEntity>()
+                .HasKey(p => p.Id);
         }
     }
 }

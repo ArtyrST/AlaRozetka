@@ -1,12 +1,9 @@
 ﻿namespace AlaBackEnd.Entity
 {
-    public class ProductEntity
+    public class CategoryEntity
     {
         public int Id { get; set; }
         public required string Name { get; set; }
-        public string? Description { get; set; }
-        public double Price { get; set; }
-
-
+        public required CategoryEntity category { get; set; }
     }
 }
