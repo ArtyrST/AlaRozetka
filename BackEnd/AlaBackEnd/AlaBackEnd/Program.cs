@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
-using AlaBackEnd.data;
+using AlaBackEnd.DAL;
+using AlaBackEnd.DAL;
+using AlaBackEnd.BLL;
 
 
 namespace AlaBackEnd
@@ -12,11 +14,14 @@ namespace AlaBackEnd
             var builder = WebApplication.CreateBuilder(args);
 
             //EF core connect
-
-            var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+            
+            
 
             builder.Services.AddDbContext<AppDbContext>(options =>
-                options.UseSqlServer(connectionString));
+            {
+                var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+                options.UseNpgsql(connectionString);
+            });
 
             // Add services to the container.
 

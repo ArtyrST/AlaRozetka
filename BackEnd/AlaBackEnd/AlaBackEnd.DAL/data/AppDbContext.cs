@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
-namespace AlaBackEnd.data
+namespace AlaBackEnd.DAL
 {
     public class AppDbContext : DbContext
     {
@@ -31,7 +31,7 @@ namespace AlaBackEnd.data
 
             builder.Entity<CategoryEntity>()
                 .Property(p => p.Name)
-                .HasColumnType("nvarchar(52)")
+                .HasMaxLength(52)
                 .IsRequired(true);
             
             
@@ -45,12 +45,12 @@ namespace AlaBackEnd.data
 
             builder.Entity <ProductLaptopEntity>()
                 .Property(p => p.Name)
-                .HasColumnType("nvarchar(200)")
+                .HasMaxLength(200)
                 .IsRequired(true);
 
             builder.Entity<ProductLaptopEntity>()
                 .Property(p => p.Description)
-                .HasColumnType("nvarchar(max)");
+                .HasColumnType("text");
 
                 // ProductMonitor
             builder.Entity<ProductMonitorEntity>()
@@ -58,12 +58,12 @@ namespace AlaBackEnd.data
 
             builder.Entity<ProductMonitorEntity>()
                 .Property(p => p.Name)
-                .HasColumnType("nvarchar(200)")
+                .HasColumnType("text")
                 .IsRequired(true);
 
             builder.Entity<ProductMonitorEntity>()
                 .Property(p => p.Description)
-                .HasColumnType("nvarchar(max)");
+                .HasColumnType("text");
 
             //relation laptops with category
             builder.Entity<ProductLaptopEntity>()
