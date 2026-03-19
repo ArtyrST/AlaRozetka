@@ -1,3 +1,6 @@
+using Microsoft.EntityFrameworkCore;
+using AlaBackEnd.data;
+
 
 namespace AlaBackEnd
 {
@@ -5,7 +8,15 @@ namespace AlaBackEnd
     {
         public static void Main(string[] args)
         {
+
             var builder = WebApplication.CreateBuilder(args);
+
+            //EF core connect
+
+            var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+
+            builder.Services.AddDbContext<AppDbContext>(options =>
+                options.UseSqlServer(connectionString));
 
             // Add services to the container.
 
