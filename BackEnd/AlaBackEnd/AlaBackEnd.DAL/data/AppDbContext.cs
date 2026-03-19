@@ -1,6 +1,10 @@
-﻿using AlaBackEnd.Entity.Products;
+﻿using AlaBackEnd.DAL.Entity.Users;
+using AlaBackEnd.Entity.Products;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+
+
 
 namespace AlaBackEnd.DAL
 {
@@ -12,7 +16,8 @@ namespace AlaBackEnd.DAL
         public DbSet<ProductLaptopEntity> Laptops { get; set; }
         public DbSet<CategoryEntity> Categories { get; set; }
         public DbSet<ProductMonitorEntity> Monitores { get; set; }
-
+        public DbSet<UserEntity> Users { get; set; }
+        public DbSet<RoleEntity> Roles { get; set; }
         
         
         protected override void OnModelCreating(ModelBuilder builder)
@@ -20,7 +25,31 @@ namespace AlaBackEnd.DAL
 
             base.OnModelCreating(builder);
 
+            //User
+            builder.Entity<UserEntity>()
+                .HasKey(u => u.Id);
 
+            builder.Entity<UserEntity>()
+                .Property(u => u.Email)
+                .IsRequired(true)
+                .HasMaxLength(80);
+
+            builder.Entity<UserEntity>()
+                .Property(u => u.FirstName)
+                .HasMaxLength(20)
+                .IsRequired(true);
+
+            builder.Entity<UserEntity>()
+                .Property(u => u.LastName)
+                .HasMaxLength(30);
+
+            //Roles
+            builder.Entity<RoleEntity>()
+                .HasKey(r => r.Id);
+
+            builder.Entity<RoleEntity>()
+                .Property(r => r.Name)
+                .HasMaxLength(20);
 
 
 
@@ -78,8 +107,14 @@ namespace AlaBackEnd.DAL
                 .WithMany(p => p.Monitors)
                 .HasForeignKey(p => p.CategoryId)
                 .OnDelete(DeleteBehavior.SetNull);
+            //relation user with role
+            builder.Entity<UserEntity>(entity =>
+            {
+                entity.HasMany(u => u.Roles)
+                .WithMany(r => r.Users)
+                .UsingEntity("UserRoles");
+            });
 
-        }
-        
+        }        
     }
 }

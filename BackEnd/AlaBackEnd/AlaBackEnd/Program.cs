@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using AlaBackEnd.DAL;
-using AlaBackEnd.DAL;
 using AlaBackEnd.BLL;
+
 
 
 namespace AlaBackEnd
@@ -19,8 +19,12 @@ namespace AlaBackEnd
 
             builder.Services.AddDbContext<AppDbContext>(options =>
             {
-                var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-                options.UseNpgsql(connectionString);
+                options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"),
+                    x => x.MigrationsAssembly("AlaBackEnd.DAL")
+                    );
+                
+
+                
             });
 
             // Add services to the container.
