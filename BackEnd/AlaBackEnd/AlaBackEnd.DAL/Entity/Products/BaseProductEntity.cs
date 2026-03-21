@@ -1,4 +1,5 @@
-﻿using AlaBackEnd.Entity.Products;
+﻿using AlaBackEnd.DAL.Entity.ProductCart;
+using AlaBackEnd.Entity.Products;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -16,6 +17,10 @@ namespace AlaBackEnd.DAL.Entity.Products
         //relation with category
         public int? CategoryId { get; set; }
         public virtual CategoryEntity? Category { get; set; }
+
+        //with orderItem
+       
+        
 
     }
 }

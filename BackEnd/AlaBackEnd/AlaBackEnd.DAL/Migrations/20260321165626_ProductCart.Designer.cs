@@ -3,6 +3,7 @@ using System;
 using AlaBackEnd.DAL;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace AlaBackEnd.DAL.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260321165626_ProductCart")]
+    partial class ProductCart
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -62,7 +65,8 @@ namespace AlaBackEnd.DAL.Migrations
 
                     b.HasIndex("CartId");
 
-                    b.HasIndex("ProductId");
+                    b.HasIndex("ProductId")
+                        .IsUnique();
 
                     b.ToTable("OrderItems");
                 });
@@ -260,9 +264,9 @@ namespace AlaBackEnd.DAL.Migrations
                         .IsRequired();
 
                     b.HasOne("AlaBackEnd.DAL.Entity.Products.BaseProductEntity", "Product")
-                        .WithMany()
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .WithOne("OrderItem")
+                        .HasForeignKey("AlaBackEnd.DAL.Entity.ProductCart.OrderItemEntity", "ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Cart");
@@ -298,6 +302,11 @@ namespace AlaBackEnd.DAL.Migrations
             modelBuilder.Entity("AlaBackEnd.DAL.Entity.ProductCart.CartEntity", b =>
                 {
                     b.Navigation("OrderItems");
+                });
+
+            modelBuilder.Entity("AlaBackEnd.DAL.Entity.Products.BaseProductEntity", b =>
+                {
+                    b.Navigation("OrderItem");
                 });
 
             modelBuilder.Entity("AlaBackEnd.DAL.Entity.Users.UserEntity", b =>

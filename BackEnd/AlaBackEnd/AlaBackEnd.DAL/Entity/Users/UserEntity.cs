@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AlaBackEnd.DAL.Entity.ProductCart;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -13,6 +14,7 @@ namespace AlaBackEnd.DAL.Entity.Users
 
         //Relation with role
         public virtual List<RoleEntity> Roles { get; set; } = [];
-
+        //Relation with cart
+        public CartEntity? Cart { get; set; }
     }
 }

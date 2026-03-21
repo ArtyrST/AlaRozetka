@@ -1,4 +1,5 @@
-﻿using AlaBackEnd.DAL.Entity.Products;
+﻿using AlaBackEnd.DAL.Entity.ProductCart;
+using AlaBackEnd.DAL.Entity.Products;
 using AlaBackEnd.DAL.Entity.Users;
 using AlaBackEnd.Entity.Products;
 using Microsoft.EntityFrameworkCore;
@@ -20,6 +21,8 @@ namespace AlaBackEnd.DAL
         public DbSet<UserEntity> Users { get; set; }
         public DbSet<RoleEntity> Roles { get; set; }
         public DbSet<BaseProductEntity> AllProducts { get; set; }
+        public DbSet<CartEntity> Carts { get; set; }
+        public DbSet<OrderItemEntity> OrderItems { get; set; }
         
         
         protected override void OnModelCreating(ModelBuilder builder)
@@ -110,6 +113,35 @@ namespace AlaBackEnd.DAL
                 .UsingEntity("UserRoles");
             });
 
+            //relation Cart with OrderItem
+            builder.Entity<CartEntity>(entity =>
+            {
+                entity.HasMany(c => c.OrderItems)
+                    .WithOne(c => c.Cart)
+                    .HasForeignKey(c => c.CartId)
+                    .OnDelete(DeleteBehavior.SetNull);
+            });
+
+            //relation Cart with User
+            builder.Entity<UserEntity>(entity =>
+            {
+                entity.HasOne(c => c.Cart)
+                .WithOne(c => c.User)
+                .HasForeignKey<CartEntity>(c => c.UserId)
+                .OnDelete(DeleteBehavior.Cascade);
+            });
+
+            //relation OrderItem with BaseProduct
+            builder.Entity<OrderItemEntity>(entity =>
+            {
+                entity.HasOne(o => o.Product)
+                    .WithMany()
+                    .HasForeignKey(o => o.ProductId)
+                    .OnDelete(DeleteBehavior.Restrict);
+
+
+
+            });
         }        
     }
 }
