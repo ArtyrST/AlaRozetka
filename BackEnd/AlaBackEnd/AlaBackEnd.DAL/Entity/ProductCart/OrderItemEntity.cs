@@ -1,0 +1,27 @@
+﻿using AlaBackEnd.DAL.Entity.ProductCart;
+using AlaBackEnd.DAL.Entity.Products;
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace AlaBackEnd.DAL.Entity.ProductCart
+{
+    public class OrderItemEntity
+    {
+        public int Id { get; set; }
+        public int Amount { get; set; }
+        
+        //with cart
+        public int CartId { get; set; }
+        
+
+
+        //with product
+        public BaseProductEntity? Product { get; set; }
+        public int ProductId { get; set; }
+
+              
+        
+
+    }
+}

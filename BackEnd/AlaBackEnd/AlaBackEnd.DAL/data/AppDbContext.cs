@@ -1,4 +1,5 @@
-﻿using AlaBackEnd.DAL.Entity.Users;
+﻿using AlaBackEnd.DAL.Entity.Products;
+using AlaBackEnd.DAL.Entity.Users;
 using AlaBackEnd.Entity.Products;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
@@ -18,6 +19,7 @@ namespace AlaBackEnd.DAL
         public DbSet<ProductMonitorEntity> Monitores { get; set; }
         public DbSet<UserEntity> Users { get; set; }
         public DbSet<RoleEntity> Roles { get; set; }
+        public DbSet<BaseProductEntity> AllProducts { get; set; }
         
         
         protected override void OnModelCreating(ModelBuilder builder)
@@ -62,51 +64,44 @@ namespace AlaBackEnd.DAL
                 .Property(p => p.Name)
                 .HasMaxLength(52)
                 .IsRequired(true);
-            
-            
-            
+
+
+
+
+            //BaseProduct
+            builder.Entity<BaseProductEntity>(entity =>
+            {
+                entity.HasKey(p => p.Id);
+                entity.Property(p => p.Name).IsRequired(true).HasMaxLength(100);
                 
-                
+            });
+
+            //ProductLapTop
+
+
             
-                //ProductLapTop
-            builder.Entity<ProductLaptopEntity>()
-                .HasKey(p => p.Id);
+            builder.Entity<ProductLaptopEntity>(entity =>
+            {
+                entity.Property(l => l.Brand).HasMaxLength(30);
+                
+            });
 
-            builder.Entity <ProductLaptopEntity>()
-                .Property(p => p.Name)
-                .HasMaxLength(200)
-                .IsRequired(true);
+            // ProductMonitor
+            builder.Entity<ProductMonitorEntity>(entity =>
+            {
+                entity.Property(m => m.Brand).HasMaxLength(30);
 
-            builder.Entity<ProductLaptopEntity>()
-                .Property(p => p.Description)
-                .HasColumnType("text");
+            });
 
-                // ProductMonitor
-            builder.Entity<ProductMonitorEntity>()
-                .HasKey(p =>p.Id);
-
-            builder.Entity<ProductMonitorEntity>()
-                .Property(p => p.Name)
-                .HasColumnType("text")
-                .IsRequired(true);
-
-            builder.Entity<ProductMonitorEntity>()
-                .Property(p => p.Description)
-                .HasColumnType("text");
 
             //relation laptops with category
-            builder.Entity<ProductLaptopEntity>()
+            builder.Entity<BaseProductEntity>()
                 .HasOne(p => p.Category)
-                .WithMany(p => p.Laptops)
+                .WithMany(p => p.Products)
                 .HasForeignKey(p => p.CategoryId)
                 .OnDelete(DeleteBehavior.SetNull);
 
-            //relation monitors with category
-            builder.Entity<ProductMonitorEntity>()
-                .HasOne(p => p.Category)
-                .WithMany(p => p.Monitors)
-                .HasForeignKey(p => p.CategoryId)
-                .OnDelete(DeleteBehavior.SetNull);
+            
             //relation user with role
             builder.Entity<UserEntity>(entity =>
             {
