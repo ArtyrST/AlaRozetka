@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using AlaBackEnd.DAL;
 using AlaBackEnd.BLL;
+using AlaBackEnd.DAL.Seeders;
 
 
 
@@ -45,6 +46,12 @@ namespace AlaBackEnd
 
             app.UseAuthorization();
 
+            using (var scope = app.Services.CreateScope())
+            {
+                var services = scope.ServiceProvider;
+                var context = services.GetRequiredService<AppDbContext>();
+                RoleSeeder.Seed(context);
+            }
 
             app.MapControllers();
 
