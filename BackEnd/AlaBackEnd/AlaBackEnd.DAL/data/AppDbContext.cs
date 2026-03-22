@@ -15,9 +15,7 @@ namespace AlaBackEnd.DAL
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {
         }
-        public DbSet<ProductLaptopEntity> Laptops { get; set; }
         public DbSet<CategoryEntity> Categories { get; set; }
-        public DbSet<ProductMonitorEntity> Monitores { get; set; }
         public DbSet<UserEntity> Users { get; set; }
         public DbSet<RoleEntity> Roles { get; set; }
         public DbSet<BaseProductEntity> AllProducts { get; set; }
@@ -79,25 +77,14 @@ namespace AlaBackEnd.DAL
                 
             });
 
-            //ProductLapTop
+            
 
 
             
-            builder.Entity<ProductLaptopEntity>(entity =>
-            {
-                entity.Property(l => l.Brand).HasMaxLength(30);
-                
-            });
-
-            // ProductMonitor
-            builder.Entity<ProductMonitorEntity>(entity =>
-            {
-                entity.Property(m => m.Brand).HasMaxLength(30);
-
-            });
+            
 
 
-            //relation laptops with category
+            //relation baseProduct with category
             builder.Entity<BaseProductEntity>()
                 .HasOne(p => p.Category)
                 .WithMany(p => p.Products)

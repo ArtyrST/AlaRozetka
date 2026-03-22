@@ -1,25 +1,28 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+	<PropertyGroup>
+		<TargetFramework>net10.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+	</PropertyGroup>
 
-  <PropertyGroup>
-    <TargetFramework>net10.0</TargetFramework>
-    <Nullable>enable</Nullable>
-    <ImplicitUsings>enable</ImplicitUsings>
-  </PropertyGroup>
+	<ItemGroup>
+		<!-- Це головний пакет для .NET 10, він сам підтягне правильний Microsoft.OpenApi 2.0 -->
+		<PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.0-*" />
 
-  <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.9" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="10.0.5" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="10.0.5" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="10.0.5">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="10.1.5" />
-  </ItemGroup>
+		<!-- EF Core пакети залишаємо як є -->
+		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="10.0.*" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="10.0.*" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="10.0.*">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
 
-  <ItemGroup>
-    <ProjectReference Include="..\AlaBackEnd.BLL\AlaBackEnd.BLL.csproj" />
-    <ProjectReference Include="..\AlaBackEnd.DAL\AlaBackEnd.DAL.csproj" />
-  </ItemGroup>
+		<!-- Додаємо Scalar, щоб мати візуальний інтерфейс (це заміна Swagger) -->
+		<PackageReference Include="Scalar.AspNetCore" Version="2.0.*" />
+	</ItemGroup>
 
+	<ItemGroup>
+		<ProjectReference Include="..\AlaBackEnd.BLL\AlaBackEnd.BLL.csproj" />
+		<ProjectReference Include="..\AlaBackEnd.DAL\AlaBackEnd.DAL.csproj" />
+	</ItemGroup>
 </Project>

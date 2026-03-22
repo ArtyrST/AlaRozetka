@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace AlaBackEnd.DAL.Entity.Users
 {
@@ -11,6 +12,9 @@ namespace AlaBackEnd.DAL.Entity.Users
         public required string Email { get;set; }  
         public required string FirstName { get;set; } 
         public string LastName { get; set; } = string.Empty;
+        public bool IsAdmin { get; set; }
+        public bool IsGuest { get; set; }
+        public bool IsRieltor { get; set; }
 
         //Relation with role
         public virtual List<RoleEntity> Roles { get; set; } = [];

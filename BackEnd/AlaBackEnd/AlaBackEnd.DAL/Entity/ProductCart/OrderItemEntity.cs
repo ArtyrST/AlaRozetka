@@ -10,6 +10,8 @@ namespace AlaBackEnd.DAL.Entity.ProductCart
     {
         public int Id { get; set; }
         public int Amount { get; set; }
+        public DateTime TimeFrom { get; set; }
+        public DateTime TimeTo { get; set; }
         
         //with cart
         public int CartId { get; set; }
