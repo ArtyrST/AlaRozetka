@@ -11,9 +11,10 @@ namespace AlaBackEnd.DAL.Entity.Users
         public int Id { get;set; }
         public required string Email { get;set; }  
         public required string FirstName { get;set; } 
+        public required string SecondName { get;set; }
         public string LastName { get; set; } = string.Empty;
         public bool IsAdmin { get; set; }
-        public bool IsGuest { get; set; }
+        public bool IsGuest { get; set; } = true;
         public bool IsRieltor { get; set; }
 
         //Relation with role

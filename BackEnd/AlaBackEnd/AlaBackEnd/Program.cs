@@ -58,7 +58,7 @@ namespace AlaBackEnd
             
             app.MapControllers();
 
-            //await app.SeedAsync();
+            await app.SeedAsync();
 
             app.Run();
         }

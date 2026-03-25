@@ -10,12 +10,14 @@ namespace AlaBackEnd.DAL.Entity.Products
     {
         public int Id { get; set; }
         public required string Name { get; set; } = string.Empty;
-        public double Price { get; set; }
-        public string Country { get; set; } = string.Empty;
+        public required double Price { get; set; }
+        public required string Country { get; set; } = string.Empty;
+        public required string City { get; set; } = string.Empty;
         public DateTime Date { get; set; } = DateTime.UtcNow;
 
         //relation with category
-        public int? CategoryId { get; set; }
+        public required int? CategoryId { get; set; }
+        public required string CategoryName { get; set; } = string.Empty;
         public virtual CategoryEntity? Category { get; set; }
 
         //with orderItem

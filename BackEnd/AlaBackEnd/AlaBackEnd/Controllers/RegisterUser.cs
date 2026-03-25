@@ -2,16 +2,18 @@
 using AlaBackEnd.DAL.Entity.Users;
 using Azure.Core.Pipeline;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Tokens;
 
 namespace AlaBackEnd.API.Controllers
 {
 
     public class Register
     {
-        public string Mail { get; set; }
-        public string Name { get; set; }
-        public string LastName { get; set; }
-
+        
+        public required string Mail { get; set; }
+        public required string FirstName { get; set; }
+        public required string SecondName { get; set; }
+        public required string LastName { get; set; }
 
 
     }
@@ -27,19 +29,34 @@ namespace AlaBackEnd.API.Controllers
         }
 
         [HttpPost("body-json")]
-        public async Task<IActionResult> Register([FromBody] Register dbo)
+        public async Task<IActionResult> Register([FromBody] Register? dbo)
         {
-            var newUser = new UserEntity
-            {
-                FirstName = dbo.Name,
-                LastName = dbo.LastName,
-                Email = dbo.Mail
-            };
-            _context.Users.Add(newUser);
-            
-            await _context.SaveChangesAsync();
 
-            return CreatedAtAction(nameof(Register), newUser);
+            if (dbo == null)
+            {
+                return BadRequest("");
+            }
+
+                var newUser = new UserEntity
+                {
+                    FirstName = dbo.FirstName!,
+                    SecondName = dbo.SecondName,
+                    LastName = dbo.LastName!,
+                    Email = dbo.Mail!
+                };
+                _context.Users.Add(newUser);
+                await _context.SaveChangesAsync();
+
+                return CreatedAtAction(nameof(Register), newUser);
+            
+
+            
+            
+
+            
+            
+            
+            
 
         }
     }

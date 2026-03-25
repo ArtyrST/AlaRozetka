@@ -41,6 +41,10 @@ namespace AlaBackEnd.DAL
                 .Property(u => u.FirstName)
                 .HasMaxLength(20)
                 .IsRequired(true);
+            builder.Entity<UserEntity>()
+                .Property(u => u.SecondName)
+                .HasMaxLength(30)
+                .IsRequired(true);
 
             builder.Entity<UserEntity>()
                 .Property(u => u.LastName)
@@ -74,7 +78,9 @@ namespace AlaBackEnd.DAL
             {
                 entity.HasKey(p => p.Id);
                 entity.Property(p => p.Name).IsRequired(true).HasMaxLength(100);
-                
+                entity.Property(p=> p.City).IsRequired(true).HasMaxLength(100);
+                entity.Property(p => p.Country).IsRequired(true).HasMaxLength(100);
+
             });
 
             
