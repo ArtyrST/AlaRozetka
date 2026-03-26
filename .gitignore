@@ -52,3 +52,15 @@ CodeCoverage/
 *.VisualState.xml
 TestResult.xml
 nunit-*.xml
+
+# Visual Studio спеціальні файли
+.vs/
+*.user
+*.userosscache
+*.sln.docstates
+
+# Якщо використовуєш VS Code
+.vscode/
+
+# Якщо раптом захочеш спробувати JetBrains Rider
+.idea/

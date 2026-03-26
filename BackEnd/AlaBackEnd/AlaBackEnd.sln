@@ -1,9 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.14.36511.14 d17.14
+# Visual Studio Version 18
+VisualStudioVersion = 18.4.11612.150 stable
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlaBackEnd", "AlaBackEnd\AlaBackEnd.csproj", "{632AC583-DD82-46F2-98E7-B8D94194CC0B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlaBackEnd.API", "AlaBackEnd\AlaBackEnd.API.csproj", "{632AC583-DD82-46F2-98E7-B8D94194CC0B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlaBackEnd.BLL", "AlaBackEnd.BLL\AlaBackEnd.BLL.csproj", "{196B6614-515E-4DF7-821F-074961ABDEA7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlaBackEnd.DAL", "AlaBackEnd.DAL\AlaBackEnd.DAL.csproj", "{5E30AA69-611D-4CBF-BEB4-FD02BE9B88B5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{632AC583-DD82-46F2-98E7-B8D94194CC0B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{632AC583-DD82-46F2-98E7-B8D94194CC0B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{632AC583-DD82-46F2-98E7-B8D94194CC0B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{196B6614-515E-4DF7-821F-074961ABDEA7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{196B6614-515E-4DF7-821F-074961ABDEA7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{196B6614-515E-4DF7-821F-074961ABDEA7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{196B6614-515E-4DF7-821F-074961ABDEA7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5E30AA69-611D-4CBF-BEB4-FD02BE9B88B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E30AA69-611D-4CBF-BEB4-FD02BE9B88B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E30AA69-611D-4CBF-BEB4-FD02BE9B88B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E30AA69-611D-4CBF-BEB4-FD02BE9B88B5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
