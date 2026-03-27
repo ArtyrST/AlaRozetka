@@ -61,9 +61,11 @@ namespace AlaBackEnd
                            .WithDefaultHttpClient(ScalarTarget.CSharp, ScalarClient.HttpClient);
                 });
             }
-
-            app.UseHttpsRedirection();
-            app.UseCors();
+            if (!app.Environment.IsDevelopment())
+            {
+                app.UseHttpsRedirection();
+            }
+                app.UseCors();
             app.UseAuthorization();
 
 
