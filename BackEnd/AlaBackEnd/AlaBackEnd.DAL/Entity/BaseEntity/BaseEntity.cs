@@ -6,10 +6,10 @@ namespace AlaBackEnd.DAL.Entity.BaseEntity
 {
     public interface IBaseEntity
     {
-        public int ID { get; set; }
+        public int Id { get; set; }
     }
     public class BaseEntity : IBaseEntity
     {
-        public int ID {  set; get; }
+        public int Id {  set; get; }
     }
 }
