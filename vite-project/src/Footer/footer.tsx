@@ -4,26 +4,7 @@ import { useEffect, useState } from 'react';
 function Footer() {
   const [email, setEmail] = useState('');
 
-  useEffect(() => {
-    const scriptId = 'weatherwidget-io-js';
-
-    if (!document.getElementById(scriptId)) {
-      const script = document.createElement('script');
-      script.id = scriptId;
-      script.src = 'https://weatherwidget.io/js/widget.min.js';
-      script.async = true;
-      document.body.appendChild(script);
-    } else {
-      // якщо скрипт уже є, пробуємо оновити віджет
-      const w = window as Window & {
-        __weatherwidget_init?: () => void;
-      };
-
-      if (typeof w.__weatherwidget_init === 'function') {
-        w.__weatherwidget_init();
-      }
-    }
-  }, []);
+;
 
   const validateEmail = (value: string): boolean => {
     const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -110,20 +91,7 @@ function Footer() {
         </div>
       </div>
 
-      <a
-        className="weatherwidget-io"
-        href="https://forecast7.com/en/49d8424d03/lviv/"
-        data-label_1="LVIV"
-        data-label_2="WEATHER"
-        data-theme="original"
-        data-basecolor="#3F523C"
-        data-highcolor="#f8f8f8"
-        data-lowcolor="#ffffff"
-        data-cloudfill="#ffffff"
-        data-raincolor="#2cd2ff"
-      >
-        LVIV WEATHER
-      </a>
+     
     </footer>
   );
 }

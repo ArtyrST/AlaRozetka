@@ -1,12 +1,11 @@
-﻿using AlaBackEnd.DAL.Entity.ProductCart;
+﻿
+using AlaBackEnd.DAL.Entity.BaseEntity;
 using AlaBackEnd.Entity.Products;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace AlaBackEnd.DAL.Entity.Products
+
+namespace AlaBackEnd.DAL.Entity
 {
-    public class BaseProductEntity
+    public class BaseProductEntity : IBaseEntity
     {
         public int Id { get; set; }
         public required string Name { get; set; } = string.Empty;

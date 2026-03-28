@@ -1,8 +1,19 @@
-import { useMemo, useState, type JSX } from 'react'
+import { useEffect, useMemo, useState, type JSX } from 'react'
 import './catalog.css'
 
+type ApiHotel = {
+  id: number
+  name: string
+  country: string
+  price: number
+  categoryId: number
+  date: string
+  city: string
+  categoryName: string
+}
+
 type Hotel = {
-  id: string
+  id: number
   title: string
   location: string
   country: string
@@ -14,46 +25,11 @@ type Hotel = {
   oldPrice?: number
 }
 
-const hotelsData: Hotel[] = [
-  {
-    id: 'radisson',
-    title: 'Radisson Blu Hotel',
-    location: 'Барселона, Іспанія',
-    country: 'Іспанія',
-    rating: 9.7,
-    price: 6999,
-    oldPrice: 7699,
-    image: '../Assets/Egipt.jpg',
-    realtor: 'Олександр Коваль',
-    roomType: 'Люкс із видом на море',
-  },
-  {
-    id: 'alicante',
-    title: 'Alicante Hills',
-    location: 'Аліканте, Іспанія',
-    country: 'Іспанія',
-    rating: 6.3,
-    price: 4699,
-    oldPrice: 5200,
-    image: '../Assets/Turkish.jpg',
-    realtor: 'Ірина Литвин',
-    roomType: 'Стандарт з балконом',
-  },
-  {
-    id: 'vienna',
-    title: 'Vienna Grand',
-    location: 'Відень, Австрія',
-    country: 'Австрія',
-    rating: 9.2,
-    price: 7999,
-    oldPrice: 8600,
-    image: '../Assets/Bali.jpg',
-    realtor: 'Петро Гнатюк',
-    roomType: 'Сімейний номер з кухнею',
-  },
-]
-
 function Catalog(): JSX.Element {
+  const [hotels, setHotels] = useState<Hotel[]>([])
+  const [loading, setLoading] = useState<boolean>(true)
+  const [error, setError] = useState<string>('')
+
   const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(false)
   const [priceMin, setPriceMin] = useState<number>(4000)
   const [priceMax, setPriceMax] = useState<number>(8000)
@@ -61,6 +37,46 @@ function Catalog(): JSX.Element {
   const [confirmedCountry, setConfirmedCountry] = useState<string>('')
   const [selectedRatings, setSelectedRatings] = useState<number[]>([])
   const [sortSelect, setSortSelect] = useState<string>('default')
+
+  useEffect(() => {
+    const fetchHotels = async () => {
+      try {
+        setLoading(true)
+        setError('')
+
+        const response = await fetch('/api/hotels')
+
+        if (!response.ok) {
+          throw new Error('Не вдалося отримати готелі')
+        }
+
+        const data: ApiHotel[] = await response.json()
+
+        const mappedHotels: Hotel[] = data.map((hotel) => ({
+          id: hotel.id,
+          title: hotel.name,
+          location: `${hotel.city}, ${hotel.country}`,
+          country: hotel.country,
+          price: hotel.price,
+
+          // залишаємо як у початковому варіанті / заглушки
+          rating: 8.5,
+          image: 'https://via.placeholder.com/400x250?text=Hotel',
+          realtor: 'Ще не додано',
+          roomType: 'Ще не додано',
+          oldPrice: Math.round(hotel.price * 1.1),
+        }))
+
+        setHotels(mappedHotels)
+      } catch (err) {
+        setError(err instanceof Error ? err.message : 'Сталася помилка')
+      } finally {
+        setLoading(false)
+      }
+    }
+
+    fetchHotels()
+  }, [])
 
   const toggleRating = (value: number): void => {
     setSelectedRatings((prev) =>
@@ -80,7 +96,7 @@ function Catalog(): JSX.Element {
   }
 
   const filteredHotels = useMemo(() => {
-    let filtered = hotelsData.filter(
+    let filtered = hotels.filter(
       (hotel) => hotel.price >= priceMin && hotel.price <= priceMax
     )
 
@@ -111,16 +127,21 @@ function Catalog(): JSX.Element {
     }
 
     return sorted
-  }, [priceMin, priceMax, confirmedCountry, selectedRatings, sortSelect])
+  }, [hotels, priceMin, priceMax, confirmedCountry, selectedRatings, sortSelect])
+
+  const minPercent = (priceMin / 20000) * 100
+  const maxPercent = (priceMax / 20000) * 100
+
+  if (loading) {
+    return <div>Завантаження готелів...</div>
+  }
+
+  if (error) {
+    return <div>Помилка: {error}</div>
+  }
 
   return (
     <div className="apartments-main">
-      <div
-        id="filterOverlay"
-        className={`filter-overlay ${isSidebarOpen ? 'active' : ''}`}
-        onClick={() => setIsSidebarOpen(false)}
-      ></div>
-
       <button
         id="openFilterBtn"
         className="filter-toggle-btn"
@@ -130,12 +151,21 @@ function Catalog(): JSX.Element {
         Фільтр
       </button>
 
+      {isSidebarOpen && (
+        <div
+          id="filterOverlay"
+          className="filter-overlay"
+          onClick={() => setIsSidebarOpen(false)}
+        />
+      )}
+
       <aside
         className={`apartments-filter ${isSidebarOpen ? 'active' : ''}`}
         id="filterSidebar"
       >
         <h2 className="filter-title" style={{ position: 'relative' }}>
           Фільтр
+
           <button
             id="resetFilters"
             className="reset-btn desktop-reset-btn"
@@ -144,6 +174,7 @@ function Catalog(): JSX.Element {
           >
             Скинути
           </button>
+
           <button
             id="closeSidebarBtn"
             className="close-sidebar-btn"
@@ -169,101 +200,85 @@ function Catalog(): JSX.Element {
           <div className="filter-header">
             Ціна
             <span className="price-label">
-              ₴
-              <span id="priceLabel">
-                {priceMin} - {priceMax}
-              </span>
+              ₴<span id="priceLabel">{priceMin} - {priceMax}</span>
             </span>
           </div>
 
           <div className="price-sliders">
+            <div
+              className="slider-track"
+              style={{
+                left: `${minPercent}%`,
+                width: `${maxPercent - minPercent}%`,
+              }}
+            />
+
             <input
-              type="range"
-              min={4000}
-              max={8000}
-              value={priceMin}
               id="priceMin"
-              onChange={(e) => {
-                const value = Number(e.target.value)
-                setPriceMin(value > priceMax ? priceMax : value)
-              }}
-            />
-            <span className="price-separator">–</span>
-            <input
               type="range"
-              min={4000}
-              max={8000}
-              value={priceMax}
-              id="priceMax"
+              min="0"
+              max="20000"
+              step="100"
+              value={priceMin}
               onChange={(e) => {
                 const value = Number(e.target.value)
-                setPriceMax(value < priceMin ? priceMin : value)
+                if (value <= priceMax) setPriceMin(value)
+              }}
+            />
+
+            <input
+              id="priceMax"
+              type="range"
+              min="0"
+              max="20000"
+              step="100"
+              value={priceMax}
+              onChange={(e) => {
+                const value = Number(e.target.value)
+                if (value >= priceMin) setPriceMax(value)
               }}
             />
           </div>
+
+          
         </div>
 
-        <div className="filter-section" id="ratingSection">
-          <div className="filter-header">Оцінка за відгуками</div>
+        <div className="filter-section">
+          <div className="filter-header">Рейтинг</div>
 
-          <div id="ratingOptions" className="rating-options">
-            <label>
-              <input
-                type="checkbox"
-                value="9"
-                checked={selectedRatings.includes(9)}
-                onChange={() => toggleRating(9)}
-              />
-              <span className="box"></span>
-              <span className="text"> Чудово: 9+</span>
-            </label>
-
-            <label>
-              <input
-                type="checkbox"
-                value="8"
-                checked={selectedRatings.includes(8)}
-                onChange={() => toggleRating(8)}
-              />
-              <span className="box"></span>
-              <span className="text"> Дуже добре: 8+</span>
-            </label>
-
-            <label>
-              <input
-                type="checkbox"
-                value="7"
-                checked={selectedRatings.includes(7)}
-                onChange={() => toggleRating(7)}
-              />
-              <span className="box"></span>
-              <span className="text"> Добре: 7+</span>
-            </label>
-
-            <label>
-              <input
-                type="checkbox"
-                value="6"
-                checked={selectedRatings.includes(6)}
-                onChange={() => toggleRating(6)}
-              />
-              <span className="box"></span>
-              <span className="text"> Досить добре: 6+</span>
-            </label>
+          <div className="rating-options" id="ratingOptions">
+            {[9, 8, 7, 6].map((rating) => (
+              <label key={rating}>
+                <input
+                  type="checkbox"
+                  checked={selectedRatings.includes(rating)}
+                  onChange={() => toggleRating(rating)}
+                />
+                <span className="box"></span>
+                <span className="text">
+                  {rating === 9 && '9+ Винятково'}
+                  {rating === 8 && '8+ Дуже добре'}
+                  {rating === 7 && '7+ Добре'}
+                  {rating === 6 && '6+ Непогано'}
+                </span>
+              </label>
+            ))}
           </div>
         </div>
 
-        <div className="filter-section" id="countrySection">
+        <div className="filter-section">
           <div className="filter-header">Країна</div>
 
           <div className="country-input-container">
             <input
-              type="text"
+            
               id="countryInput"
+              type="text"
               placeholder="Введіть країну"
               value={countryInput}
               onChange={(e) => setCountryInput(e.target.value)}
             />
+
             <button
               id="countryConfirmBtn"
               type="button"
@@ -275,25 +290,27 @@ function Catalog(): JSX.Element {
         </div>
       </aside>
 
-      <section className="apartments-content">
+      <div className="apartments-content">
         <div className="apartments-header">
-          <div className="results-count" id="resultsCount">
-            Знайдено {filteredHotels.length}
-            {confirmedCountry.trim() !== '' ? ` помешкань у ${confirmedCountry}` : ' помешкань'}
+          <div className="results-count">
+            Знайдено {filteredHotels.length} помешкань
           </div>
-
+          <div className="filter-section">
+          
+        
           <div className="sorting-options">
-            <label htmlFor="sortSelect">Сортувати за:</label>
+            <div className="filter-header">Сортування:</div>
             <select
               id="sortSelect"
               value={sortSelect}
               onChange={(e) => setSortSelect(e.target.value)}
             >
-              <option value="default">наші рекомендації</option>
-              <option value="price_asc">ціною (від низької до високої)</option>
-              <option value="price_desc">ціною (від високої до низької)</option>
+              <option value="default">За замовчуванням</option>
+              <option value="price_asc">Спочатку дешевші</option>
+              <option value="price_desc">Спочатку дорожчі</option>
             </select>
           </div>
+        </div>
         </div>
 
         <div className="apartments-list" id="apartmentsList">
@@ -305,16 +322,21 @@ function Catalog(): JSX.Element {
             filteredHotels.map((hotel) => (
               <div className="apartment-card" key={hotel.id}>
                 <div className="card-image-container">
-                  <img className="apartment-img" src={hotel.image} alt={hotel.title} />
-                  <div className="favorite-icon">
-                    <span>♡</span>
-                  </div>
+                  <img
+                    className="apartment-img"
+                    src={hotel.image}
+                    alt={hotel.title}
+                  />
+                  <div className="favorite-icon">♡</div>
                 </div>
 
                 <div className="apartment-info">
                   <div className="apartment-title">{hotel.title}</div>
+
                   <div className="apartment-location">{hotel.location}</div>
+
                   <div className="room-type">{hotel.roomType}</div>
+
                   <div className="realtor-info">
                     Ріелтор: <span>{hotel.realtor}</span>
                   </div>
@@ -333,22 +355,14 @@ function Catalog(): JSX.Element {
                   </div>
 
                   <div className="apartment-cta">
-                    <button
-                      type="button"
-                      onClick={() => {
-                        window.location.href =
-                          'https://easystay.wuaze.com/Apartments/hotel-radisson.html'
-                      }}
-                    >
-                      Вибрати
-                    </button>
+                    <button type="button">Обрати</button>
                   </div>
                 </div>
               </div>
             ))
           )}
         </div>
-      </section>
+      </div>
     </div>
   )
 }
