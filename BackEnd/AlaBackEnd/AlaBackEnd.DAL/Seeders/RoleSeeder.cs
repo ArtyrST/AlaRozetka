@@ -43,40 +43,40 @@ namespace AlaBackEnd.DAL.Seeders
 
             var hotels = new List<BaseProductEntity>();
 
-            if (!dbContext.AllProducts.Any())
-            {
-                hotels = new List<BaseProductEntity>()
-                {
-                    new BaseProductEntity{Name = "SpermaSraka", Price = 2999, Country = "Ukraine", CategoryName = "Hotels", CategoryId = 0, City = "Lutsk"}
+            //if (!dbContext.AllProducts.Any())
+            //{
+            //    hotels = new List<BaseProductEntity>()
+            //    {
+            //        new BaseProductEntity{Name = "SpermaSraka", Price = 2999, Country = "Ukraine", CategoryName = "Hotels", CategoryId = 0, City = "Lutsk"}
 
-                };
-                await dbContext.AllProducts.AddRangeAsync(hotels);
-                await dbContext.SaveChangesAsync();
-            }
-            else
-            {
-                hotels = await dbContext.AllProducts.AsNoTracking().ToListAsync();
+            //    };
+            //    await dbContext.AllProducts.AddRangeAsync(hotels);
+            //    await dbContext.SaveChangesAsync();
+            //}
+            //else
+            //{
+            //    hotels = await dbContext.AllProducts.AsNoTracking().ToListAsync();
 
-                //}
+            //    //}
 
-                //caterogies
-                var categories = new List<CategoryEntity>();
+            //    //caterogies
+            //    var categories = new List<CategoryEntity>();
 
-                if (!dbContext.Categories.Any())
-                {
-                    categories = new List<CategoryEntity>()
-                {
-                    new CategoryEntity{Name = "Hotels"},
-                    new CategoryEntity{Name = "Villas"}
-                };
-                    await dbContext.Categories.AddRangeAsync(categories);
-                    await dbContext.SaveChangesAsync();
-                }
-                else
-                {
-                    categories = await dbContext.Categories.AsNoTracking().ToListAsync();
-                }
-            }
+            //    if (!dbContext.Categories.Any())
+            //    {
+            //        categories = new List<CategoryEntity>()
+            //    {
+            //        new CategoryEntity{Name = "Hotels"},
+            //        new CategoryEntity{Name = "Villas"}
+            //    };
+            //        await dbContext.Categories.AddRangeAsync(categories);
+            //        await dbContext.SaveChangesAsync();
+            //    }
+            //    else
+            //    {
+            //        categories = await dbContext.Categories.AsNoTracking().ToListAsync();
+            //    }
+            //}
         }
     }
 }

@@ -5,6 +5,7 @@ using AlaBackEnd.Entity.Products;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using AlaBackEnd.DAL.Entity.Products;
 
 
 
@@ -21,6 +22,7 @@ namespace AlaBackEnd.DAL
         public DbSet<BaseProductEntity> AllProducts { get; set; }
         public DbSet<CartEntity> Carts { get; set; }
         public DbSet<OrderItemEntity> OrderItems { get; set; }
+        public DbSet<ProductTagEntity> ProductTag { get; set; }
         
         
         protected override void OnModelCreating(ModelBuilder builder)
@@ -80,7 +82,18 @@ namespace AlaBackEnd.DAL
                 entity.Property(p => p.Name).IsRequired(true).HasMaxLength(100);
                 entity.Property(p=> p.City).IsRequired(true).HasMaxLength(100);
                 entity.Property(p => p.Country).IsRequired(true).HasMaxLength(100);
+                entity.HasMany(p => p.Tags).WithMany(p => p.Products).UsingEntity("ProductsTags");
+                entity.Property(p =>p.Descriprion).IsRequired(true).HasMaxLength(300);
 
+                
+
+            });
+
+            //prod tag
+            builder.Entity<ProductTagEntity>(entity =>
+            {
+                entity.HasKey(t  => t.Id);
+                entity.Property(t => t.Name).IsRequired(true);
             });
 
             
@@ -134,6 +147,15 @@ namespace AlaBackEnd.DAL
 
 
 
+            });
+
+            //user with product
+            builder.Entity<BaseProductEntity>(e =>
+            {
+                e.HasOne(u => u.User)
+                .WithMany(u => u.Products)
+                .HasForeignKey(u => u.UserId)
+                .OnDelete(DeleteBehavior.NoAction);
             });
         }        
     }
