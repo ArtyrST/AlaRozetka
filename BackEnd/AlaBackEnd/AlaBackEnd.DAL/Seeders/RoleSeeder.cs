@@ -1,4 +1,4 @@
-﻿using AlaBackEnd.DAL.Entity.Products;
+﻿using AlaBackEnd.DAL.Entity;
 using AlaBackEnd.DAL.Entity.Users;
 using AlaBackEnd.Entity.Products;
 using Microsoft.AspNetCore.Builder;

@@ -1,5 +1,5 @@
 ﻿using AlaBackEnd.DAL.Entity.ProductCart;
-using AlaBackEnd.DAL.Entity.Products;
+using AlaBackEnd.DAL.Entity;
 using System;
 using System.Collections.Generic;
 using System.Text;

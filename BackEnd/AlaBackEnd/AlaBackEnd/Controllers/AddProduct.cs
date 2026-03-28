@@ -1,5 +1,5 @@
 ﻿using AlaBackEnd.DAL;
-using AlaBackEnd.DAL.Entity.Products;
+using AlaBackEnd.DAL.Entity;
 using AlaBackEnd.Entity.Products;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;

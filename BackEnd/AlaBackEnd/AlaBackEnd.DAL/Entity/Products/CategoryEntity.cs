@@ -1,4 +1,4 @@
-﻿using AlaBackEnd.DAL.Entity.Products;
+﻿using AlaBackEnd.DAL.Entity;
 using System.Text.Json.Serialization;
 
 namespace AlaBackEnd.Entity.Products
