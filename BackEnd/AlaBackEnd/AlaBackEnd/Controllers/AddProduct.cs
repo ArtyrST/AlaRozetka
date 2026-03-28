@@ -35,7 +35,7 @@ namespace AlaBackEnd.API.Controllers
             var category = await _context.Categories.FirstOrDefaultAsync(c => c.Name == dbo.CategoryName);
             if (category == null)
             {
-                return NotFound($"Category with ID {dbo.CategoryName} not found.");
+                return NotFound($"Category with Name {dbo.CategoryName} not found.");
             }
             var product = new BaseProductEntity
             {
