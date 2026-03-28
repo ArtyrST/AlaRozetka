@@ -24,10 +24,14 @@ namespace AlaBackEnd.DAL.Entity
         public virtual CategoryEntity? Category { get; set; }
         //user realtor
         public required int? UserId { get; set; }
-        public UserEntity? User { get; set; } 
+        public UserEntity? User { get; set; }
 
 
-        //with orderItem
+        //with image
+        public List<ImageEntity> Images { get; set; } = [];
+
+        //with feedbacks
+        public List<FeedBackEntity> Feedbacks { get; set; } = [];
        
         
 

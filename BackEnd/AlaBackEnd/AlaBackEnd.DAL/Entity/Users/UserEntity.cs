@@ -23,5 +23,8 @@ namespace AlaBackEnd.DAL.Entity.Users
         public CartEntity? Cart { get; set; }
         // with product
         public List<BaseProductEntity> Products { get; set; } = [];
+
+        //with feedback
+        public List<FeedBackEntity> FeedBacks { get; set; } = [];
     }
 }

@@ -23,6 +23,9 @@ namespace AlaBackEnd.DAL
         public DbSet<CartEntity> Carts { get; set; }
         public DbSet<OrderItemEntity> OrderItems { get; set; }
         public DbSet<ProductTagEntity> ProductTag { get; set; }
+        public DbSet<ImageEntity> Images { get; set; }
+        public DbSet<FeedBackEntity> Feedbacks { get; set; }
+        
         
         
         protected override void OnModelCreating(ModelBuilder builder)
@@ -96,6 +99,13 @@ namespace AlaBackEnd.DAL
                 entity.Property(t => t.Name).IsRequired(true);
             });
 
+
+            builder.Entity<ImageEntity>(entity => {
+                entity.HasKey(i => i.Id);
+                entity.Property(i =>  i.Name).IsRequired(true).HasMaxLength(50);
+                entity.Property(i => i.Path).IsRequired(true).HasMaxLength(150);
+                entity.Property(i => i.IsPreview).IsRequired(true);
+            });
             
 
 
@@ -157,6 +167,34 @@ namespace AlaBackEnd.DAL
                 .HasForeignKey(u => u.UserId)
                 .OnDelete(DeleteBehavior.NoAction);
             });
+
+            //user with feedback
+            builder.Entity<UserEntity>(u => {
+                u.HasMany(u => u.FeedBacks)
+                .WithOne(u => u.User)
+                .HasForeignKey(u => u.UserId)
+                .OnDelete(DeleteBehavior.NoAction);
+            });
+
+           
+            //product with image
+            builder.Entity<BaseProductEntity>(u =>
+            {
+                u.HasMany(u => u.Images)
+                .WithOne(u => u.Product)
+                .HasForeignKey(u => u.ProductId)
+                .OnDelete(DeleteBehavior.Cascade);
+            });
+
+            //product with feedbacks
+            builder.Entity<BaseProductEntity>(b =>
+            {
+                b.HasMany(b => b.Feedbacks)
+                .WithOne(b => b.Product)
+                .HasForeignKey(b => b.ProductId)
+                .OnDelete(DeleteBehavior.Cascade);
+            });
+
         }        
     }
 }
