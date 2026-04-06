@@ -1,9 +1,12 @@
-using AlaBackEnd.BLL;
+
+using AlaBackEnd.BLL.Services;
 using AlaBackEnd.DAL;
+using AlaBackEnd.DAL.Repositories;
 using AlaBackEnd.DAL.Seeders;
 using Microsoft.EntityFrameworkCore;
 using Scalar.AspNetCore;
-using System.Threading.Tasks;
+
+
 
 
 
@@ -16,10 +19,24 @@ namespace AlaBackEnd
 
             var builder = WebApplication.CreateBuilder(args);
 
-            //EF core connect
+            //add repos
+            builder.Services.AddScoped<ProductRepository>();
             
-            
+            //add services
+            builder.Services.AddScoped<ProductService>();
 
+            //add automapper
+            builder.Services.AddAutoMapper(cfg =>
+            {
+                cfg.AddMaps(AppDomain.CurrentDomain.GetAssemblies());
+            });
+            //builder.Services.AddAutoMapper(cfg =>
+            //{
+            //    cfg.LicenseKey = ""
+            //});
+
+
+            //EF core connect
             builder.Services.AddDbContext<AppDbContext>(options =>
             {
                 options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"),

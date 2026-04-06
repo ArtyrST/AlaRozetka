@@ -12,6 +12,14 @@ namespace AlaBackEnd.BLL.dto
         public int Id { get; set; }
         [Required(ErrorMessage = "Name is required")]
         public string Name { get; set; } = string.Empty;
+        
+        public double Price { get; set; }
+        
+        public string Country { get; set; } = string.Empty;
+        
+        public string City { get; set; } = string.Empty;
+        
+        public string Description { get; set; } = string.Empty;
         public IFormFile? Image { get; set; }
     }
 }

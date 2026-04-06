@@ -19,13 +19,12 @@ namespace AlaBackEnd.BLL.Services
                 PayLoad = obj
             };
         }
-        public static ServiceResponse Error(string message, object? obj)
+        public static ServiceResponse Error(string message)
         {
             return new ServiceResponse
             {
                 IsSuccess = false,
                 Message = message,
-                PayLoad = obj
             };
         }
     }

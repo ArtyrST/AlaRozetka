@@ -60,11 +60,37 @@ namespace AlaBackEnd.BLL.Services
             bool res = await _ProductRepository.CreateAsync(entity);
             if (!res)
             {
-                return ServiceResponse.Error("Something problem with adding new product...");
+                return ServiceResponse.Error("Something wrong with adding new product...");
             }
             var responseDto = _Mapper.Map<ProductDto>(entity);
 
             return ServiceResponse.Success("Success!", responseDto);
+        }
+        public async Task<ServiceResponse> UpdateAsync(UpdateProductDto dto)
+        {
+            var entity = await _ProductRepository.GetByIdAsync(dto.Id);
+            if (entity  == null)
+            {
+                return ServiceResponse.Error($"Entity with id: {dto.Id} was not found");
+            }
+            if (await _ProductRepository.IsExistAsync(dto.Name, dto.Id))
+            {
+                return ServiceResponse.Error($"The name: {dto.Name} is already used");
+            }
+            string oldName = entity.Name;
+
+            _Mapper.Map(dto, entity);
+
+            bool res = await _ProductRepository.UpdateAsync(entity);
+            if (!res)
+            {
+                return ServiceResponse.Error("Something wrong with updated product...");
+            }
+
+            var responseDto = _Mapper.Map<ProductDto>(entity);
+            return ServiceResponse.Success($"Product with name: {oldName} was successfull chanched!", responseDto);
+
+
         }
     }
 }
