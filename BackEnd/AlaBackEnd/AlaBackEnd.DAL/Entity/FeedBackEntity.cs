@@ -12,11 +12,11 @@ namespace AlaBackEnd.DAL.Entity
         public int StarCount { get; set; }
 
         //user
-        public UserEntity User { get; set; }
+        public UserEntity? User { get; set; }
         public int UserId { get; set; }
 
         //with product
-        public BaseProductEntity Product { get; set; }
+        public BaseProductEntity? Product { get; set; }
         public int ProductId { get; set; }
     }
 }

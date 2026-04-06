@@ -1,5 +1,6 @@
 ﻿using AlaBackEnd.DAL.Entity.BaseEntity;
 using Microsoft.EntityFrameworkCore;
+using System.Linq.Expressions;
 
 namespace AlaBackEnd.DAL.Repositories
 {
@@ -66,8 +67,20 @@ namespace AlaBackEnd.DAL.Repositories
         }
         public IQueryable<TEntity> GetAll()
         {
-            return  _context.Set<TEntity>();
+            return _context.Set<TEntity>();
         }
+        // Додай цей метод в GenericRepository
+        //public IQueryable<TEntity> GetAll(params Expression<Func<TEntity, object>>[] includes)
+        //{
+        //    IQueryable<TEntity> query = _context.Set<TEntity>();
+
+        //    foreach (var include in includes)
+        //    {
+        //        query = query.Include(include);
+        //    }
+
+        //    return query;
+        //}
 
     }
 }

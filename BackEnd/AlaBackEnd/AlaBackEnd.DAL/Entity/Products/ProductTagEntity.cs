@@ -1,17 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using AlaBackEnd.DAL.Entity.BaseEntity;
 using System.Text.Json.Serialization;
 
 namespace AlaBackEnd.DAL.Entity.Products
 {
-    public class ProductTagEntity
+    public class ProductTagEntity : IBaseEntity
     {
         public int Id { get; set; }
         public required string Name { get; set; } = string.Empty;
 
         [JsonIgnore]
-        public required List<BaseProductEntity> Products { get; set; } = [];
+        public List<BaseProductEntity> Products { get; set; } = [];
 
     }
 }

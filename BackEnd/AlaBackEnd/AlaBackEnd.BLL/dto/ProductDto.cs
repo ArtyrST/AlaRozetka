@@ -20,7 +20,7 @@ namespace AlaBackEnd.BLL.dto
         public string Country { get; set; } = string.Empty;
         public string City {  get; set; } = string.Empty;
         public string Description {  get; set; } = string.Empty;
-
+        public List<int> Tags { get; set; } = [];
         public string Image { get; set; } = string.Empty;
     }
 }

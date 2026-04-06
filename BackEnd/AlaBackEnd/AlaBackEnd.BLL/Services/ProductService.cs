@@ -1,5 +1,6 @@
 ﻿using AlaBackEnd.BLL.dto;
 using AlaBackEnd.DAL.Entity;
+using AlaBackEnd.DAL.Entity.Products;
 using AlaBackEnd.DAL.Repositories;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
@@ -11,17 +12,20 @@ namespace AlaBackEnd.BLL.Services
     {
         private readonly ProductRepository _ProductRepository;
         private readonly IMapper _Mapper;
-        public ProductService(ProductRepository ProductRepository, IMapper mapper)
+       private readonly TagRepository _Tags;
+        public ProductService(ProductRepository ProductRepository, IMapper mapper, TagRepository tags)
         {
             _ProductRepository = ProductRepository;
             _Mapper = mapper;
+            _Tags = tags;
         }
-        public async Task<ServiceResponse> GelAllAsync()
+        public async Task<ServiceResponse> GetAllAsync()
         {
             var entities = await _ProductRepository.GetAll().ToListAsync();
             var dtos = _Mapper.Map<List<ProductDto>>(entities);
-
+            
             return ServiceResponse.Success("The list of products was got", dtos);
+            
                 
         }
         public async Task<ServiceResponse> GetByIdAsync(int id) 
@@ -55,8 +59,22 @@ namespace AlaBackEnd.BLL.Services
             {
                 return ServiceResponse.Error($"The product with name {dto.Name} is already exist");
             }
+            
 
             var entity = _Mapper.Map<BaseProductEntity>(dto);
+            entity.Tags = new List<ProductTagEntity>();
+            if (dto.Tags != null &&  dto.Tags.Any())
+            {
+                foreach(int tagId in dto.Tags)
+                {
+                    var addedTag = await _Tags.GetByIdAsync(tagId);
+                    if (addedTag != null)
+                    {
+                        entity.Tags.Add(addedTag);
+                    }   
+                }
+            }
+
             bool res = await _ProductRepository.CreateAsync(entity);
             if (!res)
             {

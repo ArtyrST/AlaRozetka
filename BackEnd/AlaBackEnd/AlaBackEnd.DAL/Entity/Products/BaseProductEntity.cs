@@ -14,7 +14,7 @@ namespace AlaBackEnd.DAL.Entity
         public required double Price { get; set; }
         public required string Country { get; set; } = string.Empty;
         public required string City { get; set; } = string.Empty;
-        public required string Descriprion {  get; set; } = string.Empty;
+        public required string Description { get; set; } = string.Empty;
         public DateTime Date { get; set; } = DateTime.UtcNow;
         //tags
         public required List<ProductTagEntity> Tags { get; set; } = [];

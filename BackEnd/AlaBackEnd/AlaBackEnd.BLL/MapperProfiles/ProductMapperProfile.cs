@@ -1,5 +1,6 @@
 ﻿using AlaBackEnd.BLL.dto;
 using AlaBackEnd.DAL.Entity;
+using AlaBackEnd.DAL.Entity.Products;
 using AutoMapper;
 
 
@@ -10,17 +11,25 @@ namespace AlaBackEnd.BLL.MapperProfiles
         public ProductMapperProfile()
         {
             //DevEntity -> DevDto
-            CreateMap<BaseProductEntity, ProductDto>();
+            CreateMap<BaseProductEntity, ProductDto>()
+                .ForMember(dest => dest.Tags, opt => opt.MapFrom(src => src.Tags.Select(t => t.Id).ToList()));
+
 
             //DevDto -> DevEnity
             CreateMap<CreateProductDto, BaseProductEntity>()
                 .ForMember(dest => dest.Images, opt => opt.Ignore())
-                .ForMember(dest => dest.Id, opt => opt.Ignore());
+                .ForMember(dest => dest.Id, opt => opt.Ignore())
+                .ForMember(dest => dest.Tags, opt => opt.Ignore());
 
-            //UpdateDevDto -> DevEntity
+            
+                
+
+            //UpdateDevDto -> DevEntity 
             CreateMap<UpdateProductDto, BaseProductEntity>()
                 .ForMember(dest => dest.Images, opt => opt.Ignore());
-                
+
+            
+            
             
 
 

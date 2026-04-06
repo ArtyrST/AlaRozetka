@@ -21,7 +21,7 @@ namespace AlaBackEnd.API.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAsync()
         {
-            var response = await _productService.GelAllAsync();
+            var response = await _productService.GetAllAsync();
             return this.GetResult(response);
         }
         [HttpGet("by-id")]
@@ -37,7 +37,7 @@ namespace AlaBackEnd.API.Controllers
             return this.GetResult(response);
         }
         [HttpPut]
-        public async Task<IActionResult> UpdateProductAsync([FromBody] UpdateProductDto dto)
+        public async Task<IActionResult> UpdateProductAsync([FromForm] UpdateProductDto dto)
         {
             var response = await _productService.UpdateAsync(dto);
             return this.GetResult(response);

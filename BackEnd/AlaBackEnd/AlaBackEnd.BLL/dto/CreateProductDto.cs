@@ -1,8 +1,8 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using AlaBackEnd.DAL.Entity.Products;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Text;
 
 namespace AlaBackEnd.BLL.dto
 {
@@ -19,6 +19,7 @@ namespace AlaBackEnd.BLL.dto
         public string City { get; set; } = string.Empty;
         [Required(ErrorMessage = "Description is required")]
         public string Description { get; set; } = string.Empty;
+        public List<int> Tags { get; set; } = []; 
         public IFormFile? Image { get; set; }
     }
 }

@@ -15,7 +15,7 @@ namespace AlaBackEnd.DAL.Entity
         
         //product
         public bool IsPreview { get; set; }
-        public BaseProductEntity Product { get; set; }
+        public BaseProductEntity? Product { get; set; }
         public int ProductId { get; set; }
 
     }

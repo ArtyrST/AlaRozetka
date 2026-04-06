@@ -1,11 +1,12 @@
-﻿using AlaBackEnd.DAL.Entity.ProductCart;
-using AlaBackEnd.DAL.Entity;
+﻿using AlaBackEnd.DAL.Entity;
+using AlaBackEnd.DAL.Entity.ProductCart;
+using AlaBackEnd.DAL.Entity.Products;
 using AlaBackEnd.DAL.Entity.Users;
 using AlaBackEnd.Entity.Products;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using AlaBackEnd.DAL.Entity.Products;
+using System.Reflection.Emit;
 
 
 
@@ -32,6 +33,10 @@ namespace AlaBackEnd.DAL
         {
 
             base.OnModelCreating(builder);
+
+            builder.Entity<BaseProductEntity>()
+                .Navigation(p => p.Tags)
+                .AutoInclude();
 
             //User
             builder.Entity<UserEntity>()
@@ -86,7 +91,7 @@ namespace AlaBackEnd.DAL
                 entity.Property(p=> p.City).IsRequired(true).HasMaxLength(100);
                 entity.Property(p => p.Country).IsRequired(true).HasMaxLength(100);
                 entity.HasMany(p => p.Tags).WithMany(p => p.Products).UsingEntity("ProductsTags");
-                entity.Property(p =>p.Descriprion).IsRequired(true).HasMaxLength(300);
+                entity.Property(p =>p.Description).IsRequired(true).HasMaxLength(300);
 
                 
 
