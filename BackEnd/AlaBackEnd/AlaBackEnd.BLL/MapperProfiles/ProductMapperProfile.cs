@@ -17,9 +17,10 @@ namespace AlaBackEnd.BLL.MapperProfiles
 
 
             //Image dto -> image entity
-            CreateMap<ImageDto, ImageEntity>()
-                .ForMember(dest => dest.Id, opt => opt.Ignore());
-            
+            CreateMap<ImageEntity, ImageDto>()
+                .ForMember(dest => dest.Path, opt => opt.MapFrom(src =>
+                    $"/uploads/images/{src.Path}"));
+
 
 
             //CategoryDto -> CategEn
