@@ -38,6 +38,8 @@ namespace AlaBackEnd.DAL
                 .Navigation(p => p.Tags)
                 .AutoInclude();
 
+            
+
             //User
             builder.Entity<UserEntity>()
                 .HasKey(u => u.Id);

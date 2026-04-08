@@ -168,6 +168,26 @@ namespace AlaBackEnd.DAL.Seeders
             }
 
 
+                var categories = new List<CategoryEntity>();
+            if (!dbContext.Categories.Any())
+            {
+                categories = new List<CategoryEntity>
+                {
+                    new CategoryEntity { Name = "Готелі"},
+                    new CategoryEntity { Name = "Апартаменти"},
+                    new CategoryEntity { Name = "Хостели"},
+                    new CategoryEntity { Name = "Вілли"},
+                    new CategoryEntity { Name = "Глемпінги"}
+                };
+                await dbContext.Categories.AddRangeAsync(categories);
+                await dbContext.SaveChangesAsync();
+
+            }
+            else
+            {
+                categories = await dbContext.Categories.AsNoTracking().ToListAsync();
+            }
+
             //    public int Id { get; set; }
             //public required string Name { get; set; } = string.Empty;
             //public double Price { get; set; }

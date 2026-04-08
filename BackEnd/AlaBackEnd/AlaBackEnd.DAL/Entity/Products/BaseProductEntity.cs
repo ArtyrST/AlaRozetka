@@ -20,8 +20,7 @@ namespace AlaBackEnd.DAL.Entity
         public required List<ProductTagEntity> Tags { get; set; } = [];
         //relation with category
         public required int? CategoryId { get; set; }
-        public required string CategoryName { get; set; } = string.Empty;
-        public virtual CategoryEntity? Category { get; set; }
+        public CategoryEntity? Category { get; set; }
         //user realtor
         public required int? UserId { get; set; }
         public UserEntity? User { get; set; }
@@ -33,6 +32,7 @@ namespace AlaBackEnd.DAL.Entity
         //with feedbacks
         public List<FeedBackEntity> Feedbacks { get; set; } = [];
        
+        
         
 
     }

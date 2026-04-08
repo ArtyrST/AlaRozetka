@@ -19,6 +19,10 @@ namespace AlaBackEnd.BLL.dto
         public string City { get; set; } = string.Empty;
         [Required(ErrorMessage = "Description is required")]
         public string Description { get; set; } = string.Empty;
+        [Required(ErrorMessage = "Category is required")]
+        public int CategoryId { get; set; }
+        public string CategoryName { get; set; } = string.Empty;
+        
         public List<int> Tags { get; set; } = []; 
         public IFormFile? Image { get; set; }
     }

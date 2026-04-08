@@ -11,17 +11,19 @@ namespace AlaBackEnd.BLL.Services
     public class ProductService 
     {
         private readonly ProductRepository _ProductRepository;
+        private readonly CategoryRepository _CategoryRepository;
         private readonly IMapper _Mapper;
        private readonly TagRepository _Tags;
-        public ProductService(ProductRepository ProductRepository, IMapper mapper, TagRepository tags)
+        public ProductService(ProductRepository ProductRepository, IMapper mapper, TagRepository tags, CategoryRepository categoryRepository)
         {
             _ProductRepository = ProductRepository;
             _Mapper = mapper;
             _Tags = tags;
+            _CategoryRepository = categoryRepository;
         }
         public async Task<ServiceResponse> GetAllAsync()
         {
-            var entities = await _ProductRepository.GetAll().ToListAsync();
+            var entities = await _ProductRepository.GetAllWithCategoryAsync();
             var dtos = _Mapper.Map<List<ProductDto>>(entities);
             
             return ServiceResponse.Success("The list of products was got", dtos);
@@ -53,33 +55,62 @@ namespace AlaBackEnd.BLL.Services
             var dtos = _Mapper.Map<List<ProductDto>>(entity);
             return ServiceResponse.Success($"The product with name: {name} was found", dtos);
         }
+        public async Task<ServiceResponse> GetByTagAsync(List<int> tagIds)
+        {
+            var entity = await _ProductRepository.GetByTagAsync(tagIds);
+            if ( entity == null )
+            {
+                return ServiceResponse.Error("No hotels with that tags");
+            }
+            var dto = _Mapper.Map<List<ProductDto>>(entity);
+            return ServiceResponse.Success("List of hotels with this tag was got", dto);
+        }
         public async Task<ServiceResponse> CreateAsync(CreateProductDto dto)
         {
+            
             if (await _ProductRepository.IsExistAsync(dto.Name))
             {
                 return ServiceResponse.Error($"The product with name {dto.Name} is already exist");
             }
-            
 
+            
             var entity = _Mapper.Map<BaseProductEntity>(dto);
-            entity.Tags = new List<ProductTagEntity>();
-            if (dto.Tags != null &&  dto.Tags.Any())
+
+            
+            var categ = await _CategoryRepository.GetAllAsync(dto.CategoryId);
+
+            if (categ == null)
             {
-                foreach(int tagId in dto.Tags)
+                return ServiceResponse.Error($"Category with id {dto.CategoryId} not found");
+            }
+
+            
+            entity.CategoryId = categ.Id;
+            
+            entity.Category = null;
+
+            entity.Tags = new List<ProductTagEntity>();
+            if (dto.Tags != null && dto.Tags.Any())
+            {
+                foreach (int tagId in dto.Tags)
                 {
                     var addedTag = await _Tags.GetByIdAsync(tagId);
                     if (addedTag != null)
                     {
                         entity.Tags.Add(addedTag);
-                    }   
+                    }
                 }
             }
 
+            
             bool res = await _ProductRepository.CreateAsync(entity);
+
             if (!res)
             {
-                return ServiceResponse.Error("Something wrong with adding new product...");
+                return ServiceResponse.Error("Something wrong with adding new product to the database.");
             }
+
+            
             var responseDto = _Mapper.Map<ProductDto>(entity);
 
             return ServiceResponse.Success("Success!", responseDto);
@@ -105,7 +136,9 @@ namespace AlaBackEnd.BLL.Services
                 return ServiceResponse.Error("Something wrong with updated product...");
             }
 
-            var responseDto = _Mapper.Map<ProductDto>(entity);
+
+            var updatedentity = _ProductRepository.GetAllWithCategory1Async(entity.Id);
+            var responseDto = _Mapper.Map<ProductDto>(updatedentity);
             return ServiceResponse.Success($"Product with name: {oldName} was successfull chanched!", responseDto);
 
 

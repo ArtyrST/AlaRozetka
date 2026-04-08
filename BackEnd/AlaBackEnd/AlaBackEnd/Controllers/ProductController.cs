@@ -30,6 +30,12 @@ namespace AlaBackEnd.API.Controllers
             var response = await _productService.GetByIdAsync(id);
             return this.GetResult(response);
         }
+        [HttpGet("by-tag")]
+        public async Task<IActionResult> GetByTagAsync([FromQuery]List<int> tagIds)
+        {
+            var response = await _productService.GetByTagAsync(tagIds);
+            return this.GetResult(response);
+        }
         [HttpPost("from-body")]
         public async Task<IActionResult> CreateProductAsync([FromBody] CreateProductDto dto)
         {

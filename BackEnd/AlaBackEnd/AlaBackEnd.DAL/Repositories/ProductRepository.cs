@@ -33,11 +33,28 @@ namespace AlaBackEnd.DAL.Repositories
                 .AnyAsync(p => p.Name.ToLower() == name.ToLower()
                 && !exceptionId.Contains(p.Id));
         }
-        public async Task<BaseProductEntity?> GetByTagAsync(ProductTagEntity tag)
+        public async Task<List<BaseProductEntity>> GetByTagAsync(List<int> tagIds)
         {
-            return await Products.FirstOrDefaultAsync(p => tag.Name.Contains(tag.Name));
+            return await _context.AllProducts
+                .Include(p => p.Tags)
+                .Where(p => p.Tags.Any(i => tagIds.Contains(i.Id)))
+                .ToListAsync();
         }
+        public async Task<List<BaseProductEntity>> GetAllWithCategoryAsync()
+        {
+            return await _context.AllProducts
+                .Include(p => p.Category)
+                .ToListAsync();
+        }
+        public async Task<BaseProductEntity?> GetAllWithCategory1Async(int id)
+        {
+            return await _context.AllProducts
+                .Include(p => p.Category)
+                .FirstOrDefaultAsync(p => p.Id == id);
+        }
+       
         
+
 
     }
 }

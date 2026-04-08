@@ -22,6 +22,7 @@ namespace AlaBackEnd
             //add repos
             builder.Services.AddScoped<ProductRepository>();
             builder.Services.AddScoped<TagRepository>();
+            builder.Services.AddScoped<CategoryRepository>();
             
             //add services
             builder.Services.AddScoped<ProductService>();
