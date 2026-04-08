@@ -13,10 +13,13 @@ namespace AlaBackEnd.BLL.MapperProfiles
         {
             //DevEntity -> DevDto
             CreateMap<BaseProductEntity, ProductDto>()
-                .ForMember(dest => dest.Tags, opt => opt.MapFrom(src => src.Tags.Select(t => t.Id).ToList()))
-                .ForMember(dest => dest.CategoryName,
-                        opt => opt.MapFrom(src => src.Category.Name));
+                .ForMember(dest => dest.Tags, opt => opt.MapFrom(src => src.Tags.Select(t => t.Id).ToList()));
 
+
+            //Image dto -> image entity
+            CreateMap<ImageDto, ImageEntity>()
+                .ForMember(dest => dest.Id, opt => opt.Ignore());
+            
 
 
             //CategoryDto -> CategEn

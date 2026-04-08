@@ -1,7 +1,5 @@
-﻿using AlaBackEnd.DAL.Entity.Products;
-using Microsoft.AspNetCore.Http;
-using System;
-using System.Collections.Generic;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using System.ComponentModel.DataAnnotations;
 
 namespace AlaBackEnd.BLL.dto
@@ -21,9 +19,12 @@ namespace AlaBackEnd.BLL.dto
         public string Description { get; set; } = string.Empty;
         [Required(ErrorMessage = "Category is required")]
         public int CategoryId { get; set; }
-        public string CategoryName { get; set; } = string.Empty;
+
+        [FromForm]
+        public List<int> Tags { get; set; } = [];
         
-        public List<int> Tags { get; set; } = []; 
-        public IFormFile? Image { get; set; }
+        [FromForm(Name = "Images")]
+        public IFormFileCollection? Images { get; set; }
+        public int PreviewImageId { get; set; }
     }
 }

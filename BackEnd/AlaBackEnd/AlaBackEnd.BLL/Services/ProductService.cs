@@ -1,4 +1,5 @@
 ﻿using AlaBackEnd.BLL.dto;
+using AlaBackEnd.BLL.Services.ImagesService;
 using AlaBackEnd.DAL.Entity;
 using AlaBackEnd.DAL.Entity.Products;
 using AlaBackEnd.DAL.Repositories;
@@ -13,13 +14,17 @@ namespace AlaBackEnd.BLL.Services
         private readonly ProductRepository _ProductRepository;
         private readonly CategoryRepository _CategoryRepository;
         private readonly IMapper _Mapper;
-       private readonly TagRepository _Tags;
-        public ProductService(ProductRepository ProductRepository, IMapper mapper, TagRepository tags, CategoryRepository categoryRepository)
+        private readonly TagRepository _Tags;
+        private readonly ImageService _Image;
+
+        public ProductService(ProductRepository ProductRepository, IMapper mapper, TagRepository tags, CategoryRepository categoryRepository, ImageService image)
         {
             _ProductRepository = ProductRepository;
             _Mapper = mapper;
             _Tags = tags;
             _CategoryRepository = categoryRepository;
+            _Image = image;
+
         }
         public async Task<ServiceResponse> GetAllAsync(int PageNumber, int PageSize)
         {
@@ -77,6 +82,24 @@ namespace AlaBackEnd.BLL.Services
 
             
             var entity = _Mapper.Map<BaseProductEntity>(dto);
+            
+            if (dto.Images != null && dto.Images.Count > 0)
+            {
+                for (int i = 0; i < dto.Images.Count; i++)
+                {
+                    var image = dto.Images[i];
+                    string imagePath = await _Image.SaveImageAsync(image, "products");
+                    var newImage = new ImageEntity
+                    {
+                        Path = imagePath,
+                        IsPreview = (i == dto.PreviewImageId)
+
+                    };
+                    
+                    entity.Images.Add(newImage);
+
+                }
+            }
 
             
             var categ = await _CategoryRepository.GetAllAsync(dto.CategoryId);

@@ -9,12 +9,11 @@ namespace AlaBackEnd.DAL.Entity
     {
         public int Id { get; set; }
         public string Path { get; set; } = string.Empty;
-        public string Name { get; set; } = string.Empty;
+        public bool IsPreview { get; set; }
         
        
         
         //product
-        public bool IsPreview { get; set; }
         public BaseProductEntity? Product { get; set; }
         public int ProductId { get; set; }
 

@@ -109,7 +109,6 @@ namespace AlaBackEnd.DAL
 
             builder.Entity<ImageEntity>(entity => {
                 entity.HasKey(i => i.Id);
-                entity.Property(i =>  i.Name).IsRequired(true).HasMaxLength(50);
                 entity.Property(i => i.Path).IsRequired(true).HasMaxLength(150);
                 entity.Property(i => i.IsPreview).IsRequired(true);
             });

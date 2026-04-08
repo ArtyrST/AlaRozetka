@@ -27,7 +27,7 @@ namespace AlaBackEnd.DAL.Entity
 
 
         //with image
-        public List<ImageEntity> Images { get; set; } = [];
+        public ICollection<ImageEntity> Images { get; set; } = [];
 
         //with feedbacks
         public List<FeedBackEntity> Feedbacks { get; set; } = [];

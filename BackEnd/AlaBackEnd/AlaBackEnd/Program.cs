@@ -1,10 +1,12 @@
 
 using AlaBackEnd.BLL.Services;
+using AlaBackEnd.BLL.Services.ImagesService;
 using AlaBackEnd.DAL;
 using AlaBackEnd.DAL.Repositories;
 using AlaBackEnd.DAL.Seeders;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.FileProviders;
 using Scalar.AspNetCore;
 
 
@@ -26,10 +28,11 @@ namespace AlaBackEnd
             builder.Services.AddScoped<CategoryRepository>();
             
             
+            
             //add services
             builder.Services.AddScoped<ProductService>();
             builder.Services.AddScoped<TagServise>();
-
+            builder.Services.AddScoped<ImageService>();
             //add automapper
             builder.Services.AddAutoMapper(cfg =>
             {
@@ -69,7 +72,12 @@ namespace AlaBackEnd
             
 
             var app = builder.Build();
-
+            app.UseStaticFiles(new StaticFileOptions
+            {
+                FileProvider = new PhysicalFileProvider(
+                    Path.Combine(builder.Environment.ContentRootPath, "Uploads")),
+                    RequestPath = "/uploads"
+            });
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
             {
