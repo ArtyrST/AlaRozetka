@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState, type JSX } from 'react'
-import './catalog.css'
+import './catalog.scss'
 
 type ApiHotel = {
   id: number

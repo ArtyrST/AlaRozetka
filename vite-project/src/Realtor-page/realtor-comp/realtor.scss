@@ -1,0 +1,154 @@
+$primary-text: #000;
+$secondary-text: #666;
+$bg-input: #f5f7fb; // Світло-сірий як на скрині
+$accent-dark: #3f523c; // Темно-зелений для кнопки
+
+.realtor-container {
+  margin:70px 100px 0;
+  display: flex;
+  justify-content: center;
+  font-family: 'Nunito', sans-serif; // Переконайтеся, що шрифт підключений
+}
+
+.realtor-block {
+  display: flex;
+  max-width: 100%;
+  width: 100%;
+  gap: 60px;
+  align-items: flex-start;
+}
+
+.realtor-main-content {
+  flex: 2;
+
+  .realtor-header {
+    margin-bottom: 30px;
+
+    .realtor-full-name {
+      font-size: 32px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 0;
+
+      .rating {
+        font-size: 14px;
+        background: #fff;
+        border: 1px solid #eee;
+        padding: 4px 8px;
+        border-radius: 20px;
+        color: $primary-text;
+        font-weight: 600;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      }
+    }
+
+    .realtor-email {
+      color: $secondary-text;
+      font-size: 14px;
+      margin: 8px 0 0 0;
+    }
+  }
+}
+
+.realtor-data {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 40px;
+
+  .data-item {
+    flex: 1;
+    max-width: 270px;
+    .label {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 10px;
+      color: $primary-text;
+    }
+
+    .input-box {
+      background-color: $bg-input;
+      max-width: 270px;
+      padding: 15px 20px;
+      border-radius: 15px;
+      font-size: 15px;
+      color: $secondary-text;
+      min-height: 20px;
+    }
+  }
+}
+
+.realtor-description {
+  .description-title {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 15px;
+  }
+
+  .description-text {
+    font-size: 16px;
+    line-height: 1.6;
+    color: $secondary-text;
+    max-width: 800px;
+    font-weight: 400px;
+  }
+}
+
+.realtor-aside {
+  flex: 0 0 250px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
+
+ .photo-container {
+    $gap-size: 5px;      
+    $outline-size: 5px; 
+    width: calc(250px - #{$gap-size * 2}); 
+    height: calc(250px - #{$gap-size * 2});
+    border-radius: 50%;
+    overflow: hidden; 
+    outline: #{$outline-size} solid $accent-dark; 
+    outline-offset: #{$gap-size}; // Білий пробіл між фото і кільцем
+    margin: #{$gap-size + $outline-size};
+
+    .realtor-photo {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block; // Запобігає появі зайвих пробілів знизу
+    }
+  }
+
+  .feedback-button {
+    background-color: $accent-dark;
+    color: #fff;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 18px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: opacity 0.2s;
+    width: 100%;
+
+    &:hover {
+      opacity: 0.9;
+    }
+  }
+}
+
+
+// Адаптивність для мобілок
+@media (max-width: 1000px) {
+  .realtor-block {
+    flex-direction: column-reverse;
+    align-items: center;
+    gap: 30px;
+  }
+  
+  .realtor-data {
+    flex-direction: column;
+  }
+}
