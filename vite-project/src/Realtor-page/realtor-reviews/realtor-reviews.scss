@@ -1,0 +1,114 @@
+$primary-color: #3f523c;
+$white: #fff;
+$text-dark: #222;
+$text-gray: #555;
+$shadow-light: 0 4px 24px rgba(63, 82, 60, 0.07);
+$shadow-heavy: 0 8px 32px rgba(63, 82, 60, 0.13);
+* {
+  box-sizing: border-box; // Тепер width: 100% включатиме в себе і padding
+}
+.reviews-conteiner{
+padding: 0px 100px 10px;
+.reviews-title{
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+.review-div {
+  width: 100%;
+  display: flex;       // Використовуємо Flexbox для вирівнювання кнопки
+  justify-content: center; // Центруємо кнопку по горизонталі
+  margin-top: 40px;    // Відступ від готелів
+  padding-bottom: 60px;
+}
+
+.show-more-review-btn{
+  background-color: $primary-color;
+  color: $white;
+  border: none;
+  width: 150px;
+  height: 40px;
+  border-radius: 12px;
+}
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  width: 100%;
+  align-items: stretch;
+
+  @media (max-width: 1600px) { grid-template-columns: repeat(3, 1fr); }
+  @media (max-width: 1100px) { grid-template-columns: repeat(2, 1fr); }
+  @media (max-width: 800px) { 
+    grid-template-columns: 1fr;
+    padding: 40px 20px; // На мобільних додаємо невеликий відступ
+  }
+}
+
+.review-card {
+  background: $white;
+  border-radius: 18px;
+  box-shadow: $shadow-light;
+  transition: all 0.2s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  min-height: 180px;
+  width: 100%; // Тепер картка займає всю ширину своєї колонки
+
+  &:hover {
+    box-shadow: $shadow-heavy;
+    transform: translateY(-4px);
+  }
+
+  .review-content {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .review-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .review-author {
+    font-size: 20px;
+    font-weight: 700;
+    color: $text-dark;
+  }
+
+  .review-rating {
+    background: rgba(63, 82, 60, 0.05);
+    color: $primary-color;
+    font-weight: 700;
+    border-radius: 10px;
+    padding: 4px 10px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+
+    .star {
+      color: #f1c40f; // Зробимо зірочку золотистою для кращого вигляду
+    }
+  }
+
+  .review-text {
+    font-size: 15px;
+    line-height: 1.5;
+    color: $text-dark;
+    margin: 0;
+  }
+}
+
+.reviews-empty {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 40px;
+  font-size: 18px;
+  color: $text-gray;
+}
+}

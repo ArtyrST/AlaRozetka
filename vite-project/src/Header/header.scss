@@ -1,0 +1,286 @@
+// --- Variables ---
+$primary-color: #3F523C;
+$bg-light: #F0F0F0;
+$white: #ffffff;
+$black: #000000;
+$font-main: 'Nunito', sans-serif;
+$transition: all 0.3s ease;
+
+// --- Fonts ---
+@font-face {
+  font-family: 'Nunito';
+  src: url('../src/assets/fonts/Nunito-Regular.ttf') format('truetype');
+  font-weight: 600;
+}
+
+// --- Global Styles ---
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: $font-main;
+}
+
+.customer-layout {
+  display: flex;
+  flex-direction: column;
+}
+
+// --- Header ---
+.header {
+  height: 74px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 5px;
+  margin: 25px 100px 0;
+
+  @media (max-width: 1024px) {
+    margin-left: 40px;
+    margin-right: 40px;
+  }
+
+  @media (max-width: 768px) {
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 15px;
+  }
+
+  @media (max-width: 480px) {
+    margin-left: 15px;
+    margin-right: 15px;
+  }
+}
+
+.logo {
+  width: 183px;
+  height: 74px;
+  min-width: 74px;
+  display: flex;
+  align-items: center;
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+.center-section {
+  height: 34px;
+  display: flex;
+  font-size: 16px;
+  line-height: 22px;
+  font-weight: 500;
+
+  a, .link{
+white-space: nowrap;
+    font-weight: 600;
+    margin: 0 20px;
+    text-decoration: none;
+    color: $black;
+    cursor: pointer;
+  }
+  
+
+  @media (max-width: 900px) {
+    display: none;
+  }
+}
+
+.right-section {
+  display: flex;
+  align-items: center;
+}
+
+// --- Dropdowns & Sections ---
+.dropdown-lang-container {
+  width: 90px;
+  display: flex;
+  flex-direction: column;
+  padding: 4px 6px;
+  border-radius: 17px;
+  background: $bg-light;
+  margin-right: 20px;
+  position: relative;
+
+  .elements {
+    width: 76px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 6px;
+
+    .lang {
+      height: 29px;
+      width: 46px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 17px;
+      background: $primary-color;
+
+      .text {
+        color: $white;
+        font-size: 15px;
+        font-weight: 700;
+      }
+    }
+
+    button {
+      @extend %icon-button;
+    }
+  }
+}
+
+// Повторюваний стиль для кнопок-іконок
+%icon-button {
+  width: 24px;
+  height: 24px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.user-section {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 28px;
+
+  button {
+    @extend %icon-button;
+  }
+}
+
+// --- Menus ---
+.lang-menu {
+  position: absolute;
+  top: 100%;
+  right: 20px;
+  background: $white;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  border-radius: 8px;
+  display: none;
+  z-index: 1000;
+  overflow: hidden;
+
+  &.active {
+    display: block;
+    width: 140px;
+  }
+
+  button {
+    display: block;
+    padding: 8px 14px;
+    background: none;
+    border: none;
+    text-align: left;
+    cursor: pointer;
+    width: 100%;
+    height: 35px;
+
+    &:hover {
+      background: $primary-color;
+      border-radius: 10px;
+      color: $white;
+    }
+  }
+}
+
+// --- Mobile Menu ---
+.mobile-menu-btn {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 21px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+
+  span {
+    display: block;
+    height: 3px;
+    width: 100%;
+    background-color: $primary-color;
+    border-radius: 3px;
+    transition: $transition;
+  }
+
+  @media (max-width: 900px) {
+    display: flex;
+  }
+}
+
+.mobile-menu-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 998;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+
+  &.active {
+    display: block;
+    opacity: 1;
+  }
+}
+
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  right: -300px;
+  width: 300px;
+  height: 100%;
+  background-color: $white;
+  z-index: 999;
+  transition: right 0.3s ease;
+  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+
+  &.active {
+    right: 0;
+  }
+
+  .close-menu {
+    align-self: flex-end;
+    background: none;
+    border: none;
+    font-size: 30px;
+    cursor: pointer;
+    padding: 15px;
+    color: $primary-color;
+  }
+
+  .mobile-menu-content {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    flex: 1;
+
+    .mobile-page {
+      padding: 12px 0;
+      font-size: 18px;
+      font-weight: 600;
+      color: #333;
+      text-decoration: none;
+      border-bottom: 1px solid $bg-light;
+      cursor: pointer;
+    }
+  }
+
+  .mobile-lang-section {
+    margin-top: auto;
+    padding: 20px 0;
+  }
+}

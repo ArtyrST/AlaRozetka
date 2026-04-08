@@ -1,0 +1,217 @@
+// --- Змінні (Variables) ---
+$primary-color: #3f523c;
+$primary-hover: #2a3a27;
+$text-white: #ffffff;
+$text-muted: #cccccc;
+$border-footer: #5a7356;
+$bg-main: #f5f5f5;
+
+// --- Головний контент ---
+.main-content {
+  flex: 1;
+  padding: 20px;
+  background: $bg-main;
+}
+
+// --- Футер ---
+.footer {
+  margin-top: 80px;
+  background-color: $primary-color;
+  color: $text-white;
+  padding: 40px 0 0 0;
+  
+
+  @media (max-width: 768px) {
+    margin-top: 60px;
+    padding: 30px 20px;
+  }
+
+  @media (max-width: 480px) {
+    padding: 25px 15px;
+  }
+
+  @media (max-width: 360px) {
+    padding: 20px 10px;
+  }
+}
+
+.footer-container {
+  max-width: 100%;
+  margin: 0 100px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  border-bottom: 1px solid $border-footer;
+  padding-bottom: 20px;
+
+  @media (max-width: 1024px) {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+  }
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+}
+
+.footer-logo {
+  flex: 1;
+  min-width: 250px;
+
+  img {
+    margin-top: 20px;
+    max-width: 200px;
+
+    @media (max-width: 768px) { max-width: 180px; }
+    @media (max-width: 480px) { max-width: 160px; }
+    @media (max-width: 360px) { max-width: 140px; }
+  }
+
+  p {
+    font-size: 15px;
+    color: $bg-main;
+    line-height: 0.5;
+    margin-top: 10px;
+
+    @media (max-width: 480px) { font-size: 13px; }
+  }
+
+  @media (max-width: 1024px) { min-width: 200px; }
+  @media (max-width: 768px) { width: 100%; min-width: 100%; }
+}
+
+.footer-section {
+  flex: 1;
+  min-width: 180px;
+
+  h3 {
+    font-size: 16px;
+    margin-bottom: 15px;
+    color: $text-white;
+    font-weight: 600;
+
+    @media (max-width: 480px) { font-size: 15px; }
+  }
+
+  ul {
+    list-style: none;
+    padding: 0; 
+    margin: 0;
+  }
+
+  li {
+    margin-bottom: 8px;
+  }
+
+  a {
+    color: $text-muted;
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.3s;
+
+    &:hover {
+      color: $text-white;
+    }
+
+    @media (max-width: 480px) { font-size: 13px; }
+  }
+
+  @media (max-width: 1024px) { min-width: 200px; }
+  
+  @media (max-width: 768px) {
+    width: 100%;
+    min-width: 100%;
+    text-align: center;
+    border-bottom: 1px solid $border-footer;
+    padding-bottom: 20px;
+
+    &:last-of-type {
+      border-bottom: none;
+    }
+  }
+}
+
+// --- Розсилка (Newsletter) ---
+.newsletter {
+  flex: 1;
+  min-width: 300px;
+
+  h3 {
+    font-size: 16px;
+    margin-bottom: 15px;
+    color: $text-white;
+    font-weight: 600;
+
+    @media (max-width: 480px) { font-size: 15px; }
+  }
+
+  @media (max-width: 1024px) { min-width: 200px; }
+  @media (max-width: 768px) { width: 100%; min-width: 100%; }
+}
+
+.newsletter-form {
+  display: flex;
+  position: relative;
+  max-width: 100%;
+
+  input {
+    flex: 1;
+    padding: 10px 130px 10px 15px;
+    border: 1px solid #a5a5a5;
+    background-color: $text-white;
+    color: #333;
+    border-radius: 18px;
+    font-size: 14px;
+    height: 50px;
+    width: 100%;
+
+    @media (max-width: 768px) { padding: 12px 130px 12px 15px; }
+    
+    @media (max-width: 480px) {
+      height: 45px;
+      font-size: 12px;
+      padding: 10px 110px 10px 12px;
+    }
+
+    @media (max-width: 360px) { padding-right: 100px; }
+  }
+
+  button {
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 8px 15px;
+    background-color: $primary-color;
+    color: $text-white;
+    border: 1px solid $text-white;
+    border-radius: 15px;
+    width: 120px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.3s;
+
+    &:hover {
+      background-color: $primary-hover;
+    }
+
+    @media (max-width: 768px) { font-size: 12px; }
+
+    @media (max-width: 480px) {
+      width: 100px;
+      padding: 6px 10px;
+      font-size: 11px;
+    }
+
+    @media (max-width: 360px) { width: 90px; }
+  }
+}
+
+// --- Віджети та додаткові елементи ---
+.weatherwidget-io {
+  margin-top: 20px;
+}

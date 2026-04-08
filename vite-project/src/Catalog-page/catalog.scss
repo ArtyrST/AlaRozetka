@@ -1,0 +1,476 @@
+// --- Variables ---
+$primary-color: #3f523c;
+$primary-hover: #2f422f;
+$bg-light: #f5f7f3;
+$bg-filter: #f0f0f0;
+$white: #fff;
+$text-dark: #222;
+$text-gray: #666;
+$text-muted: #888;
+$shadow-light: 0 4px 24px rgba(63, 82, 60, 0.07);
+$shadow-heavy: 0 8px 32px rgba(63, 82, 60, 0.13);
+$font-main: 'Nunito', sans-serif;
+
+// --- Fonts ---
+@font-face {
+  font-family: 'Nunito';
+  src: url('../src/assets/fonts/Nunito-SemiBold.ttf') format('truetype'),
+       url('../src/assets/fonts/Nunito-Regular.ttf') format('truetype');
+  font-weight: 600;
+}
+
+// --- Mixins ---
+@mixin btn-base {
+  background: $primary-color;
+  color: $white;
+  border: none;
+  cursor: pointer;
+  font-weight: 700;
+  transition: background 0.18s;
+  
+  &:hover {
+    background: $primary-hover;
+  }
+}
+
+// --- Main Layout ---
+.apartments-main {
+  display: flex;
+  gap: 40px;
+  margin: 50px 70px 70px;
+
+  @media (max-width: 900px) {
+    flex-direction: column;
+    gap: 24px;
+    margin: 20px;
+  }
+}
+
+// --- Sidebar Filter ---
+.apartments-filter {
+  height: 540px;
+  min-width: 340px;
+  background: $bg-filter;
+  border-radius: 18px;
+  padding: 28px 22px;
+  box-shadow: $shadow-light;
+  font-size: 17px;
+
+  @media (max-width: 900px) {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    width: 85vw;
+    max-width: 400px;
+    background: $bg-light;
+    box-shadow: 2px 0 24px rgba(63, 82, 60, 0.18);
+    border-radius: 0 18px 18px 0;
+    transform: translateX(-100%);
+    transition: transform 0.3s;
+    overflow-y: auto;
+    z-index: 1202;
+    padding-bottom: 48px;
+    padding-top: 24px;
+    touch-action: pan-y;
+
+    &.active {
+      transform: translateX(0);
+    }
+  }
+
+  width: 100%; // для мобільного
+}
+
+// --- Filter Elements ---
+.filter-title {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  position: relative;
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 18px;
+}
+
+.filter-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+// --- Buttons ---
+.reset-btn {
+  @include btn-base;
+  float: right;
+  border-radius: 18px;
+  padding: 10px 40px;
+  font-size: 18px;
+  min-width: 140px;
+
+  &.desktop-reset-btn {
+    margin-left: auto;
+    margin-right: 0;
+    min-width: 120px;
+    padding: 10px 32px;
+
+    @media (max-width: 900px) {
+      display: none;
+    }
+  }
+
+  @media (max-width: 700px) {
+    float: none;
+    display: block;
+    width: 100%;
+    margin-top: 12px;
+    font-size: 20px;
+    padding: 16px 0;
+    border-radius: 16px;
+  }
+}
+
+.reset-btn-container.mobile-reset-btn {
+  display: none;
+
+  @media (max-width: 900px) {
+    display: flex;
+    margin-top: auto;
+    position: sticky;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: $bg-light;
+    padding: 18px 0;
+    z-index: 1300;
+    justify-content: center;
+
+    .reset-btn {
+      width: 90%;
+      font-size: 20px;
+      border-radius: 16px;
+      padding: 16px 0;
+      margin: 0 auto;
+      float: none;
+      display: block;
+    }
+  }
+}
+
+.close-sidebar-btn {
+  position: absolute;
+  top: 5px;
+  right: 18px;
+  background: $white;
+  color: $primary-color;
+  border: none;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  font-size: 22px;
+  font-weight: bold;
+  box-shadow: 0 2px 8px rgba(63, 82, 60, 0.08);
+  cursor: pointer;
+  z-index: 1400;
+  display: none;
+
+  @media (max-width: 900px) {
+    display: block;
+  }
+}
+
+.filter-toggle-btn {
+  display: none;
+  @include btn-base;
+  position: fixed;
+  top: 58px;
+  left: 18px;
+  z-index: 1001;
+  width: 150px;
+  border-radius: 14px;
+  padding: 12px 22px;
+  font-size: 18px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+
+  @media (max-width: 900px) {
+    display: block;
+    width: 685px;
+    max-width: 100%;
+    margin: 18px 0 24px 0;
+    position: relative;
+    left: 0;
+    top: 0;
+    z-index: 1;
+  }
+}
+
+// --- Inputs & Controls ---
+.country-input-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: stretch;
+
+  #countryInput {
+    width: 93%;
+    padding: 8px 12px;
+    font-size: 16px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+  }
+
+  #countryConfirmBtn {
+    @include btn-base;
+    border-radius: 8px;
+    padding: 8px 18px;
+    font-size: 16px;
+    width: 120px;
+
+    @media (max-width: 600px) {
+      width: 100%;
+    }
+  }
+}
+
+.price-sliders {
+  position: relative;
+  height: 20px;
+  margin: 30px 0;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: $primary-color;
+    border-radius: 2px;
+    transform: translateY(-50%);
+  }
+
+  input[type="range"] {
+    position: absolute;
+    width: 100%;
+    height: 4px;
+    background: transparent;
+    pointer-events: none;
+    -webkit-appearance: none;
+    margin: 0;
+
+    &::-webkit-slider-thumb {
+      pointer-events: all;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: $white;
+      border: 2px solid $primary-color;
+      cursor: pointer;
+      -webkit-appearance: none;
+      position: relative;
+      z-index: 2;
+      margin-top: 15px;
+    }
+
+    &::-moz-range-thumb {
+      pointer-events: all;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: $white;
+      border: 2px solid $primary-color;
+      cursor: pointer;
+      position: relative;
+      z-index: 2;
+    }
+  }
+
+  .slider-track {
+    position: absolute;
+    top: 50%;
+    height: 4px;
+    background: $primary-color;
+    border-radius: 2px;
+    transform: translateY(-50%);
+    z-index: 1;
+  }
+}
+
+// --- Content & Cards ---
+.apartments-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.apartments-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  padding: 0 10px;
+
+  @media (max-width: 900px) {
+    flex-direction: column;
+    gap: 15px;
+    align-items: flex-start;
+  }
+}
+
+.apartments-list {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  min-height: 380px;
+  align-items: stretch;
+
+  @media (max-width: 1400px) { grid-template-columns: repeat(2, 1fr); }
+  @media (max-width: 1000px) { grid-template-columns: 1fr; }
+  @media (max-width: 900px) { grid-template-columns: 1fr; }
+}
+
+.apartment-card {
+  background: $white;
+  border-radius: 18px;
+  box-shadow: $shadow-light;
+  overflow: hidden;
+  transition: box-shadow 0.2s;
+  cursor: pointer;
+  position: relative;
+  min-height: 240px;
+  min-width: 270px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  &:hover {
+    box-shadow: $shadow-heavy;
+  }
+
+  .apartment-img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+  }
+
+  .apartment-info {
+    padding: 18px 20px 12px 20px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .apartment-title {
+    font-size: 22px;
+    font-weight: 700;
+  }
+
+  .apartment-price {
+    font-size: 28px;
+    font-weight: 700;
+    color: $text-dark;
+  }
+
+  .apartment-cta {
+    margin-top: 18px;
+    display: flex;
+    justify-content: center;
+
+    button {
+      @include btn-base;
+      border-radius: 12px;
+      padding: 14px 0;
+      font-size: 20px;
+      width: 80%;
+    }
+  }
+}
+
+// --- Icons & Labels ---
+.apartment-rating {
+  position: absolute;
+  top: 12px;
+  right: 18px;
+  background: $white;
+  color: $primary-color;
+  font-weight: 700;
+  border-radius: 12px;
+  padding: 4px 10px;
+  font-size: 15px;
+  box-shadow: 0 2px 8px rgba(63, 82, 60, 0.08);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.favorite-icon {
+  position: absolute;
+  top: 15px;
+  left: 18px;
+  background: $white;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  font-size: 22px;
+  color: #e74c3c;
+}
+
+// --- Checkboxes (Custom) ---
+.rating-options label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  margin-bottom: 8px;
+
+  input {
+    display: none;
+
+    &:checked + .box {
+      background-color: #000;
+      border-color: #000;
+    }
+  }
+
+  .box {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #7e7e7e;
+    border-radius: 6px;
+    margin-right: 10px;
+    transition: 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+// --- Utils ---
+.filter-overlay {
+  display: none !important;
+  
+  @media (max-width: 900px) {
+    display: block !important;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.32);
+    z-index: 1201;
+    opacity: 1;
+    transition: opacity 0.3s;
+    pointer-events: auto;
+  }
+}
+
+.text {
+  font-size: 20px;
+  font-weight: 500;
+  color: #000;
+}

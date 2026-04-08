@@ -1,5 +1,6 @@
+import { Link } from "react-router-dom";
 import { useEffect, useState } from 'react';
-import './header.css';
+import './header.scss';
 
 type Language = 'uk' | 'en';
 
@@ -86,17 +87,17 @@ function Header() {
         </a>
 
         <div className="center-section">
-          <a href="/Main-Page/index.html" className="pages">
-            Головна
+          <a  className="pages">
+            <Link to="/">Головна</Link>
           </a>
-          <a href="/Apartments/apartaments.html" className="pages">
-            Апартаменти
+          <a  className="pages">
+            <Link to="/Catalog">Апартаменти</Link>
           </a>
           <a href="/About-us/about-us.html" className="pages">
             Про нас
           </a>
-          <a href="/Contacts/contacts.html" className="pages">
-            Контакти
+          <a className="pages">
+            <Link to="/Realtor">Контакти</Link>
           </a>
         </div>
 
@@ -136,10 +137,10 @@ function Header() {
               <img src="/src/assets/Bell_fill.png" alt="Notifications" />
             </button>
 
-            <a href="/Auth/register.html" title="Реєстрація">
-              <button type="button">
+            <a  title="Реєстрація">
+              <Link to="/register" type="button">
                 <img src="/src/assets/User_fill.png" alt="User" />
-              </button>
+              </Link>
             </a>
           </div>
         </div>
