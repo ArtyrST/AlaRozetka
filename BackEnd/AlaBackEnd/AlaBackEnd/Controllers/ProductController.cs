@@ -18,10 +18,10 @@ namespace AlaBackEnd.API.Controllers
             _productService = productService;
         }
 
-        [HttpGet]
-        public async Task<IActionResult> GetAsync()
+        [HttpGet] 
+        public async Task<IActionResult> GetAsync([FromQuery] int PageNumber)
         {
-            var response = await _productService.GetAllAsync();
+            var response = await _productService.GetAllAsync(PageNumber, 20);
             return this.GetResult(response);
         }
         [HttpGet("by-id")]

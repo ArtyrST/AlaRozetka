@@ -7,7 +7,7 @@ namespace AlaBackEnd.Entity.Products
     public class CategoryEntity : IBaseEntity
     {
         public int Id { get; set; }
-        public string Name { get; set; }
+        public string Name { get; set; } = string.Empty;
 
         [JsonIgnore]
         public List<BaseProductEntity> Products { get; set; } = [];

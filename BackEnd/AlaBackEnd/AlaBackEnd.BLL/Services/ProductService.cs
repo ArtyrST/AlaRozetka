@@ -21,9 +21,11 @@ namespace AlaBackEnd.BLL.Services
             _Tags = tags;
             _CategoryRepository = categoryRepository;
         }
-        public async Task<ServiceResponse> GetAllAsync()
+        public async Task<ServiceResponse> GetAllAsync(int PageNumber, int PageSize)
         {
-            var entities = await _ProductRepository.GetAllWithCategoryAsync();
+            var entities = await _ProductRepository.GetAllWithCategoryAsync(PageNumber, PageSize);
+                
+                
             var dtos = _Mapper.Map<List<ProductDto>>(entities);
             
             return ServiceResponse.Success("The list of products was got", dtos);
@@ -137,7 +139,7 @@ namespace AlaBackEnd.BLL.Services
             }
 
 
-            var updatedentity = _ProductRepository.GetAllWithCategory1Async(entity.Id);
+            var updatedentity = _ProductRepository.GetAllWithCategoryForUpdateAsync(entity.Id);
             var responseDto = _Mapper.Map<ProductDto>(updatedentity);
             return ServiceResponse.Success($"Product with name: {oldName} was successfull chanched!", responseDto);
 

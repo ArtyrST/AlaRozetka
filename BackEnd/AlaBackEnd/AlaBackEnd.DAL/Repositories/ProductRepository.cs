@@ -40,20 +40,23 @@ namespace AlaBackEnd.DAL.Repositories
                 .Where(p => p.Tags.Any(i => tagIds.Contains(i.Id)))
                 .ToListAsync();
         }
-        public async Task<List<BaseProductEntity>> GetAllWithCategoryAsync()
+        public async Task<List<BaseProductEntity>> GetAllWithCategoryAsync(int PageNumber, int PageSize)
+        {
+            return await _context.AllProducts
+                .Include(p => p.Category)
+                .OrderBy(p => p.Id)
+                .Skip((PageNumber - 1) * PageSize) 
+                .Take(PageSize)
+                .ToListAsync();
+        }
+        public async Task<List<BaseProductEntity>> GetAllWithCategoryForUpdateAsync(int id)
         {
             return await _context.AllProducts
                 .Include(p => p.Category)
                 .ToListAsync();
         }
-        public async Task<BaseProductEntity?> GetAllWithCategory1Async(int id)
-        {
-            return await _context.AllProducts
-                .Include(p => p.Category)
-                .FirstOrDefaultAsync(p => p.Id == id);
-        }
-       
-        
+
+
 
 
     }
