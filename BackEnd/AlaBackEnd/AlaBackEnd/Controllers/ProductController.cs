@@ -1,9 +1,8 @@
 ﻿using AlaBackEnd.API.Extensions;
 using AlaBackEnd.BLL.dto;
 using AlaBackEnd.BLL.Services;
-using Azure.Core.Pipeline;
+
 using Microsoft.AspNetCore.Mvc;
-using System.Runtime.InteropServices;
 
 namespace AlaBackEnd.API.Controllers
 {

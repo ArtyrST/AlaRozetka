@@ -3,6 +3,7 @@ using AlaBackEnd.BLL.Services;
 using AlaBackEnd.DAL;
 using AlaBackEnd.DAL.Repositories;
 using AlaBackEnd.DAL.Seeders;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Scalar.AspNetCore;
 
@@ -24,8 +25,10 @@ namespace AlaBackEnd
             builder.Services.AddScoped<TagRepository>();
             builder.Services.AddScoped<CategoryRepository>();
             
+            
             //add services
             builder.Services.AddScoped<ProductService>();
+            builder.Services.AddScoped<TagServise>();
 
             //add automapper
             builder.Services.AddAutoMapper(cfg =>
