@@ -7,6 +7,7 @@
 
 	<ItemGroup>
 		<!-- Це головний пакет для .NET 10, він сам підтягне правильний Microsoft.OpenApi 2.0 -->
+		<PackageReference Include="AutoMapper" Version="16.1.1" />
 		<PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.0-*" />
 
 		<!-- EF Core пакети залишаємо як є -->
@@ -24,5 +25,9 @@
 	<ItemGroup>
 		<ProjectReference Include="..\AlaBackEnd.BLL\AlaBackEnd.BLL.csproj" />
 		<ProjectReference Include="..\AlaBackEnd.DAL\AlaBackEnd.DAL.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<FrameworkReference Include="Microsoft.AspNetCore.App" />
 	</ItemGroup>
 </Project>

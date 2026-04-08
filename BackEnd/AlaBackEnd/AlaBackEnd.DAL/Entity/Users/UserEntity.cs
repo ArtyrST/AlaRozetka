@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AlaBackEnd.DAL.Entity.Users
 {
-    public class UserEntity
+    public class UserEntity 
     {
         public int Id { get;set; }
         public required string Email { get;set; }  
@@ -21,5 +21,10 @@ namespace AlaBackEnd.DAL.Entity.Users
         public virtual List<RoleEntity> Roles { get; set; } = [];
         //Relation with cart
         public CartEntity? Cart { get; set; }
+        // with product
+        public List<BaseProductEntity> Products { get; set; } = [];
+
+        //with feedback
+        public List<FeedBackEntity> FeedBacks { get; set; } = [];
     }
 }
