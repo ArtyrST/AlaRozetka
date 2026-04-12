@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Hosting;
+using AutoMapper;
 
 
 namespace AlaBackEnd.BLL.Services.ImagesService
@@ -8,11 +9,13 @@ namespace AlaBackEnd.BLL.Services.ImagesService
     public class ImageService : IImageInterface
     {
         private readonly string _basePath;
+        private readonly IMapper _mapper; 
 
-        public ImageService(IWebHostEnvironment env)
+        public ImageService(IWebHostEnvironment env, IMapper mapper)
         {
             _basePath = Path.Combine(env.ContentRootPath, "Uploads", "Images");
             Directory.CreateDirectory(_basePath); 
+            _mapper = mapper;
         }
 
         public async Task<string> SaveImageAsync(IFormFile file, string path)
@@ -23,7 +26,7 @@ namespace AlaBackEnd.BLL.Services.ImagesService
             var fullPath = Path.Combine(_basePath, fileName);
 
             
-
+            
             using var stream = new FileStream(fullPath, FileMode.Create);
             await file.CopyToAsync(stream);
 

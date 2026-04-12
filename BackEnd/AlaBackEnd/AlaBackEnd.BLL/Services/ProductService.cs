@@ -74,7 +74,7 @@ namespace AlaBackEnd.BLL.Services
         }
         public async Task<ServiceResponse> CreateAsync(CreateProductDto dto)
         {
-            
+            //Console.WriteLine($"Name: {dto.Name}, Images count: {dto.Images?.Count ?? 0}");
             if (await _ProductRepository.IsExistAsync(dto.Name))
             {
                 return ServiceResponse.Error($"The product with name {dto.Name} is already exist");
@@ -95,7 +95,8 @@ namespace AlaBackEnd.BLL.Services
                         IsPreview = (i == dto.PreviewImageId)
 
                     };
-                    
+                   
+
                     entity.Images.Add(newImage);
 
                 }
@@ -127,7 +128,7 @@ namespace AlaBackEnd.BLL.Services
                 }
             }
 
-            
+            Console.WriteLine($"DEBUG: Перед збереженням у продукту {entity.Images.Count} картинок.");
             bool res = await _ProductRepository.CreateAsync(entity);
 
             if (!res)

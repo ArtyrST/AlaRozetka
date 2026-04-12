@@ -45,6 +45,7 @@ namespace AlaBackEnd.DAL.Repositories
         {
             return await _context.AllProducts
                 .Include(p => p.Category)
+                .Include(p => p.Images)
                 .OrderBy(p => p.Id)
                 .Skip((PageNumber - 1) * PageSize) 
                 .Take(PageSize)

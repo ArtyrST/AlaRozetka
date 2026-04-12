@@ -8,6 +8,7 @@
 //public required string Descriprion { get; set; } = string.Empty;
 //public DateTime Date { get; set; } = DateTime.UtcNow;
 
+using AlaBackEnd.DAL.Entity;
 using System.Globalization;
 
 namespace AlaBackEnd.BLL.dto
@@ -23,7 +24,7 @@ namespace AlaBackEnd.BLL.dto
         public int CategoryId { get; set; }
         public string CategoryName { get; set; } = string.Empty;
         public List<int> Tags { get; set; } = [];
-        public List<ImageDto> Images { get; set; } = [];    
-        public string Image { get; set; } = string.Empty;
+        public List<ImageDto> Images { get; set; } = [];   
+        
     }
 }
