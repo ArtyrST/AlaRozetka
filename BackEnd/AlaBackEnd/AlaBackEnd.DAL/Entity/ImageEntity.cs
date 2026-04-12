@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Text.Json.Serialization;
 
 namespace AlaBackEnd.DAL.Entity
 {
@@ -10,10 +11,11 @@ namespace AlaBackEnd.DAL.Entity
         public int Id { get; set; }
         public string Path { get; set; } = string.Empty;
         public bool IsPreview { get; set; }
-        
-       
-        
+
+
+
         //product
+        
         public BaseProductEntity? Product { get; set; }
         public int ProductId { get; set; }
 

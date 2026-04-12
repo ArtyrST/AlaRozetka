@@ -16,10 +16,14 @@ namespace AlaBackEnd.BLL.MapperProfiles
                 .ForMember(dest => dest.Tags, opt => opt.MapFrom(src => src.Tags.Select(t => t.Id).ToList()));
 
 
+
             //Image dto -> image entity
             CreateMap<ImageEntity, ImageDto>()
                 .ForMember(dest => dest.Path, opt => opt.MapFrom(src =>
                     $"/uploads/images/{src.Path}"));
+
+            CreateMap<ImageDto, ImageEntity>()
+                .ForMember(dest => dest.Id, opt => opt.Ignore());
 
 
 
@@ -31,8 +35,8 @@ namespace AlaBackEnd.BLL.MapperProfiles
             CreateMap<CreateProductDto, BaseProductEntity>()
                 .ForMember(dest => dest.Images, opt => opt.Ignore())
                 .ForMember(dest => dest.Id, opt => opt.Ignore())
-                .ForMember(dest => dest.Tags, opt => opt.Ignore());
-                //.ForMember(dest => dest.Category, opt => opt.Ignore());
+                .ForMember(dest => dest.Tags, opt => opt.Ignore())
+                .ForMember(dest => dest.Category, opt => opt.Ignore());
 
             //CreateMap<CategoryEntity, CategoryDto>();
 

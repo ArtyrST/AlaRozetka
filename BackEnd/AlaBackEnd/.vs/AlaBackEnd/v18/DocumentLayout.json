@@ -3,60 +3,75 @@
   "WorkspaceRootPath": "C:\\Users\\Ua\\Desktop\\AlaRozetka\\BackEnd\\AlaBackEnd\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Ua\\Desktop\\AlaRozetka\\BackEnd\\AlaBackEnd\\AlaBackEnd.DAL\\Migrations\\20260412222222_product_required_fix.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:AlaBackEnd.DAL\\Migrations\\20260412222222_product_required_fix.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{196B6614-515E-4DF7-821F-074961ABDEA7}|AlaBackEnd.BLL\\AlaBackEnd.BLL.csproj|c:\\users\\ua\\desktop\\alarozetka\\backend\\alabackend\\alabackend.bll\\services\\productservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{196B6614-515E-4DF7-821F-074961ABDEA7}|AlaBackEnd.BLL\\AlaBackEnd.BLL.csproj|solutionrelative:alabackend.bll\\services\\productservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5E30AA69-611D-4CBF-BEB4-FD02BE9B88B5}|AlaBackEnd.DAL\\AlaBackEnd.DAL.csproj|c:\\users\\ua\\desktop\\alarozetka\\backend\\alabackend\\alabackend.dal\\data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5E30AA69-611D-4CBF-BEB4-FD02BE9B88B5}|AlaBackEnd.DAL\\AlaBackEnd.DAL.csproj|solutionrelative:alabackend.dal\\data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{196B6614-515E-4DF7-821F-074961ABDEA7}|AlaBackEnd.BLL\\AlaBackEnd.BLL.csproj|c:\\users\\ua\\desktop\\alarozetka\\backend\\alabackend\\alabackend.bll\\services\\imagesservice\\imageservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{196B6614-515E-4DF7-821F-074961ABDEA7}|AlaBackEnd.BLL\\AlaBackEnd.BLL.csproj|solutionrelative:alabackend.bll\\services\\imagesservice\\imageservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{196B6614-515E-4DF7-821F-074961ABDEA7}|AlaBackEnd.BLL\\AlaBackEnd.BLL.csproj|c:\\users\\ua\\desktop\\alarozetka\\backend\\alabackend\\alabackend.bll\\mapperprofiles\\productmapperprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{196B6614-515E-4DF7-821F-074961ABDEA7}|AlaBackEnd.BLL\\AlaBackEnd.BLL.csproj|solutionrelative:alabackend.bll\\mapperprofiles\\productmapperprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{196B6614-515E-4DF7-821F-074961ABDEA7}|AlaBackEnd.BLL\\AlaBackEnd.BLL.csproj|c:\\users\\ua\\desktop\\alarozetka\\backend\\alabackend\\alabackend.bll\\dto\\updateproductdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{196B6614-515E-4DF7-821F-074961ABDEA7}|AlaBackEnd.BLL\\AlaBackEnd.BLL.csproj|solutionrelative:alabackend.bll\\dto\\updateproductdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{196B6614-515E-4DF7-821F-074961ABDEA7}|AlaBackEnd.BLL\\AlaBackEnd.BLL.csproj|c:\\users\\ua\\desktop\\alarozetka\\backend\\alabackend\\alabackend.bll\\dto\\createproductdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{196B6614-515E-4DF7-821F-074961ABDEA7}|AlaBackEnd.BLL\\AlaBackEnd.BLL.csproj|solutionrelative:alabackend.bll\\dto\\createproductdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{196B6614-515E-4DF7-821F-074961ABDEA7}|AlaBackEnd.BLL\\AlaBackEnd.BLL.csproj|c:\\users\\ua\\desktop\\alarozetka\\backend\\alabackend\\alabackend.bll\\dto\\productdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{196B6614-515E-4DF7-821F-074961ABDEA7}|AlaBackEnd.BLL\\AlaBackEnd.BLL.csproj|solutionrelative:alabackend.bll\\dto\\productdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{632AC583-DD82-46F2-98E7-B8D94194CC0B}|AlaBackEnd\\AlaBackEnd.API.csproj|c:\\users\\ua\\desktop\\alarozetka\\backend\\alabackend\\alabackend\\controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{632AC583-DD82-46F2-98E7-B8D94194CC0B}|AlaBackEnd\\AlaBackEnd.API.csproj|solutionrelative:alabackend\\controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{196B6614-515E-4DF7-821F-074961ABDEA7}|AlaBackEnd.BLL\\AlaBackEnd.BLL.csproj|c:\\users\\ua\\desktop\\alarozetka\\backend\\alabackend\\alabackend.bll\\services\\productservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{196B6614-515E-4DF7-821F-074961ABDEA7}|AlaBackEnd.BLL\\AlaBackEnd.BLL.csproj|solutionrelative:alabackend.bll\\services\\productservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{196B6614-515E-4DF7-821F-074961ABDEA7}|AlaBackEnd.BLL\\AlaBackEnd.BLL.csproj|c:\\users\\ua\\desktop\\alarozetka\\backend\\alabackend\\alabackend.bll\\dto\\imagedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{196B6614-515E-4DF7-821F-074961ABDEA7}|AlaBackEnd.BLL\\AlaBackEnd.BLL.csproj|solutionrelative:alabackend.bll\\dto\\imagedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{196B6614-515E-4DF7-821F-074961ABDEA7}|AlaBackEnd.BLL\\AlaBackEnd.BLL.csproj|c:\\users\\ua\\desktop\\alarozetka\\backend\\alabackend\\alabackend.bll\\services\\serviceresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{196B6614-515E-4DF7-821F-074961ABDEA7}|AlaBackEnd.BLL\\AlaBackEnd.BLL.csproj|solutionrelative:alabackend.bll\\services\\serviceresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{196B6614-515E-4DF7-821F-074961ABDEA7}|AlaBackEnd.BLL\\AlaBackEnd.BLL.csproj|c:\\users\\ua\\desktop\\alarozetka\\backend\\alabackend\\alabackend.bll\\dto\\productdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{196B6614-515E-4DF7-821F-074961ABDEA7}|AlaBackEnd.BLL\\AlaBackEnd.BLL.csproj|solutionrelative:alabackend.bll\\dto\\productdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5E30AA69-611D-4CBF-BEB4-FD02BE9B88B5}|AlaBackEnd.DAL\\AlaBackEnd.DAL.csproj|c:\\users\\ua\\desktop\\alarozetka\\backend\\alabackend\\alabackend.dal\\entity\\imageentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5E30AA69-611D-4CBF-BEB4-FD02BE9B88B5}|AlaBackEnd.DAL\\AlaBackEnd.DAL.csproj|solutionrelative:alabackend.dal\\entity\\imageentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{5E30AA69-611D-4CBF-BEB4-FD02BE9B88B5}|AlaBackEnd.DAL\\AlaBackEnd.DAL.csproj|c:\\users\\ua\\desktop\\alarozetka\\backend\\alabackend\\alabackend.dal\\repositories\\productrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{5E30AA69-611D-4CBF-BEB4-FD02BE9B88B5}|AlaBackEnd.DAL\\AlaBackEnd.DAL.csproj|solutionrelative:alabackend.dal\\repositories\\productrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5E30AA69-611D-4CBF-BEB4-FD02BE9B88B5}|AlaBackEnd.DAL\\AlaBackEnd.DAL.csproj|c:\\users\\ua\\desktop\\alarozetka\\backend\\alabackend\\alabackend.dal\\entity\\products\\baseproductentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5E30AA69-611D-4CBF-BEB4-FD02BE9B88B5}|AlaBackEnd.DAL\\AlaBackEnd.DAL.csproj|solutionrelative:alabackend.dal\\entity\\products\\baseproductentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5E30AA69-611D-4CBF-BEB4-FD02BE9B88B5}|AlaBackEnd.DAL\\AlaBackEnd.DAL.csproj|c:\\users\\ua\\desktop\\alarozetka\\backend\\alabackend\\alabackend.dal\\entity\\products\\categoryentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5E30AA69-611D-4CBF-BEB4-FD02BE9B88B5}|AlaBackEnd.DAL\\AlaBackEnd.DAL.csproj|solutionrelative:alabackend.dal\\entity\\products\\categoryentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{5E30AA69-611D-4CBF-BEB4-FD02BE9B88B5}|AlaBackEnd.DAL\\AlaBackEnd.DAL.csproj|c:\\users\\ua\\desktop\\alarozetka\\backend\\alabackend\\alabackend.dal\\repositories\\genericrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{5E30AA69-611D-4CBF-BEB4-FD02BE9B88B5}|AlaBackEnd.DAL\\AlaBackEnd.DAL.csproj|solutionrelative:alabackend.dal\\repositories\\genericrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{196B6614-515E-4DF7-821F-074961ABDEA7}|AlaBackEnd.BLL\\AlaBackEnd.BLL.csproj|c:\\users\\ua\\desktop\\alarozetka\\backend\\alabackend\\alabackend.bll\\dto\\updateproductdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{196B6614-515E-4DF7-821F-074961ABDEA7}|AlaBackEnd.BLL\\AlaBackEnd.BLL.csproj|solutionrelative:alabackend.bll\\dto\\updateproductdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\vs comunity\\MSBuild\\Current\\Bin\\amd64\\Microsoft.Common.CurrentVersion.targets||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5E30AA69-611D-4CBF-BEB4-FD02BE9B88B5}|AlaBackEnd.DAL\\AlaBackEnd.DAL.csproj|c:\\users\\ua\\desktop\\alarozetka\\backend\\alabackend\\alabackend.dal\\migrations\\20260412222222_product_required_fix.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5E30AA69-611D-4CBF-BEB4-FD02BE9B88B5}|AlaBackEnd.DAL\\AlaBackEnd.DAL.csproj|solutionrelative:alabackend.dal\\migrations\\20260412222222_product_required_fix.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5E30AA69-611D-4CBF-BEB4-FD02BE9B88B5}|AlaBackEnd.DAL\\AlaBackEnd.DAL.csproj|c:\\users\\ua\\desktop\\alarozetka\\backend\\alabackend\\alabackend.dal\\data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5E30AA69-611D-4CBF-BEB4-FD02BE9B88B5}|AlaBackEnd.DAL\\AlaBackEnd.DAL.csproj|solutionrelative:alabackend.dal\\data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{632AC583-DD82-46F2-98E7-B8D94194CC0B}|AlaBackEnd\\AlaBackEnd.API.csproj|c:\\users\\ua\\desktop\\alarozetka\\backend\\alabackend\\alabackend\\controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{632AC583-DD82-46F2-98E7-B8D94194CC0B}|AlaBackEnd\\AlaBackEnd.API.csproj|solutionrelative:alabackend\\controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{5E30AA69-611D-4CBF-BEB4-FD02BE9B88B5}|AlaBackEnd.DAL\\AlaBackEnd.DAL.csproj|c:\\users\\ua\\desktop\\alarozetka\\backend\\alabackend\\alabackend.dal\\repositories\\categoryrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{5E30AA69-611D-4CBF-BEB4-FD02BE9B88B5}|AlaBackEnd.DAL\\AlaBackEnd.DAL.csproj|solutionrelative:alabackend.dal\\repositories\\categoryrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Ua\\Desktop\\AlaRozetka\\BackEnd\\AlaBackEnd\\AlaBackEnd.DAL\\Migrations\\20260412213655_fast_fix.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:AlaBackEnd.DAL\\Migrations\\20260412213655_fast_fix.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5E30AA69-611D-4CBF-BEB4-FD02BE9B88B5}|AlaBackEnd.DAL\\AlaBackEnd.DAL.csproj|c:\\users\\ua\\desktop\\alarozetka\\backend\\alabackend\\alabackend.dal\\entity\\products\\baseproductentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5E30AA69-611D-4CBF-BEB4-FD02BE9B88B5}|AlaBackEnd.DAL\\AlaBackEnd.DAL.csproj|solutionrelative:alabackend.dal\\entity\\products\\baseproductentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{632AC583-DD82-46F2-98E7-B8D94194CC0B}|AlaBackEnd\\AlaBackEnd.API.csproj|c:\\users\\ua\\desktop\\alarozetka\\backend\\alabackend\\alabackend\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -75,14 +90,6 @@
       "RelativeMoniker": "D:0:0:{632AC583-DD82-46F2-98E7-B8D94194CC0B}|AlaBackEnd\\AlaBackEnd.API.csproj|solutionrelative:alabackend\\alabackend.api.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{196B6614-515E-4DF7-821F-074961ABDEA7}|AlaBackEnd.BLL\\AlaBackEnd.BLL.csproj|c:\\users\\ua\\desktop\\alarozetka\\backend\\alabackend\\alabackend.bll\\dto\\imagedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{196B6614-515E-4DF7-821F-074961ABDEA7}|AlaBackEnd.BLL\\AlaBackEnd.BLL.csproj|solutionrelative:alabackend.bll\\dto\\imagedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{196B6614-515E-4DF7-821F-074961ABDEA7}|AlaBackEnd.BLL\\AlaBackEnd.BLL.csproj|c:\\users\\ua\\desktop\\alarozetka\\backend\\alabackend\\alabackend.bll\\services\\imagesservice\\imageservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{196B6614-515E-4DF7-821F-074961ABDEA7}|AlaBackEnd.BLL\\AlaBackEnd.BLL.csproj|solutionrelative:alabackend.bll\\services\\imagesservice\\imageservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{196B6614-515E-4DF7-821F-074961ABDEA7}|AlaBackEnd.BLL\\AlaBackEnd.BLL.csproj|c:\\users\\ua\\desktop\\alarozetka\\backend\\alabackend\\alabackend.bll\\services\\imagesservice\\iimageinterface.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{196B6614-515E-4DF7-821F-074961ABDEA7}|AlaBackEnd.BLL\\AlaBackEnd.BLL.csproj|solutionrelative:alabackend.bll\\services\\imagesservice\\iimageinterface.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -99,15 +106,8 @@
       "RelativeMoniker": "D:0:0:{632AC583-DD82-46F2-98E7-B8D94194CC0B}|AlaBackEnd\\AlaBackEnd.API.csproj|solutionrelative:alabackend\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\vs comunity\\MSBuild\\Current\\Bin\\amd64\\Microsoft.Common.CurrentVersion.targets||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{5E30AA69-611D-4CBF-BEB4-FD02BE9B88B5}|AlaBackEnd.DAL\\AlaBackEnd.DAL.csproj|c:\\users\\ua\\desktop\\alarozetka\\backend\\alabackend\\alabackend.dal\\migrations\\20260406195413_test.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{5E30AA69-611D-4CBF-BEB4-FD02BE9B88B5}|AlaBackEnd.DAL\\AlaBackEnd.DAL.csproj|solutionrelative:alabackend.dal\\migrations\\20260406195413_test.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5E30AA69-611D-4CBF-BEB4-FD02BE9B88B5}|AlaBackEnd.DAL\\AlaBackEnd.DAL.csproj|c:\\users\\ua\\desktop\\alarozetka\\backend\\alabackend\\alabackend.dal\\entity\\imageentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5E30AA69-611D-4CBF-BEB4-FD02BE9B88B5}|AlaBackEnd.DAL\\AlaBackEnd.DAL.csproj|solutionrelative:alabackend.dal\\entity\\imageentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{196B6614-515E-4DF7-821F-074961ABDEA7}|AlaBackEnd.BLL\\AlaBackEnd.BLL.csproj|c:\\users\\ua\\desktop\\alarozetka\\backend\\alabackend\\alabackend.bll\\dto\\tagslistdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -132,10 +132,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{5E30AA69-611D-4CBF-BEB4-FD02BE9B88B5}|AlaBackEnd.DAL\\AlaBackEnd.DAL.csproj|c:\\users\\ua\\desktop\\alarozetka\\backend\\alabackend\\alabackend.dal\\repositories\\tagrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{5E30AA69-611D-4CBF-BEB4-FD02BE9B88B5}|AlaBackEnd.DAL\\AlaBackEnd.DAL.csproj|solutionrelative:alabackend.dal\\repositories\\tagrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5E30AA69-611D-4CBF-BEB4-FD02BE9B88B5}|AlaBackEnd.DAL\\AlaBackEnd.DAL.csproj|c:\\users\\ua\\desktop\\alarozetka\\backend\\alabackend\\alabackend.dal\\entity\\products\\categoryentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5E30AA69-611D-4CBF-BEB4-FD02BE9B88B5}|AlaBackEnd.DAL\\AlaBackEnd.DAL.csproj|solutionrelative:alabackend.dal\\entity\\products\\categoryentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{5E30AA69-611D-4CBF-BEB4-FD02BE9B88B5}|AlaBackEnd.DAL\\AlaBackEnd.DAL.csproj|c:\\users\\ua\\desktop\\alarozetka\\backend\\alabackend\\alabackend.dal\\migrations\\appdbcontextmodelsnapshot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -228,6 +224,10 @@
     {
       "AbsoluteMoniker": "D:0:0:{5E30AA69-611D-4CBF-BEB4-FD02BE9B88B5}|AlaBackEnd.DAL\\AlaBackEnd.DAL.csproj|c:\\users\\ua\\desktop\\alarozetka\\backend\\alabackend\\alabackend.dal\\migrations\\20260409120340_baseproductentityfix.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{5E30AA69-611D-4CBF-BEB4-FD02BE9B88B5}|AlaBackEnd.DAL\\AlaBackEnd.DAL.csproj|solutionrelative:alabackend.dal\\migrations\\20260409120340_baseproductentityfix.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5E30AA69-611D-4CBF-BEB4-FD02BE9B88B5}|AlaBackEnd.DAL\\AlaBackEnd.DAL.csproj|c:\\users\\ua\\desktop\\alarozetka\\backend\\alabackend\\alabackend.dal\\migrations\\20260412213655_fast_fix.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5E30AA69-611D-4CBF-BEB4-FD02BE9B88B5}|AlaBackEnd.DAL\\AlaBackEnd.DAL.csproj|solutionrelative:alabackend.dal\\migrations\\20260412213655_fast_fix.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -237,84 +237,32 @@
       "DocumentGroups": [
         {
           "DockedWidth": 223,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "20260412222222_product_required_fix.cs",
-              "DocumentMoniker": "C:\\Users\\Ua\\Desktop\\AlaRozetka\\BackEnd\\AlaBackEnd\\AlaBackEnd.DAL\\Migrations\\20260412222222_product_required_fix.cs",
-              "RelativeDocumentMoniker": "AlaBackEnd.DAL\\Migrations\\20260412222222_product_required_fix.cs",
-              "ToolTip": "C:\\Users\\Ua\\Desktop\\AlaRozetka\\BackEnd\\AlaBackEnd\\AlaBackEnd.DAL\\Migrations\\20260412222222_product_required_fix.cs",
-              "RelativeToolTip": "AlaBackEnd.DAL\\Migrations\\20260412222222_product_required_fix.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 4,
+              "Title": "ImageDto.cs",
+              "DocumentMoniker": "C:\\Users\\Ua\\Desktop\\AlaRozetka\\BackEnd\\AlaBackEnd\\AlaBackEnd.BLL\\dto\\ImageDto.cs",
+              "RelativeDocumentMoniker": "AlaBackEnd.BLL\\dto\\ImageDto.cs",
+              "ToolTip": "C:\\Users\\Ua\\Desktop\\AlaRozetka\\BackEnd\\AlaBackEnd\\AlaBackEnd.BLL\\dto\\ImageDto.cs",
+              "RelativeToolTip": "AlaBackEnd.BLL\\dto\\ImageDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAA8AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-12T22:22:22.481Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "ProductService.cs",
-              "DocumentMoniker": "C:\\Users\\Ua\\Desktop\\AlaRozetka\\BackEnd\\AlaBackEnd\\AlaBackEnd.BLL\\Services\\ProductService.cs",
-              "RelativeDocumentMoniker": "AlaBackEnd.BLL\\Services\\ProductService.cs",
-              "ToolTip": "C:\\Users\\Ua\\Desktop\\AlaRozetka\\BackEnd\\AlaBackEnd\\AlaBackEnd.BLL\\Services\\ProductService.cs",
-              "RelativeToolTip": "AlaBackEnd.BLL\\Services\\ProductService.cs",
-              "ViewState": "AgIAAIUAAAAAAAAAAAAuwI8AAAAIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-05T23:29:50.83Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "UpdateProductDto.cs",
-              "DocumentMoniker": "C:\\Users\\Ua\\Desktop\\AlaRozetka\\BackEnd\\AlaBackEnd\\AlaBackEnd.BLL\\dto\\UpdateProductDto.cs",
-              "RelativeDocumentMoniker": "AlaBackEnd.BLL\\dto\\UpdateProductDto.cs",
-              "ToolTip": "C:\\Users\\Ua\\Desktop\\AlaRozetka\\BackEnd\\AlaBackEnd\\AlaBackEnd.BLL\\dto\\UpdateProductDto.cs",
-              "RelativeToolTip": "AlaBackEnd.BLL\\dto\\UpdateProductDto.cs",
-              "ViewState": "AgIAAAsAAAAAAAAAAAAIwBUAAAAxAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-05T23:37:44.595Z",
+              "WhenOpened": "2026-04-08T21:21:25.588Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 6,
-              "Title": "ProductController.cs",
-              "DocumentMoniker": "C:\\Users\\Ua\\Desktop\\AlaRozetka\\BackEnd\\AlaBackEnd\\AlaBackEnd\\Controllers\\ProductController.cs",
-              "RelativeDocumentMoniker": "AlaBackEnd\\Controllers\\ProductController.cs",
-              "ToolTip": "C:\\Users\\Ua\\Desktop\\AlaRozetka\\BackEnd\\AlaBackEnd\\AlaBackEnd\\Controllers\\ProductController.cs",
-              "RelativeToolTip": "AlaBackEnd\\Controllers\\ProductController.cs",
-              "ViewState": "AgIAACQAAAAAAAAAAAAowDAAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-06T16:53:42.811Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
               "Title": "ProductDto.cs",
               "DocumentMoniker": "C:\\Users\\Ua\\Desktop\\AlaRozetka\\BackEnd\\AlaBackEnd\\AlaBackEnd.BLL\\dto\\ProductDto.cs",
               "RelativeDocumentMoniker": "AlaBackEnd.BLL\\dto\\ProductDto.cs",
               "ToolTip": "C:\\Users\\Ua\\Desktop\\AlaRozetka\\BackEnd\\AlaBackEnd\\AlaBackEnd.BLL\\dto\\ProductDto.cs",
               "RelativeToolTip": "AlaBackEnd.BLL\\dto\\ProductDto.cs",
-              "ViewState": "AgIAAA4AAAAAAAAAAAAAABoAAAAeAAAAAAAAAA==",
+              "ViewState": "AgIAABMAAAAAAAAAAAAQwBsAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-04-05T23:34:21.909Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "CreateProductDto.cs",
-              "DocumentMoniker": "C:\\Users\\Ua\\Desktop\\AlaRozetka\\BackEnd\\AlaBackEnd\\AlaBackEnd.BLL\\dto\\CreateProductDto.cs",
-              "RelativeDocumentMoniker": "AlaBackEnd.BLL\\dto\\CreateProductDto.cs",
-              "ToolTip": "C:\\Users\\Ua\\Desktop\\AlaRozetka\\BackEnd\\AlaBackEnd\\AlaBackEnd.BLL\\dto\\CreateProductDto.cs",
-              "RelativeToolTip": "AlaBackEnd.BLL\\dto\\CreateProductDto.cs",
-              "ViewState": "AgIAAAIAAAAAAAAAAAAkwBoAAAA4AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-05T23:35:47.84Z",
               "EditorCaption": ""
             },
             {
@@ -325,27 +273,27 @@
               "RelativeDocumentMoniker": "AlaBackEnd.BLL\\MapperProfiles\\ProductMapperProfile.cs",
               "ToolTip": "C:\\Users\\Ua\\Desktop\\AlaRozetka\\BackEnd\\AlaBackEnd\\AlaBackEnd.BLL\\MapperProfiles\\ProductMapperProfile.cs",
               "RelativeToolTip": "AlaBackEnd.BLL\\MapperProfiles\\ProductMapperProfile.cs",
-              "ViewState": "AgIAABwAAAAAAAAAAAAgwCoAAABEAAAAAAAAAA==",
+              "ViewState": "AgIAABsAAAAAAAAAAAAAACYAAABHAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-04-05T23:32:13.775Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "AppDbContext.cs",
-              "DocumentMoniker": "C:\\Users\\Ua\\Desktop\\AlaRozetka\\BackEnd\\AlaBackEnd\\AlaBackEnd.DAL\\data\\AppDbContext.cs",
-              "RelativeDocumentMoniker": "AlaBackEnd.DAL\\data\\AppDbContext.cs",
-              "ToolTip": "C:\\Users\\Ua\\Desktop\\AlaRozetka\\BackEnd\\AlaBackEnd\\AlaBackEnd.DAL\\data\\AppDbContext.cs",
-              "RelativeToolTip": "AlaBackEnd.DAL\\data\\AppDbContext.cs",
-              "ViewState": "AgIAAFIAAAAAAAAAAAAMwFwAAAA2AAAAAAAAAA==",
+              "DocumentIndex": 3,
+              "Title": "CreateProductDto.cs",
+              "DocumentMoniker": "C:\\Users\\Ua\\Desktop\\AlaRozetka\\BackEnd\\AlaBackEnd\\AlaBackEnd.BLL\\dto\\CreateProductDto.cs",
+              "RelativeDocumentMoniker": "AlaBackEnd.BLL\\dto\\CreateProductDto.cs",
+              "ToolTip": "C:\\Users\\Ua\\Desktop\\AlaRozetka\\BackEnd\\AlaBackEnd\\AlaBackEnd.BLL\\dto\\CreateProductDto.cs",
+              "RelativeToolTip": "AlaBackEnd.BLL\\dto\\CreateProductDto.cs",
+              "ViewState": "AgIAABEAAAAAAAAAAAAcwBwAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-28T14:57:32.517Z",
+              "WhenOpened": "2026-04-05T23:35:47.84Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 5,
               "Title": "ServiceResponse.cs",
               "DocumentMoniker": "C:\\Users\\Ua\\Desktop\\AlaRozetka\\BackEnd\\AlaBackEnd\\AlaBackEnd.BLL\\Services\\ServiceResponse.cs",
               "RelativeDocumentMoniker": "AlaBackEnd.BLL\\Services\\ServiceResponse.cs",
@@ -358,33 +306,85 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 0,
+              "Title": "ProductService.cs",
+              "DocumentMoniker": "C:\\Users\\Ua\\Desktop\\AlaRozetka\\BackEnd\\AlaBackEnd\\AlaBackEnd.BLL\\Services\\ProductService.cs",
+              "RelativeDocumentMoniker": "AlaBackEnd.BLL\\Services\\ProductService.cs",
+              "ToolTip": "C:\\Users\\Ua\\Desktop\\AlaRozetka\\BackEnd\\AlaBackEnd\\AlaBackEnd.BLL\\Services\\ProductService.cs*",
+              "RelativeToolTip": "AlaBackEnd.BLL\\Services\\ProductService.cs*",
+              "ViewState": "AgIAAH4AAAAAAAAAAAAAAIIAAABmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-05T23:29:50.83Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ImageService.cs",
+              "DocumentMoniker": "C:\\Users\\Ua\\Desktop\\AlaRozetka\\BackEnd\\AlaBackEnd\\AlaBackEnd.BLL\\Services\\ImagesService\\ImageService.cs",
+              "RelativeDocumentMoniker": "AlaBackEnd.BLL\\Services\\ImagesService\\ImageService.cs",
+              "ToolTip": "C:\\Users\\Ua\\Desktop\\AlaRozetka\\BackEnd\\AlaBackEnd\\AlaBackEnd.BLL\\Services\\ImagesService\\ImageService.cs",
+              "RelativeToolTip": "AlaBackEnd.BLL\\Services\\ImagesService\\ImageService.cs",
+              "ViewState": "AgIAABgAAAAAAAAAAAAuwCgAAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-08T21:34:47.455Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "ImageEntity.cs",
+              "DocumentMoniker": "C:\\Users\\Ua\\Desktop\\AlaRozetka\\BackEnd\\AlaBackEnd\\AlaBackEnd.DAL\\Entity\\ImageEntity.cs",
+              "RelativeDocumentMoniker": "AlaBackEnd.DAL\\Entity\\ImageEntity.cs",
+              "ToolTip": "C:\\Users\\Ua\\Desktop\\AlaRozetka\\BackEnd\\AlaBackEnd\\AlaBackEnd.DAL\\Entity\\ImageEntity.cs",
+              "RelativeToolTip": "AlaBackEnd.DAL\\Entity\\ImageEntity.cs",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAAABEAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-28T21:45:51.728Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
               "Title": "ProductRepository.cs",
               "DocumentMoniker": "C:\\Users\\Ua\\Desktop\\AlaRozetka\\BackEnd\\AlaBackEnd\\AlaBackEnd.DAL\\Repositories\\ProductRepository.cs",
               "RelativeDocumentMoniker": "AlaBackEnd.DAL\\Repositories\\ProductRepository.cs",
               "ToolTip": "C:\\Users\\Ua\\Desktop\\AlaRozetka\\BackEnd\\AlaBackEnd\\AlaBackEnd.DAL\\Repositories\\ProductRepository.cs",
               "RelativeToolTip": "AlaBackEnd.DAL\\Repositories\\ProductRepository.cs",
-              "ViewState": "AgIAAC8AAAAAAAAAAAAuwC4AAAApAAAAAAAAAA==",
+              "ViewState": "AgIAACcAAAAAAAAAAAAqwC0AAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-03-28T18:14:55.03Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "CategoryRepository.cs",
-              "DocumentMoniker": "C:\\Users\\Ua\\Desktop\\AlaRozetka\\BackEnd\\AlaBackEnd\\AlaBackEnd.DAL\\Repositories\\CategoryRepository.cs",
-              "RelativeDocumentMoniker": "AlaBackEnd.DAL\\Repositories\\CategoryRepository.cs",
-              "ToolTip": "C:\\Users\\Ua\\Desktop\\AlaRozetka\\BackEnd\\AlaBackEnd\\AlaBackEnd.DAL\\Repositories\\CategoryRepository.cs",
-              "RelativeToolTip": "AlaBackEnd.DAL\\Repositories\\CategoryRepository.cs",
-              "ViewState": "AgIAAAgAAAAAAAAAAAAAwA8AAAA9AAAAAAAAAA==",
+              "DocumentIndex": 9,
+              "Title": "BaseProductEntity.cs",
+              "DocumentMoniker": "C:\\Users\\Ua\\Desktop\\AlaRozetka\\BackEnd\\AlaBackEnd\\AlaBackEnd.DAL\\Entity\\Products\\BaseProductEntity.cs",
+              "RelativeDocumentMoniker": "AlaBackEnd.DAL\\Entity\\Products\\BaseProductEntity.cs",
+              "ToolTip": "C:\\Users\\Ua\\Desktop\\AlaRozetka\\BackEnd\\AlaBackEnd\\AlaBackEnd.DAL\\Entity\\Products\\BaseProductEntity.cs",
+              "RelativeToolTip": "AlaBackEnd.DAL\\Entity\\Products\\BaseProductEntity.cs",
+              "ViewState": "AgIAABYAAAAAAAAAAAAYwAwAAAAOAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-07T14:21:46.419Z",
+              "WhenOpened": "2026-03-26T22:09:16.893Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 10,
+              "Title": "CategoryEntity.cs",
+              "DocumentMoniker": "C:\\Users\\Ua\\Desktop\\AlaRozetka\\BackEnd\\AlaBackEnd\\AlaBackEnd.DAL\\Entity\\Products\\CategoryEntity.cs",
+              "RelativeDocumentMoniker": "AlaBackEnd.DAL\\Entity\\Products\\CategoryEntity.cs",
+              "ToolTip": "C:\\Users\\Ua\\Desktop\\AlaRozetka\\BackEnd\\AlaBackEnd\\AlaBackEnd.DAL\\Entity\\Products\\CategoryEntity.cs",
+              "RelativeToolTip": "AlaBackEnd.DAL\\Entity\\Products\\CategoryEntity.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAkAAAA4AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-28T14:58:23.251Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
               "Title": "GenericRepository.cs",
               "DocumentMoniker": "C:\\Users\\Ua\\Desktop\\AlaRozetka\\BackEnd\\AlaBackEnd\\AlaBackEnd.DAL\\Repositories\\GenericRepository.cs",
               "RelativeDocumentMoniker": "AlaBackEnd.DAL\\Repositories\\GenericRepository.cs",
@@ -398,6 +398,80 @@
             {
               "$type": "Document",
               "DocumentIndex": 12,
+              "Title": "UpdateProductDto.cs",
+              "DocumentMoniker": "C:\\Users\\Ua\\Desktop\\AlaRozetka\\BackEnd\\AlaBackEnd\\AlaBackEnd.BLL\\dto\\UpdateProductDto.cs",
+              "RelativeDocumentMoniker": "AlaBackEnd.BLL\\dto\\UpdateProductDto.cs",
+              "ToolTip": "C:\\Users\\Ua\\Desktop\\AlaRozetka\\BackEnd\\AlaBackEnd\\AlaBackEnd.BLL\\dto\\UpdateProductDto.cs",
+              "RelativeToolTip": "AlaBackEnd.BLL\\dto\\UpdateProductDto.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAywBUAAAAxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-05T23:37:44.595Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "Microsoft.Common.CurrentVersion.targets",
+              "DocumentMoniker": "D:\\vs comunity\\MSBuild\\Current\\Bin\\amd64\\Microsoft.Common.CurrentVersion.targets",
+              "ToolTip": "D:\\vs comunity\\MSBuild\\Current\\Bin\\amd64\\Microsoft.Common.CurrentVersion.targets",
+              "ViewState": "AgIAAIgJAAAAAAAAAAAgwJIJAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003801|",
+              "WhenOpened": "2026-04-08T20:35:36.153Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "20260412222222_product_required_fix.cs",
+              "DocumentMoniker": "C:\\Users\\Ua\\Desktop\\AlaRozetka\\BackEnd\\AlaBackEnd\\AlaBackEnd.DAL\\Migrations\\20260412222222_product_required_fix.cs",
+              "RelativeDocumentMoniker": "AlaBackEnd.DAL\\Migrations\\20260412222222_product_required_fix.cs",
+              "ToolTip": "C:\\Users\\Ua\\Desktop\\AlaRozetka\\BackEnd\\AlaBackEnd\\AlaBackEnd.DAL\\Migrations\\20260412222222_product_required_fix.cs",
+              "RelativeToolTip": "AlaBackEnd.DAL\\Migrations\\20260412222222_product_required_fix.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-12T22:22:22.481Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "ProductController.cs",
+              "DocumentMoniker": "C:\\Users\\Ua\\Desktop\\AlaRozetka\\BackEnd\\AlaBackEnd\\AlaBackEnd\\Controllers\\ProductController.cs",
+              "RelativeDocumentMoniker": "AlaBackEnd\\Controllers\\ProductController.cs",
+              "ToolTip": "C:\\Users\\Ua\\Desktop\\AlaRozetka\\BackEnd\\AlaBackEnd\\AlaBackEnd\\Controllers\\ProductController.cs",
+              "RelativeToolTip": "AlaBackEnd\\Controllers\\ProductController.cs",
+              "ViewState": "AgIAACQAAAAAAAAAAAAowDAAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-06T16:53:42.811Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "AppDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\Ua\\Desktop\\AlaRozetka\\BackEnd\\AlaBackEnd\\AlaBackEnd.DAL\\data\\AppDbContext.cs",
+              "RelativeDocumentMoniker": "AlaBackEnd.DAL\\data\\AppDbContext.cs",
+              "ToolTip": "C:\\Users\\Ua\\Desktop\\AlaRozetka\\BackEnd\\AlaBackEnd\\AlaBackEnd.DAL\\data\\AppDbContext.cs",
+              "RelativeToolTip": "AlaBackEnd.DAL\\data\\AppDbContext.cs",
+              "ViewState": "AgIAAFIAAAAAAAAAAAAMwFwAAAA2AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-28T14:57:32.517Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "CategoryRepository.cs",
+              "DocumentMoniker": "C:\\Users\\Ua\\Desktop\\AlaRozetka\\BackEnd\\AlaBackEnd\\AlaBackEnd.DAL\\Repositories\\CategoryRepository.cs",
+              "RelativeDocumentMoniker": "AlaBackEnd.DAL\\Repositories\\CategoryRepository.cs",
+              "ToolTip": "C:\\Users\\Ua\\Desktop\\AlaRozetka\\BackEnd\\AlaBackEnd\\AlaBackEnd.DAL\\Repositories\\CategoryRepository.cs",
+              "RelativeToolTip": "AlaBackEnd.DAL\\Repositories\\CategoryRepository.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAAwA8AAAA9AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-07T14:21:46.419Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 56,
               "Title": "20260412213655_fast_fix.cs",
               "DocumentMoniker": "C:\\Users\\Ua\\Desktop\\AlaRozetka\\BackEnd\\AlaBackEnd\\AlaBackEnd.DAL\\Migrations\\20260412213655_fast_fix.cs",
               "RelativeDocumentMoniker": "AlaBackEnd.DAL\\Migrations\\20260412213655_fast_fix.cs",
@@ -405,24 +479,11 @@
               "RelativeToolTip": "AlaBackEnd.DAL\\Migrations\\20260412213655_fast_fix.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-12T21:36:55.804Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-12T21:36:55.804Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "BaseProductEntity.cs",
-              "DocumentMoniker": "C:\\Users\\Ua\\Desktop\\AlaRozetka\\BackEnd\\AlaBackEnd\\AlaBackEnd.DAL\\Entity\\Products\\BaseProductEntity.cs",
-              "RelativeDocumentMoniker": "AlaBackEnd.DAL\\Entity\\Products\\BaseProductEntity.cs",
-              "ToolTip": "C:\\Users\\Ua\\Desktop\\AlaRozetka\\BackEnd\\AlaBackEnd\\AlaBackEnd.DAL\\Entity\\Products\\BaseProductEntity.cs",
-              "RelativeToolTip": "AlaBackEnd.DAL\\Entity\\Products\\BaseProductEntity.cs",
-              "ViewState": "AgIAAA8AAAAAAAAAAAAxwAwAAAAOAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-26T22:09:16.893Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 18,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\Ua\\Desktop\\AlaRozetka\\BackEnd\\AlaBackEnd\\AlaBackEnd\\Program.cs",
               "RelativeDocumentMoniker": "AlaBackEnd\\Program.cs",
@@ -434,7 +495,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 19,
               "Title": "AlaBackEnd.BLL.csproj",
               "DocumentMoniker": "C:\\Users\\Ua\\Desktop\\AlaRozetka\\BackEnd\\AlaBackEnd\\AlaBackEnd.BLL\\AlaBackEnd.BLL.csproj",
               "RelativeDocumentMoniker": "AlaBackEnd.BLL\\AlaBackEnd.BLL.csproj",
@@ -442,11 +503,12 @@
               "RelativeToolTip": "AlaBackEnd.BLL\\AlaBackEnd.BLL.csproj",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2026-03-30T14:38:44.213Z"
+              "WhenOpened": "2026-03-30T14:38:44.213Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 56,
+              "DocumentIndex": 55,
               "Title": "20260409120340_baseproductentityfix.cs",
               "DocumentMoniker": "C:\\Users\\Ua\\Desktop\\AlaRozetka\\BackEnd\\AlaBackEnd\\AlaBackEnd.DAL\\Migrations\\20260409120340_baseproductentityfix.cs",
               "RelativeDocumentMoniker": "AlaBackEnd.DAL\\Migrations\\20260409120340_baseproductentityfix.cs",
@@ -458,7 +520,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 20,
               "Title": "AlaBackEnd.DAL.csproj",
               "DocumentMoniker": "C:\\Users\\Ua\\Desktop\\AlaRozetka\\BackEnd\\AlaBackEnd\\AlaBackEnd.DAL\\AlaBackEnd.DAL.csproj",
               "RelativeDocumentMoniker": "AlaBackEnd.DAL\\AlaBackEnd.DAL.csproj",
@@ -466,23 +528,12 @@
               "RelativeToolTip": "AlaBackEnd.DAL\\AlaBackEnd.DAL.csproj",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAOAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2026-04-09T12:02:02.72Z"
+              "WhenOpened": "2026-04-09T12:02:02.72Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
-              "Title": "ImageDto.cs",
-              "DocumentMoniker": "C:\\Users\\Ua\\Desktop\\AlaRozetka\\BackEnd\\AlaBackEnd\\AlaBackEnd.BLL\\dto\\ImageDto.cs",
-              "RelativeDocumentMoniker": "AlaBackEnd.BLL\\dto\\ImageDto.cs",
-              "ToolTip": "C:\\Users\\Ua\\Desktop\\AlaRozetka\\BackEnd\\AlaBackEnd\\AlaBackEnd.BLL\\dto\\ImageDto.cs",
-              "RelativeToolTip": "AlaBackEnd.BLL\\dto\\ImageDto.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAA8AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-08T21:21:25.588Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 21,
               "Title": "AlaBackEnd.API.csproj",
               "DocumentMoniker": "C:\\Users\\Ua\\Desktop\\AlaRozetka\\BackEnd\\AlaBackEnd\\AlaBackEnd\\AlaBackEnd.API.csproj",
               "RelativeDocumentMoniker": "AlaBackEnd\\AlaBackEnd.API.csproj",
@@ -490,11 +541,12 @@
               "RelativeToolTip": "AlaBackEnd\\AlaBackEnd.API.csproj",
               "ViewState": "AgIAAAcAAAAAAAAAAABBwB0AAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2026-04-06T17:03:29.732Z"
+              "WhenOpened": "2026-04-06T17:03:29.732Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 22,
               "Title": "IImageInterface.cs",
               "DocumentMoniker": "C:\\Users\\Ua\\Desktop\\AlaRozetka\\BackEnd\\AlaBackEnd\\AlaBackEnd.BLL\\Services\\ImagesService\\IImageInterface.cs",
               "RelativeDocumentMoniker": "AlaBackEnd.BLL\\Services\\ImagesService\\IImageInterface.cs",
@@ -506,19 +558,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
-              "Title": "ImageService.cs",
-              "DocumentMoniker": "C:\\Users\\Ua\\Desktop\\AlaRozetka\\BackEnd\\AlaBackEnd\\AlaBackEnd.BLL\\Services\\ImagesService\\ImageService.cs",
-              "RelativeDocumentMoniker": "AlaBackEnd.BLL\\Services\\ImagesService\\ImageService.cs",
-              "ToolTip": "C:\\Users\\Ua\\Desktop\\AlaRozetka\\BackEnd\\AlaBackEnd\\AlaBackEnd.BLL\\Services\\ImagesService\\ImageService.cs",
-              "RelativeToolTip": "AlaBackEnd.BLL\\Services\\ImagesService\\ImageService.cs",
-              "ViewState": "AgIAAA8AAAAAAAAAAAAIwBsAAAArAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-08T21:34:47.455Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 23,
               "Title": "launchSettings.json",
               "DocumentMoniker": "C:\\Users\\Ua\\Desktop\\AlaRozetka\\BackEnd\\AlaBackEnd\\AlaBackEnd\\Properties\\launchSettings.json",
               "RelativeDocumentMoniker": "AlaBackEnd\\Properties\\launchSettings.json",
@@ -530,7 +570,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 24,
               "Title": "libman.json",
               "DocumentMoniker": "C:\\Users\\Ua\\Desktop\\AlaRozetka\\BackEnd\\AlaBackEnd\\AlaBackEnd\\libman.json",
               "RelativeDocumentMoniker": "AlaBackEnd\\libman.json",
@@ -542,7 +582,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 25,
               "Title": "appsettings.json",
               "DocumentMoniker": "C:\\Users\\Ua\\Desktop\\AlaRozetka\\BackEnd\\AlaBackEnd\\AlaBackEnd\\appsettings.json",
               "RelativeDocumentMoniker": "AlaBackEnd\\appsettings.json",
@@ -554,7 +594,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 54,
+              "DocumentIndex": 53,
               "Title": "20260408214428_imagefix.cs",
               "DocumentMoniker": "C:\\Users\\Ua\\Desktop\\AlaRozetka\\BackEnd\\AlaBackEnd\\AlaBackEnd.DAL\\Migrations\\20260408214428_imagefix.cs",
               "RelativeDocumentMoniker": "AlaBackEnd.DAL\\Migrations\\20260408214428_imagefix.cs",
@@ -566,7 +606,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 26,
               "Title": "20260406195413_test.cs",
               "DocumentMoniker": "C:\\Users\\Ua\\Desktop\\AlaRozetka\\BackEnd\\AlaBackEnd\\AlaBackEnd.DAL\\Migrations\\20260406195413_test.cs",
               "RelativeDocumentMoniker": "AlaBackEnd.DAL\\Migrations\\20260406195413_test.cs",
@@ -575,28 +615,6 @@
               "ViewState": "AgIAAAAAAAAAAAAAAAAqwAcAAAAZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-04-06T19:54:13.206Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 24,
-              "Title": "Microsoft.Common.CurrentVersion.targets",
-              "DocumentMoniker": "D:\\vs comunity\\MSBuild\\Current\\Bin\\amd64\\Microsoft.Common.CurrentVersion.targets",
-              "ToolTip": "D:\\vs comunity\\MSBuild\\Current\\Bin\\amd64\\Microsoft.Common.CurrentVersion.targets",
-              "ViewState": "AgIAAIMJAAAAAAAAAAAnwJIJAAAEAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003801|",
-              "WhenOpened": "2026-04-08T20:35:36.153Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 26,
-              "Title": "ImageEntity.cs",
-              "DocumentMoniker": "C:\\Users\\Ua\\Desktop\\AlaRozetka\\BackEnd\\AlaBackEnd\\AlaBackEnd.DAL\\Entity\\ImageEntity.cs",
-              "RelativeDocumentMoniker": "AlaBackEnd.DAL\\Entity\\ImageEntity.cs",
-              "ToolTip": "C:\\Users\\Ua\\Desktop\\AlaRozetka\\BackEnd\\AlaBackEnd\\AlaBackEnd.DAL\\Entity\\ImageEntity.cs",
-              "RelativeToolTip": "AlaBackEnd.DAL\\Entity\\ImageEntity.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAIBJwAsAAAArAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-28T21:45:51.728Z"
             },
             {
               "$type": "Document",
@@ -672,19 +690,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 33,
-              "Title": "CategoryEntity.cs",
-              "DocumentMoniker": "C:\\Users\\Ua\\Desktop\\AlaRozetka\\BackEnd\\AlaBackEnd\\AlaBackEnd.DAL\\Entity\\Products\\CategoryEntity.cs",
-              "RelativeDocumentMoniker": "AlaBackEnd.DAL\\Entity\\Products\\CategoryEntity.cs",
-              "ToolTip": "C:\\Users\\Ua\\Desktop\\AlaRozetka\\BackEnd\\AlaBackEnd\\AlaBackEnd.DAL\\Entity\\Products\\CategoryEntity.cs",
-              "RelativeToolTip": "AlaBackEnd.DAL\\Entity\\Products\\CategoryEntity.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAkAAAA4AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-28T14:58:23.251Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 55,
+              "DocumentIndex": 54,
               "Title": "20260408200502_ProductNameInBaseProductEntityFix.cs",
               "DocumentMoniker": "C:\\Users\\Ua\\Desktop\\AlaRozetka\\BackEnd\\AlaBackEnd\\AlaBackEnd.DAL\\Migrations\\20260408200502_ProductNameInBaseProductEntityFix.cs",
               "RelativeDocumentMoniker": "AlaBackEnd.DAL\\Migrations\\20260408200502_ProductNameInBaseProductEntityFix.cs",
@@ -696,7 +702,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 34,
+              "DocumentIndex": 33,
               "Title": "AppDbContextModelSnapshot.cs",
               "DocumentMoniker": "C:\\Users\\Ua\\Desktop\\AlaRozetka\\BackEnd\\AlaBackEnd\\AlaBackEnd.DAL\\Migrations\\AppDbContextModelSnapshot.cs",
               "RelativeDocumentMoniker": "AlaBackEnd.DAL\\Migrations\\AppDbContextModelSnapshot.cs",
@@ -708,7 +714,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 35,
+              "DocumentIndex": 34,
               "Title": "20260407151609_test4.cs",
               "DocumentMoniker": "C:\\Users\\Ua\\Desktop\\AlaRozetka\\BackEnd\\AlaBackEnd\\AlaBackEnd.DAL\\Migrations\\20260407151609_test4.cs",
               "RelativeDocumentMoniker": "AlaBackEnd.DAL\\Migrations\\20260407151609_test4.cs",
@@ -720,7 +726,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 36,
+              "DocumentIndex": 35,
               "Title": "RoleSeeder.cs",
               "DocumentMoniker": "C:\\Users\\Ua\\Desktop\\AlaRozetka\\BackEnd\\AlaBackEnd\\AlaBackEnd.DAL\\Seeders\\RoleSeeder.cs",
               "RelativeDocumentMoniker": "AlaBackEnd.DAL\\Seeders\\RoleSeeder.cs",
@@ -732,7 +738,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 37,
+              "DocumentIndex": 36,
               "Title": "ProductTagEntity.cs",
               "DocumentMoniker": "C:\\Users\\Ua\\Desktop\\AlaRozetka\\BackEnd\\AlaBackEnd\\AlaBackEnd.DAL\\Entity\\Products\\ProductTagEntity.cs",
               "RelativeDocumentMoniker": "AlaBackEnd.DAL\\Entity\\Products\\ProductTagEntity.cs",
@@ -744,7 +750,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 51,
+              "DocumentIndex": 50,
               "Title": "20260406203244_test3.cs",
               "DocumentMoniker": "C:\\Users\\Ua\\Desktop\\AlaRozetka\\BackEnd\\AlaBackEnd\\AlaBackEnd.DAL\\Migrations\\20260406203244_test3.cs",
               "RelativeDocumentMoniker": "AlaBackEnd.DAL\\Migrations\\20260406203244_test3.cs",
@@ -756,7 +762,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 52,
+              "DocumentIndex": 51,
               "Title": "20260406202054_test2.cs",
               "DocumentMoniker": "C:\\Users\\Ua\\Desktop\\AlaRozetka\\BackEnd\\AlaBackEnd\\AlaBackEnd.DAL\\Migrations\\20260406202054_test2.cs",
               "RelativeDocumentMoniker": "AlaBackEnd.DAL\\Migrations\\20260406202054_test2.cs",
@@ -768,7 +774,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 53,
+              "DocumentIndex": 52,
               "Title": "20260406201800_test1.cs",
               "DocumentMoniker": "C:\\Users\\Ua\\Desktop\\AlaRozetka\\BackEnd\\AlaBackEnd\\AlaBackEnd.DAL\\Migrations\\20260406201800_test1.cs",
               "RelativeDocumentMoniker": "AlaBackEnd.DAL\\Migrations\\20260406201800_test1.cs",
@@ -780,7 +786,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 38,
+              "DocumentIndex": 37,
               "Title": "FeedBackEntity.cs",
               "DocumentMoniker": "C:\\Users\\Ua\\Desktop\\AlaRozetka\\BackEnd\\AlaBackEnd\\AlaBackEnd.DAL\\Entity\\FeedBackEntity.cs",
               "RelativeDocumentMoniker": "AlaBackEnd.DAL\\Entity\\FeedBackEntity.cs",
@@ -792,7 +798,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 39,
+              "DocumentIndex": 38,
               "Title": "RoleEntity.cs",
               "DocumentMoniker": "C:\\Users\\Ua\\Desktop\\AlaRozetka\\BackEnd\\AlaBackEnd\\AlaBackEnd.DAL\\Entity\\Users\\RoleEntity.cs",
               "RelativeDocumentMoniker": "AlaBackEnd.DAL\\Entity\\Users\\RoleEntity.cs",
@@ -804,7 +810,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 50,
+              "DocumentIndex": 49,
               "Title": "20260328220657_ProductFix.cs",
               "DocumentMoniker": "C:\\Users\\Ua\\Desktop\\AlaRozetka\\BackEnd\\AlaBackEnd\\AlaBackEnd.DAL\\Migrations\\20260328220657_ProductFix.cs",
               "RelativeDocumentMoniker": "AlaBackEnd.DAL\\Migrations\\20260328220657_ProductFix.cs",
@@ -816,7 +822,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 40,
+              "DocumentIndex": 39,
               "Title": "UserEntity.cs",
               "DocumentMoniker": "C:\\Users\\Ua\\Desktop\\AlaRozetka\\BackEnd\\AlaBackEnd\\AlaBackEnd.DAL\\Entity\\Users\\UserEntity.cs",
               "RelativeDocumentMoniker": "AlaBackEnd.DAL\\Entity\\Users\\UserEntity.cs",
@@ -828,7 +834,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 49,
+              "DocumentIndex": 48,
               "Title": "20260328221004_ProductFix1.cs",
               "DocumentMoniker": "C:\\Users\\Ua\\Desktop\\AlaRozetka\\BackEnd\\AlaBackEnd\\AlaBackEnd.DAL\\Migrations\\20260328221004_ProductFix1.cs",
               "RelativeDocumentMoniker": "AlaBackEnd.DAL\\Migrations\\20260328221004_ProductFix1.cs",
@@ -840,7 +846,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 43,
+              "DocumentIndex": 42,
               "Title": "20260328171732_Testik.cs",
               "DocumentMoniker": "C:\\Users\\Ua\\Desktop\\AlaRozetka\\BackEnd\\AlaBackEnd\\AlaBackEnd.DAL\\Migrations\\20260328171732_Testik.cs",
               "RelativeDocumentMoniker": "AlaBackEnd.DAL\\Migrations\\20260328171732_Testik.cs",
@@ -851,7 +857,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 41,
+              "DocumentIndex": 40,
               "Title": "20260328173612_UserProducts.cs",
               "DocumentMoniker": "C:\\Users\\Ua\\Desktop\\AlaRozetka\\BackEnd\\AlaBackEnd\\AlaBackEnd.DAL\\Migrations\\20260328173612_UserProducts.cs",
               "RelativeDocumentMoniker": "AlaBackEnd.DAL\\Migrations\\20260328173612_UserProducts.cs",
@@ -862,7 +868,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 42,
+              "DocumentIndex": 41,
               "Title": "BaseEntity.cs",
               "DocumentMoniker": "C:\\Users\\Ua\\Desktop\\AlaRozetka\\BackEnd\\AlaBackEnd\\AlaBackEnd.DAL\\Entity\\BaseEntity\\BaseEntity.cs",
               "RelativeDocumentMoniker": "AlaBackEnd.DAL\\Entity\\BaseEntity\\BaseEntity.cs",
@@ -874,7 +880,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 44,
+              "DocumentIndex": 43,
               "Title": "OrderItemEntity.cs",
               "DocumentMoniker": "C:\\Users\\Ua\\Desktop\\AlaRozetka\\BackEnd\\AlaBackEnd\\AlaBackEnd.DAL\\Entity\\ProductCart\\OrderItemEntity.cs",
               "RelativeDocumentMoniker": "AlaBackEnd.DAL\\Entity\\ProductCart\\OrderItemEntity.cs",
@@ -886,7 +892,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 45,
+              "DocumentIndex": 44,
               "Title": "20260319001512_InitialCreate2.cs",
               "DocumentMoniker": "C:\\Users\\Ua\\Desktop\\AlaRozetka\\BackEnd\\AlaBackEnd\\AlaBackEnd\\Migrations\\20260319001512_InitialCreate2.cs",
               "RelativeDocumentMoniker": "AlaBackEnd\\Migrations\\20260319001512_InitialCreate2.cs",
@@ -897,7 +903,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 46,
+              "DocumentIndex": 45,
               "Title": "20260319001126_InitialCreate1.cs",
               "DocumentMoniker": "C:\\Users\\Ua\\Desktop\\AlaRozetka\\BackEnd\\AlaBackEnd\\AlaBackEnd\\Migrations\\20260319001126_InitialCreate1.cs",
               "RelativeDocumentMoniker": "AlaBackEnd\\Migrations\\20260319001126_InitialCreate1.cs",
@@ -908,7 +914,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 47,
+              "DocumentIndex": 46,
               "Title": "20260319000711_InitialCreate.cs",
               "DocumentMoniker": "C:\\Users\\Ua\\Desktop\\AlaRozetka\\BackEnd\\AlaBackEnd\\AlaBackEnd\\Migrations\\20260319000711_InitialCreate.cs",
               "RelativeDocumentMoniker": "AlaBackEnd\\Migrations\\20260319000711_InitialCreate.cs",
@@ -919,7 +925,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 48,
+              "DocumentIndex": 47,
               "Title": "20260318235333_TestMigrate.cs",
               "DocumentMoniker": "C:\\Users\\Ua\\Desktop\\AlaRozetka\\BackEnd\\AlaBackEnd\\AlaBackEnd\\Migrations\\20260318235333_TestMigrate.cs",
               "RelativeDocumentMoniker": "AlaBackEnd\\Migrations\\20260318235333_TestMigrate.cs",
