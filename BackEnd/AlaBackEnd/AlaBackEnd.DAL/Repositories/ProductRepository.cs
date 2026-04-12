@@ -2,8 +2,9 @@
 
 
 using AlaBackEnd.DAL.Entity;
-using AlaBackEnd.DAL.Entity.Products;
+
 using Microsoft.EntityFrameworkCore;
+
 
 namespace AlaBackEnd.DAL.Repositories
 {
@@ -55,6 +56,7 @@ namespace AlaBackEnd.DAL.Repositories
                 .Include(p => p.Category)
                 .ToListAsync();
         }
+        
 
 
 

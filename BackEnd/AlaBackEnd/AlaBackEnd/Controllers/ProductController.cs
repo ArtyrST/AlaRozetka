@@ -41,7 +41,7 @@ namespace AlaBackEnd.API.Controllers
             var response = await _productService.CreateAsync(dto);
             return this.GetResult(response);
         }
-        [HttpPut]
+        [HttpPut("update")]
         public async Task<IActionResult> UpdateProductAsync([FromForm] UpdateProductDto dto)
         {
             var response = await _productService.UpdateAsync(dto);

@@ -10,19 +10,19 @@ namespace AlaBackEnd.DAL.Entity
     public class BaseProductEntity : IBaseEntity
     {
         public int Id { get; set; }
-        public required string Name { get; set; } = string.Empty;
-        public required double Price { get; set; }
-        public required string Country { get; set; } = string.Empty;
-        public required string City { get; set; } = string.Empty;
-        public required string Description { get; set; } = string.Empty;
+        public string Name { get; set; } = string.Empty;
+        public double Price { get; set; }
+        public string Country { get; set; } = string.Empty;
+        public string City { get; set; } = string.Empty;
+        public string Description { get; set; } = string.Empty;
         public DateTime Date { get; set; } = DateTime.UtcNow;
         //tags
-        public required List<ProductTagEntity> Tags { get; set; } = [];
+        public List<ProductTagEntity> Tags { get; set; } = [];
         //relation with category
-        public required int? CategoryId { get; set; }
+        public int? CategoryId { get; set; }
         public CategoryEntity? Category { get; set; }
         //user realtor
-        public required int? UserId { get; set; }
+        public int? UserId { get; set; }
         public UserEntity? User { get; set; }
 
 
