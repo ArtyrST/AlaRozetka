@@ -45,7 +45,7 @@ namespace AlaBackEnd.BLL.Services
             {
                 return ServiceResponse.Error($"The product with id: {id} was not found");
             }
-            var dtos = _Mapper.Map<List<ProductDto>>(entity);
+            var dtos = _Mapper.Map<ProductDto>(entity);
 
             return ServiceResponse.Success($"The product with id: {id} was found", dtos);
         }
@@ -162,8 +162,8 @@ namespace AlaBackEnd.BLL.Services
             }
 
 
-            var updatedentity = _ProductRepository.GetAllWithCategoryForUpdateAsync(entity.Id);
-            var responseDto = _Mapper.Map<ProductDto>(updatedentity);
+            
+            var responseDto = _Mapper.Map<ProductDto>(entity);
             return ServiceResponse.Success($"Product with name: {oldName} was successfull chanched!", responseDto);
 
 
