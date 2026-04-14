@@ -177,13 +177,15 @@ namespace AlaBackEnd.BLL.Services
                 return ServiceResponse.Error($"The product with that id was not found");
             }
 
+            string nameOfDeletedProduct = entity.Name;
+
             var res = await _ProductRepository.DeleteEntityAsync(entity);
             if (!res)
             {
                 return ServiceResponse.Error("Something wrong with deleting that product...");
             }
             
-            return ServiceResponse.Success("Succssfully deleting!", true);
+            return ServiceResponse.Success($"Succssfully deleting product with name: {nameOfDeletedProduct}!", true);
 
         }
     }
