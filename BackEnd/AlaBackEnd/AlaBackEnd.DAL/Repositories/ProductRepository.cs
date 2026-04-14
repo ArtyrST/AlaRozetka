@@ -46,17 +46,19 @@ namespace AlaBackEnd.DAL.Repositories
                 .Where(p => p.Tags.Any(i => tagIds.Contains(i.Id)))
                 .ToListAsync();
         }
-        public async Task<List<BaseProductEntity>> GetAllWithCategoryAsync(int PageNumber, int PageSize)
+        public async Task<List<BaseProductEntity>> GetAll(int PageNumber, int PageSize)
         {
             return await _context.AllProducts
                 .Include(p => p.Category)
                 .Include(p => p.Images)
+                .Include(p => p.Tags)
                 .OrderBy(p => p.Id)
                 .Skip((PageNumber - 1) * PageSize) 
                 .Take(PageSize)
                 .ToListAsync();
         }
-        public async Task<BaseProductEntity> GetAllForIdAsync(int id)
+        
+        public override async Task<BaseProductEntity?> GetByIdAsync(int id)
         {
             return await _context.AllProducts
                 .Include(p => p.Images)
@@ -64,6 +66,7 @@ namespace AlaBackEnd.DAL.Repositories
                 .Include(p => p.Tags)
                 .FirstOrDefaultAsync(p => p.Id == id);
         }
+    }
         
         
         
