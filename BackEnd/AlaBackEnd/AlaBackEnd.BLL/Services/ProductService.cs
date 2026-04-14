@@ -28,7 +28,7 @@ namespace AlaBackEnd.BLL.Services
         }
         public async Task<ServiceResponse> GetAllAsync(int PageNumber, int PageSize)
         {
-            var entities = await _ProductRepository.GetAllWithCategoryAsync(PageNumber, PageSize);
+            var entities = await _ProductRepository.GetAll(PageNumber, PageSize);
                 
                 
             var dtos = _Mapper.Map<List<ProductDto>>(entities);
@@ -185,7 +185,22 @@ namespace AlaBackEnd.BLL.Services
                 return ServiceResponse.Error("Something wrong with deleting that product...");
             }
             
-            return ServiceResponse.Success($"Succssfully deleting product with name: {nameOfDeletedProduct}!", true);
+            return ServiceResponse.Success($"Succssfully deleting product with name: {nameOfDeletedProduct}!", null);
+
+        }
+        public async Task<ServiceResponse> DeleteRangeAsync(List<int> id)
+        {
+            var entities = await _ProductRepository.GetRangeByIdAsync(id);
+            if (entities == null )
+            {
+                return ServiceResponse.Error("The products with these id's were not found");
+            }
+            var res = await _ProductRepository.DeleteRangeAsync(entities);
+            if (!res)
+            {
+                return ServiceResponse.Error("Something wrong with deleting these products...");
+            }
+            return ServiceResponse.Success("Successfuly deleting range of products!", null);
 
         }
     }

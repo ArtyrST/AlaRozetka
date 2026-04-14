@@ -16,7 +16,10 @@ namespace AlaBackEnd.DAL.Repositories
         {
             _context = context;
         }
-        public IQueryable<BaseProductEntity> Products => GetAll();
+        public IQueryable<BaseProductEntity> Products => GetAll()
+            .Include(p => p.Images)
+            .Include(p => p.Category)
+            .Include(p => p.Tags);
         
 
         public async Task<BaseProductEntity?> GetByNameAsync(string name)
@@ -38,29 +41,44 @@ namespace AlaBackEnd.DAL.Repositories
         {
             return await _context.AllProducts
                 .Include(p => p.Tags)
+                .Include(p => p.Images)
+                .Include(p => p.Category)
                 .Where(p => p.Tags.Any(i => tagIds.Contains(i.Id)))
                 .ToListAsync();
         }
-        public async Task<List<BaseProductEntity>> GetAllWithCategoryAsync(int PageNumber, int PageSize)
+        public async Task<List<BaseProductEntity>> GetAll(int PageNumber, int PageSize)
         {
             return await _context.AllProducts
                 .Include(p => p.Category)
                 .Include(p => p.Images)
+                .Include(p => p.Tags)
                 .OrderBy(p => p.Id)
                 .Skip((PageNumber - 1) * PageSize) 
                 .Take(PageSize)
                 .ToListAsync();
         }
-        public async Task<List<BaseProductEntity>> GetAllWithCategoryForUpdateAsync(int id)
+        
+        public override async Task<BaseProductEntity?> GetByIdAsync(int id)
         {
             return await _context.AllProducts
+                .Include(p => p.Images)
                 .Include(p => p.Category)
+                .Include(p => p.Tags)
+                .FirstOrDefaultAsync(p => p.Id == id);
+        }
+        public async Task<List<BaseProductEntity>> GetRangeByIdAsync(List<int> id)
+        {
+            return await _context.AllProducts
+                .Where(p => id.Contains(p.Id))
                 .ToListAsync();
         }
+    }
+        
+        
         
 
 
 
 
-    }
 }
+

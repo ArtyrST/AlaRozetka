@@ -54,6 +54,12 @@ namespace AlaBackEnd.API.Controllers
             var response = await _productService.DeleteAsync(id);
             return this.GetResult(response);
         }
+        [HttpDelete("delete-range")]
+        public async Task<IActionResult> DeleteRangeProductsAsync([FromQuery] List<int> ids)
+        {
+            var response = await _productService.DeleteRangeAsync(ids);
+            return this.GetResult(response);
+        }
 
 
     }

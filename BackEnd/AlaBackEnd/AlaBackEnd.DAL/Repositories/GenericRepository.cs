@@ -60,7 +60,7 @@ namespace AlaBackEnd.DAL.Repositories
             return res != 0;
         }
 
-        public async Task<TEntity?> GetByIdAsync(int id)
+        public virtual async Task<TEntity?> GetByIdAsync(int id)
         {
             return await _context.Set<TEntity>().
                 FirstOrDefaultAsync(e => e.Id ==  id);
