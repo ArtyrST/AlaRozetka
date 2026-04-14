@@ -66,6 +66,12 @@ namespace AlaBackEnd.DAL.Repositories
                 .Include(p => p.Tags)
                 .FirstOrDefaultAsync(p => p.Id == id);
         }
+        public async Task<List<BaseProductEntity>> GetRangeByIdAsync(List<int> id)
+        {
+            return await _context.AllProducts
+                .Where(p => id.Contains(p.Id))
+                .ToListAsync();
+        }
     }
         
         
@@ -74,5 +80,5 @@ namespace AlaBackEnd.DAL.Repositories
 
 
 
-    }
 }
+
