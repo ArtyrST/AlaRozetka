@@ -3,6 +3,7 @@ using AlaBackEnd.BLL.dto;
 using AlaBackEnd.BLL.Services;
 
 using Microsoft.AspNetCore.Mvc;
+using NpgsqlTypes;
 
 namespace AlaBackEnd.API.Controllers
 {
@@ -47,6 +48,13 @@ namespace AlaBackEnd.API.Controllers
             var response = await _productService.UpdateAsync(dto);
             return this.GetResult(response);
         }
+        [HttpDelete]
+        public async Task<IActionResult> DeleteProductAsync(int id)
+        {
+            var response = await _productService.DeleteAsync(id);
+            return this.GetResult(response);
+        }
+
 
     }
 }
