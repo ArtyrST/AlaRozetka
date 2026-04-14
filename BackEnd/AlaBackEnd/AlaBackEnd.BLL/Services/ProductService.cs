@@ -74,7 +74,7 @@ namespace AlaBackEnd.BLL.Services
         }
         public async Task<ServiceResponse> CreateAsync(CreateProductDto dto)
         {
-            //Console.WriteLine($"Name: {dto.Name}, Images count: {dto.Images?.Count ?? 0}");
+            Console.WriteLine($"Name: {dto.Name}, Images count: {dto.Images?.Count ?? 0}");
             if (await _ProductRepository.IsExistAsync(dto.Name))
             {
                 return ServiceResponse.Error($"The product with name {dto.Name} is already exist");
@@ -167,6 +167,23 @@ namespace AlaBackEnd.BLL.Services
             var responseDto = _Mapper.Map<ProductDto>(entity);
             return ServiceResponse.Success($"Product with name: {oldName} was successfull chanched!", responseDto);
 
+
+        }
+        public async Task<ServiceResponse> DeleteAsync(int id)
+        {
+            var entity = await _ProductRepository.GetByIdAsync(id);
+            if (entity == null )
+            {
+                return ServiceResponse.Error($"The product with that id was not found");
+            }
+
+            var res = await _ProductRepository.DeleteEntityAsync(entity);
+            if (!res)
+            {
+                return ServiceResponse.Error("Something wrong with deleting that product...");
+            }
+            
+            return ServiceResponse.Success("Succssfully deleting!", true);
 
         }
     }
