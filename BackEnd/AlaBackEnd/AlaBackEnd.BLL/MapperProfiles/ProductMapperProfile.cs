@@ -1,6 +1,8 @@
 ﻿using AlaBackEnd.BLL.dto;
+using AlaBackEnd.BLL.dto.UserDto;
 using AlaBackEnd.DAL.Entity;
 using AlaBackEnd.DAL.Entity.Products;
+using AlaBackEnd.DAL.Entity.Users;
 using AlaBackEnd.Entity.Products;
 using AutoMapper;
 
@@ -51,8 +53,11 @@ namespace AlaBackEnd.BLL.MapperProfiles
             CreateMap<List<BaseProductEntity>, ProductDto>();
 
 
-            
-            
+
+            //UserDto -> UserEntity
+            CreateMap<RegisterUserDto, UserEntity>()
+                .ForMember(dest => dest.Id, opt => opt.Ignore())
+                .ForMember(dest => dest.Roles, opt => opt.Ignore());
             
 
 

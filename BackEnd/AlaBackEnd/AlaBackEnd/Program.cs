@@ -26,13 +26,15 @@ namespace AlaBackEnd
             builder.Services.AddScoped<ProductRepository>();
             builder.Services.AddScoped<TagRepository>();
             builder.Services.AddScoped<CategoryRepository>();
-            
-            
-            
+            builder.Services.AddScoped<UserRepository>();
+            builder.Services.AddScoped<RoleRepository>();
+
+
             //add services
             builder.Services.AddScoped<ProductService>();
             builder.Services.AddScoped<TagServise>();
             builder.Services.AddScoped<ImageService>();
+            builder.Services.AddScoped<UserService>();
             //add automapper
             builder.Services.AddAutoMapper(cfg =>
             {

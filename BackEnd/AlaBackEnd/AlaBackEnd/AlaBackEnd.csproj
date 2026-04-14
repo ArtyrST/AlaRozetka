@@ -8,12 +8,12 @@
 	<ItemGroup>
 		<!-- Це головний пакет для .NET 10, він сам підтягне правильний Microsoft.OpenApi 2.0 -->
 		<PackageReference Include="AutoMapper" Version="16.1.1" />
-		<PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.0-*" />
+		<PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.0-preview.1.25120.3" />
 
 		<!-- EF Core пакети залишаємо як є -->
-		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="10.0.*" />
-		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="10.0.*" />
-		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="10.0.*">
+		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="10.0.4" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="10.0.4" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="10.0.4">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
