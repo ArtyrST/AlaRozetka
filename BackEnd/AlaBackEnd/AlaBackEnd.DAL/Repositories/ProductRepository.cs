@@ -16,7 +16,10 @@ namespace AlaBackEnd.DAL.Repositories
         {
             _context = context;
         }
-        public IQueryable<BaseProductEntity> Products => GetAll();
+        public IQueryable<BaseProductEntity> Products => GetAll()
+            .Include(p => p.Images)
+            .Include(p => p.Category)
+            .Include(p => p.Tags);
         
 
         public async Task<BaseProductEntity?> GetByNameAsync(string name)
@@ -38,6 +41,8 @@ namespace AlaBackEnd.DAL.Repositories
         {
             return await _context.AllProducts
                 .Include(p => p.Tags)
+                .Include(p => p.Images)
+                .Include(p => p.Category)
                 .Where(p => p.Tags.Any(i => tagIds.Contains(i.Id)))
                 .ToListAsync();
         }
@@ -51,12 +56,16 @@ namespace AlaBackEnd.DAL.Repositories
                 .Take(PageSize)
                 .ToListAsync();
         }
-        public async Task<List<BaseProductEntity>> GetAllWithCategoryForUpdateAsync(int id)
+        public async Task<BaseProductEntity> GetAllForIdAsync(int id)
         {
             return await _context.AllProducts
+                .Include(p => p.Images)
                 .Include(p => p.Category)
-                .ToListAsync();
+                .Include(p => p.Tags)
+                .FirstOrDefaultAsync(p => p.Id == id);
         }
+        
+        
         
 
 

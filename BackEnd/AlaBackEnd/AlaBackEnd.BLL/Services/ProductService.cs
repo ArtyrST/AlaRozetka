@@ -39,7 +39,7 @@ namespace AlaBackEnd.BLL.Services
         }
         public async Task<ServiceResponse> GetByIdAsync(int id) 
         {
-            var entity = await _ProductRepository.GetByIdAsync(id);
+            var entity = await _ProductRepository.GetAllForIdAsync(id);
 
             if (entity == null)
             {
