@@ -24,7 +24,9 @@ namespace AlaBackEnd.BLL.dto
         public int CategoryId { get; set; }
         public string CategoryName { get; set; } = string.Empty;
         public List<int> Tags { get; set; } = [];
-        public List<ImageDto> Images { get; set; } = [];   
-        
+        public List<ImageDto> Images { get; set; } = [];
+        public DateTime DateFrom {  get; set; }
+        public DateTime DateTo { get; set; }
+
     }
 }
