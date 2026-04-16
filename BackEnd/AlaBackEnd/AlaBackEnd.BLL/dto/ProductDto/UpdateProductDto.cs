@@ -19,7 +19,10 @@ namespace AlaBackEnd.BLL.dto
         
         public string? City { get; set; } 
         
-        public string? Description { get; set; } 
+        public string? Description { get; set; }
+        public string CreateDateFrom { get; set; } = string.Empty;
+        
+        public string CreateDateTo { get; set; } = string.Empty;
         public IFormFile? Image { get; set; }
     }
 }
