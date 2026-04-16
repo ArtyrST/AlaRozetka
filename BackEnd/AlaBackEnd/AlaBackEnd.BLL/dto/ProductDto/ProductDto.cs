@@ -27,6 +27,6 @@ namespace AlaBackEnd.BLL.dto
         public List<ImageDto> Images { get; set; } = [];
         public DateTime DateFrom {  get; set; }
         public DateTime DateTo { get; set; }
-
+        public int UserId { get; set; }
     }
 }
