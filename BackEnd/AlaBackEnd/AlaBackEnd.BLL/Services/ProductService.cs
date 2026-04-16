@@ -4,7 +4,9 @@ using AlaBackEnd.DAL.Entity;
 using AlaBackEnd.DAL.Entity.Products;
 using AlaBackEnd.DAL.Repositories;
 using AutoMapper;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
+using System.Security.Claims;
 
 
 namespace AlaBackEnd.BLL.Services
@@ -16,15 +18,16 @@ namespace AlaBackEnd.BLL.Services
         private readonly IMapper _Mapper;
         private readonly TagRepository _Tags;
         private readonly ImageService _Image;
+        private readonly IHttpContextAccessor _httpAccessor;
 
-        public ProductService(ProductRepository ProductRepository, IMapper mapper, TagRepository tags, CategoryRepository categoryRepository, ImageService image)
+        public ProductService(IHttpContextAccessor httpAccessor, ProductRepository ProductRepository, IMapper mapper, TagRepository tags, CategoryRepository categoryRepository, ImageService image)
         {
             _ProductRepository = ProductRepository;
             _Mapper = mapper;
             _Tags = tags;
             _CategoryRepository = categoryRepository;
             _Image = image;
-
+            _httpAccessor = httpAccessor;
         }
         public async Task<ServiceResponse> GetAllAsync(int PageNumber, int PageSize)
         {
@@ -82,6 +85,9 @@ namespace AlaBackEnd.BLL.Services
 
             
             var entity = _Mapper.Map<BaseProductEntity>(dto);
+
+            var userId = _httpAccessor.HttpContext?.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            entity.UserId = int.Parse(userId);
             
             if (dto.Images != null && dto.Images.Count > 0)
             {

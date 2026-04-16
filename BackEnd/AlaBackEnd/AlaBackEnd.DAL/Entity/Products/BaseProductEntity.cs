@@ -26,6 +26,7 @@ namespace AlaBackEnd.DAL.Entity
         //user realtor
         public int? UserId { get; set; }
         public UserEntity? User { get; set; }
+        
 
 
         //with image

@@ -37,5 +37,12 @@ namespace AlaBackEnd.DAL.Repositories
                 .AnyAsync(p => p.FirstName.ToLower() == name.ToLower()
                 && !exceptionId.Contains(p.Id));
         }
+
+        public async Task<UserEntity> GetByEmailAsync(string email)
+        {
+            return await _context.Users
+                .AsNoTracking()
+                .FirstOrDefaultAsync(u => u.Email == email);
+        }
     }
 }
