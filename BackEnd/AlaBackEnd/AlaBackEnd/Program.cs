@@ -6,7 +6,7 @@ using AlaBackEnd.DAL;
 using AlaBackEnd.DAL.Repositories;
 using AlaBackEnd.DAL.Seeders;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.Data.SqlClient;
+//using Microsoft.OpenApi.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.FileProviders;
 using Microsoft.IdentityModel.Tokens;
@@ -88,6 +88,7 @@ namespace AlaBackEnd
 
             builder.Services.AddControllers();
             // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
+            // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
             builder.Services.AddOpenApi();
 
 
@@ -121,6 +122,7 @@ namespace AlaBackEnd
                            .WithTheme(ScalarTheme.Moon) // Можна вибрати тему: Solarized, BluePlanet тощо
                            .WithDefaultHttpClient(ScalarTarget.CSharp, ScalarClient.HttpClient);
                 });
+
             }
             if (!app.Environment.IsDevelopment())
             {
