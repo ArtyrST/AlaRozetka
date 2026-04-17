@@ -7,13 +7,13 @@ using NpgsqlTypes;
 
 namespace AlaBackEnd.API.Controllers
 {
-    [Authorize]
+    
     [ApiController]
     [Route("api/products")]
     public class ProductController : ControllerBase
     {
         private readonly ProductService _productService;
-        private readonly IAuthService _authService;
+        
 
         public ProductController(ProductService productService)
         {
@@ -27,6 +27,7 @@ namespace AlaBackEnd.API.Controllers
             var response = await _productService.GetAllAsync(PageNumber, 20);
             return this.GetResult(response);
         }
+        [Authorize]
         [HttpGet("by-id")]
         public async Task<IActionResult> GetByIdAsync(int id)
         {

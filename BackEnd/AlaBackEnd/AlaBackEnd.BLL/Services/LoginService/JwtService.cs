@@ -20,10 +20,15 @@ namespace AlaBackEnd.BLL.Services.LoginService
             var claims = new List<Claim>
             {
                 new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
-                new Claim(ClaimTypes.Email, user.Email)
+                new Claim(ClaimTypes.Email, user.Email),
+                
                 
 
             };
+            foreach (var roleId in user.Roles)
+            {
+                claims.Add(new Claim(ClaimTypes.Role, roleId.ToString()));
+            }
 
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["Jwt:Key"]));
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);

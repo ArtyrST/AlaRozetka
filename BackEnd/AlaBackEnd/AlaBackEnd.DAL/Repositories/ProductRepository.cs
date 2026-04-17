@@ -48,12 +48,18 @@ namespace AlaBackEnd.DAL.Repositories
         }
         public async Task<List<BaseProductEntity>> GetAll(int PageNumber, int PageSize)
         {
+            var currentPage = PageNumber < 1 ? 1 : PageNumber;
+
+            // 2. Тепер розрахунок skip ніколи не дасть негативне число.
+            // (1 - 1) * 20 = 0 (мінімум)
+            int skip = (currentPage - 1) * PageSize;
+
             return await _context.AllProducts
                 .Include(p => p.Category)
                 .Include(p => p.Images)
                 .Include(p => p.Tags)
                 .OrderBy(p => p.Id)
-                .Skip((PageNumber - 1) * PageSize) 
+                .Skip(skip) 
                 .Take(PageSize)
                 .ToListAsync();
         }
