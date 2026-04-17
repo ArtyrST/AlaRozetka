@@ -1,0 +1,161 @@
+.search-container {
+      
+      background: #F0F0F0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      padding: 15px;
+      border-radius: 22px;
+      margin-top: 60px;
+      min-height: 190px;
+      align-items: center;
+    }
+    .search-field {
+      flex: 1 1 150px;
+      display: flex;
+      flex-direction: column;
+      background-color: white;
+      border-radius: 22px;
+      height: 104px;
+     
+    }
+    .search-field label {
+      font-size: 20px;
+      color: #555;
+      margin-left: 10px;
+      margin-top: 15px;
+
+    }
+    .search-field input,
+    .search-field select {
+      padding: 10px;
+      font-size: 32px;
+      border-radius: 20px;
+      outline: none;
+      background: #fff;
+      border: none;
+  appearance: none; 
+  -webkit-appearance: none; 
+  -moz-appearance: none; 
+    }
+   
+    .search-button {
+      display: flex;
+      align-items: flex-end;
+    }
+    .search-button button {
+      background: #2d4d35;
+      color: white;
+      border: none;
+      width: 269px;
+      height: 56px;
+      border-radius: 18px;
+      cursor: pointer;
+      transition: 0.3s;
+      font-size: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+      
+    }
+    .search-button button:hover {
+      background: #3e6649;
+      
+    }
+
+    /* Responsive adjustments for the search area */
+    /* Tablet: reduce paddings and font sizes */
+    @media (max-width: 1024px) {
+      .search-container {
+        margin-left: 40px;
+        margin-right: 40px;
+        padding: 12px;
+        min-height: 150px;
+        gap: 8px;
+      }
+
+      .search-field label {
+        font-size: 18px;
+        margin-top: 10px;
+      }
+
+      .search-field input,
+      .search-field select {
+        font-size: 22px;
+      }
+
+      .search-button button {
+        width: 220px;
+        height: 52px;
+        font-size: 22px;
+      }
+    }
+
+    /* Mobile: stack fields vertically, full-width controls */
+    @media (max-width: 768px) {
+      .search-container {
+        margin-left: 20px;
+        margin-right: 20px;
+        padding: 12px;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+          
+
+      }
+
+      .search-field {
+        width: 100%;
+        /* compact fixed height for mobile rows */
+        max-height: 80px;
+       
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      .search-field label {
+        font-size: 16px;
+        margin-top: 6px;
+        margin-left: 8px;
+      }
+
+      .search-field input,
+      .search-field select {
+        font-size: 18px;
+        
+        
+      }
+
+      .search-button {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+      }
+
+      .search-button button {
+        width: 100%;
+        max-width: 420px;
+        height: 50px;
+        font-size: 20px;
+        border-radius: 14px;
+      }
+    }
+
+    /* Small phones: further reduce sizes */
+    @media (max-width: 480px) {
+      .search-field label {
+        font-size: 15px;
+      }
+
+      .search-field input,
+      .search-field select {
+        font-size: 16px;
+      }
+
+      .search-button button {
+        font-size: 18px;
+        height: 46px;
+      }
+    }
