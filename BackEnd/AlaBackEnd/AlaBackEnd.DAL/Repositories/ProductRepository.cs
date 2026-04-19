@@ -17,9 +17,11 @@ namespace AlaBackEnd.DAL.Repositories
             _context = context;
         }
         public IQueryable<BaseProductEntity> Products => GetAll()
+            .AsNoTracking()
             .Include(p => p.Images)
             .Include(p => p.Category)
-            .Include(p => p.Tags);
+            .Include(p => p.Tags)
+            .AsSplitQuery();
         
 
         public async Task<BaseProductEntity?> GetByNameAsync(string name)
@@ -55,18 +57,21 @@ namespace AlaBackEnd.DAL.Repositories
             int skip = (currentPage - 1) * PageSize;
 
             return await _context.AllProducts
+                .AsNoTracking()
                 .Include(p => p.Category)
                 .Include(p => p.Images)
                 .Include(p => p.Tags)
                 .OrderBy(p => p.Id)
                 .Skip(skip) 
                 .Take(PageSize)
+                //.AsSplitQuery()
                 .ToListAsync();
         }
         
         public override async Task<BaseProductEntity?> GetByIdAsync(int id)
         {
             return await _context.AllProducts
+                .AsNoTracking()
                 .Include(p => p.Images)
                 .Include(p => p.Category)
                 .Include(p => p.Tags)
