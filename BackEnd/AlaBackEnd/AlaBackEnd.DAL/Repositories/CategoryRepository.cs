@@ -13,7 +13,7 @@ namespace AlaBackEnd.DAL.Repositories
             _context = context;
         }
         public IQueryable<CategoryEntity> Categories => GetAll();
-        public async Task<CategoryEntity?> GetAllAsync(int id)
+        public async Task<CategoryEntity?> GetByIdAsync(int id)
         {
             return await Categories.FirstOrDefaultAsync(c => c.Id == id);
         }

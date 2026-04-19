@@ -1,4 +1,5 @@
 ﻿using AlaBackEnd.DAL.Repositories;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -14,7 +15,7 @@ namespace AlaBackEnd.BLL.Services
         }
         public async Task<ServiceResponse> GelAllAsync()
         {
-            var entity = _tag.GetAll();
+            var entity = await _tag.tags.AsNoTracking().ToListAsync();
             return ServiceResponse.Success("Successfuly returned all tags!", entity);
         }
     }
