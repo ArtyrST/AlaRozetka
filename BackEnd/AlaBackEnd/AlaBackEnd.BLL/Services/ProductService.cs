@@ -109,7 +109,7 @@ namespace AlaBackEnd.BLL.Services
             }
 
             
-            var categ = await _CategoryRepository.GetAllAsync(dto.CategoryId);
+            var categ = await _CategoryRepository.GetByIdAsync(dto.CategoryId);
 
             if (categ == null)
             {
@@ -124,14 +124,12 @@ namespace AlaBackEnd.BLL.Services
             entity.Tags = new List<ProductTagEntity>();
             if (dto.Tags != null && dto.Tags.Any())
             {
-                foreach (int tagId in dto.Tags)
-                {
-                    var addedTag = await _Tags.GetByIdAsync(tagId);
-                    if (addedTag != null)
-                    {
-                        entity.Tags.Add(addedTag);
-                    }
-                }
+                var tags = await _Tags.tags
+                    .Where(t => dto.Tags.Contains(t.Id))
+                    .AsNoTracking()
+                    .ToListAsync();
+                    
+                entity.Tags = tags;
             }
 
             Console.WriteLine($"DEBUG: Перед збереженням у продукту {entity.Images.Count} картинок.");

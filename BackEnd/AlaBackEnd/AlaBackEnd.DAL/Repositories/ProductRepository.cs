@@ -4,6 +4,7 @@
 using AlaBackEnd.DAL.Entity;
 
 using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations;
 
 
 namespace AlaBackEnd.DAL.Repositories
@@ -26,11 +27,12 @@ namespace AlaBackEnd.DAL.Repositories
 
         public async Task<BaseProductEntity?> GetByNameAsync(string name)
         {
+            
             return await Products.FirstOrDefaultAsync(p => p.Name == name);
         }
         public async Task<bool> IsExistAsync(string name)
         {
-            return await GetByNameAsync(name) != null;
+            return await Products.AnyAsync(p => p.Name.ToLower() == name.ToLower());
         }
         public async Task<bool> IsExistAsync(string name, params int[] exceptionId)
         {
@@ -46,6 +48,7 @@ namespace AlaBackEnd.DAL.Repositories
                 .Include(p => p.Images)
                 .Include(p => p.Category)
                 .Where(p => p.Tags.Any(i => tagIds.Contains(i.Id)))
+                .AsSplitQuery()
                 .ToListAsync();
         }
         public async Task<List<BaseProductEntity>> GetAll(int PageNumber, int PageSize)
@@ -64,7 +67,7 @@ namespace AlaBackEnd.DAL.Repositories
                 .OrderBy(p => p.Id)
                 .Skip(skip) 
                 .Take(PageSize)
-                //.AsSplitQuery()
+                .AsSplitQuery()
                 .ToListAsync();
         }
         
@@ -75,12 +78,14 @@ namespace AlaBackEnd.DAL.Repositories
                 .Include(p => p.Images)
                 .Include(p => p.Category)
                 .Include(p => p.Tags)
+                .AsSplitQuery()
                 .FirstOrDefaultAsync(p => p.Id == id);
         }
         public async Task<List<BaseProductEntity>> GetRangeByIdAsync(List<int> id)
         {
             return await _context.AllProducts
                 .Where(p => id.Contains(p.Id))
+                .AsNoTracking()
                 .ToListAsync();
         }
     }

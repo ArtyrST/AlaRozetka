@@ -32,7 +32,7 @@ namespace AlaBackEnd.DAL.Repositories
         }
         public async Task<bool> UpdateRangeAsync(IEnumerable<TEntity> entities)
         {
-            await _context.Set<TEntity>().AddRangeAsync(entities);
+            _context.Set<TEntity>().UpdateRange(entities);
             int res = await _context.SaveChangesAsync();
             return res != 0;
         }
