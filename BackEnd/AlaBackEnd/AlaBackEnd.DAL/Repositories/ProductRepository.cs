@@ -74,11 +74,11 @@ namespace AlaBackEnd.DAL.Repositories
         public override async Task<BaseProductEntity?> GetByIdAsync(int id)
         {
             return await _context.AllProducts
-                .AsNoTracking()
+                //.AsNoTracking()
                 .Include(p => p.Images)
                 .Include(p => p.Category)
                 .Include(p => p.Tags)
-                .AsSplitQuery()
+                //.AsSplitQuery()
                 .FirstOrDefaultAsync(p => p.Id == id);
         }
         public async Task<List<BaseProductEntity>> GetRangeByIdAsync(List<int> id)

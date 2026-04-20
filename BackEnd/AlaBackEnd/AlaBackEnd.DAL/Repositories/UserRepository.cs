@@ -17,18 +17,18 @@ namespace AlaBackEnd.DAL.Repositories
         public IQueryable<UserEntity> users => GetAll()
             .Include(u => u.Roles);
 
-        public async Task<UserEntity> GetByNameAsync(string name)
+        public async Task<UserEntity?> GetByMailAsync(string mail)
         {
             return await _context.Users
                 .Include(u => u.Roles)
                 .AsNoTracking()
-                .FirstOrDefaultAsync(u => u.FirstName == name);
+                .FirstOrDefaultAsync(u => u.Email == mail);
                 
                 
         }
-        public async Task<bool> IsExistAsync(string name)
+        public async Task<bool> IsExistAsync(string mail)
         {
-            return await GetByNameAsync(name) != null;
+            return await GetByEmailAsync(mail) != null;
         }
         public async Task<bool> IsExistAsync(string name, params int[] exceptionId)
         {

@@ -41,7 +41,7 @@ namespace AlaBackEnd.BLL.MapperProfiles
                 .ForMember(dest => dest.Category, opt => opt.Ignore())
                 .ForMember(dest => dest.DateFrom, opt => opt.MapFrom(src => DateTime.Parse(src.CreateDateFrom).ToUniversalTime()))
                 .ForMember(dest => dest.DateTo, opt => opt.MapFrom(src => DateTime.Parse(src.CreateDateTo).ToUniversalTime()));
-                
+
             //CreateMap<CategoryEntity, CategoryDto>();
 
 
@@ -49,8 +49,10 @@ namespace AlaBackEnd.BLL.MapperProfiles
             CreateMap<UpdateProductDto, BaseProductEntity>()
                 .ForMember(dest => dest.Id, opt => opt.Ignore())
                 .ForMember(dest => dest.Images, opt => opt.Ignore())
-                .ForMember(dest => dest.DateFrom, opt => opt.MapFrom(src => DateTime.Parse(src.CreateDateFrom).ToUniversalTime()))
-                .ForMember(dest => dest.DateTo, opt => opt.MapFrom(src => DateTime.Parse(src.CreateDateTo).ToUniversalTime()))
+                .ForMember(dest => dest.Tags, opt => opt.Ignore())
+                .ForMember(dest => dest.DateFrom, opt => opt.Ignore())
+                .ForMember(dest => dest.DateTo, opt => opt.Ignore())
+                
                 .ForAllMembers(opts => opts.Condition((src, dest, srcMember) => srcMember != null));
 
 

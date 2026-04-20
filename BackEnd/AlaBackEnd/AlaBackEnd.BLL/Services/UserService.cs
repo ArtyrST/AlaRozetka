@@ -21,9 +21,9 @@ namespace AlaBackEnd.BLL.Services
         }
         public async Task<ServiceResponse> RegisterUserAsync(RegisterUserDto dto)
         {
-            if (await _userRepository.IsExistAsync(dto.FirstName))
+            if (await _userRepository.IsExistAsync(dto.Email))
             {
-                return ServiceResponse.Error($"User with name: {dto.FirstName} is already exists");
+                return ServiceResponse.Error($"User with mail: {dto.Email} is already exists");
             }
             var entity = _mapper.Map<UserEntity>(dto);
             entity.Roles = new List<RoleEntity>();

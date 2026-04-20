@@ -158,6 +158,39 @@ namespace AlaBackEnd.BLL.Services
             }
             string oldName = entity.Name;
 
+            if (dto.UpdateDateFrom != null && dto.UpdateDateTo != null)
+            {
+                entity.DateFrom = DateTime.Parse(dto.UpdateDateFrom).ToUniversalTime();
+                entity.DateTo = DateTime.Parse(dto.UpdateDateTo).ToUniversalTime();
+            }
+            if (dto.Tags.Any())
+            {
+
+                var currentTags = entity.Tags.Select(t => t.Id).ToHashSet();
+                var newTags = dto.Tags.ToHashSet();
+
+                var tagsToRemove = entity.Tags
+                    .Where(t => !newTags.Contains(t.Id))
+                    .ToList();
+                foreach (var tags in  tagsToRemove)
+                {
+                    entity.Tags.Remove(tags);
+                }
+                var newTagsId = newTags.Except(currentTags).ToList();
+                if (newTagsId.Any())
+                {
+                    var tagsToAdd = await _Tags.GetByIdAsync(newTagsId);
+                    foreach (var tag in  tagsToAdd)
+                    {
+                        entity.Tags.Add(tag);
+                    }
+                }
+
+
+            }
+
+
+
             _Mapper.Map(dto, entity);
 
             bool res = await _ProductRepository.UpdateAsync(entity);
