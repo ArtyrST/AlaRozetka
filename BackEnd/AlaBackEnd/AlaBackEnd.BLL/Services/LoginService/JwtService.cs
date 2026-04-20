@@ -1,4 +1,5 @@
-﻿using AlaBackEnd.DAL.Entity.Users;
+﻿using System;
+using AlaBackEnd.DAL.Entity.Users;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System.Security.Claims;
@@ -15,7 +16,7 @@ namespace AlaBackEnd.BLL.Services.LoginService
         {
             _config = config;
         }
-        public async Task<string> GenerateTokenAsync(UserEntity user)
+        public Task<string> GenerateTokenAsync(UserEntity user)
         {
             var claims = new List<Claim>
             {
@@ -30,7 +31,8 @@ namespace AlaBackEnd.BLL.Services.LoginService
                 claims.Add(new Claim("role", role.Name));
             }
 
-            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["Jwt:Key"]));
+            var keyString = _config["Jwt:Key"] ?? throw new InvalidOperationException("JWT configuration value 'Jwt:Key' is missing.");
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(keyString));
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 
             var token = new JwtSecurityToken(
@@ -43,7 +45,7 @@ namespace AlaBackEnd.BLL.Services.LoginService
 
            );
 
-            return new JwtSecurityTokenHandler().WriteToken(token); 
+            return Task.FromResult(new JwtSecurityTokenHandler().WriteToken(token)); 
         }
     }
 }

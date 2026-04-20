@@ -119,11 +119,16 @@ namespace AlaBackEnd
                 app.MapScalarApiReference(options =>
                 {
                     options.WithTitle("AlaRozetka API")
-                           .WithTheme(ScalarTheme.Moon) // Можна вибрати тему: Solarized, BluePlanet тощо
-                           .WithDefaultHttpClient(ScalarTarget.CSharp, ScalarClient.HttpClient);
+               .WithTheme(ScalarTheme.Moon)
+               .WithDefaultHttpClient(ScalarTarget.CSharp, ScalarClient.HttpClient)
+               // Додаємо інтерфейс документації за стандартним шляхом
+               .WithEndpointPrefix("/scalar/{documentName}");
+
                 });
+                
 
             }
+
             if (!app.Environment.IsDevelopment())
             {
                 app.UseHttpsRedirection();

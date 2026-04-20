@@ -25,9 +25,9 @@ namespace AlaBackEnd.BLL.dto
         public string CreateDateTo { get; set; } = string.Empty;
         [FromForm]
         public List<int> Tags { get; set; } = [];
-        
+
         [FromForm]
-        public IFormFileCollection? Images { get; set; }
+        public List<IFormFile>? Images { get; set; } = [];
         public int PreviewImageId { get; set; }
     }
 }

@@ -9,6 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
 
 
+
 namespace AlaBackEnd.BLL.Services
 {
     public class ProductService 
@@ -78,6 +79,7 @@ namespace AlaBackEnd.BLL.Services
         public async Task<ServiceResponse> CreateAsync(CreateProductDto dto)
         {
             Console.WriteLine($"Name: {dto.Name}, Images count: {dto.Images?.Count ?? 0}");
+            Console.WriteLine($"DateFrom: '{dto.CreateDateFrom}', DateTo: '{dto.CreateDateTo}'");
             if (await _ProductRepository.IsExistAsync(dto.Name))
             {
                 return ServiceResponse.Error($"The product with name {dto.Name} is already exist");
@@ -126,7 +128,7 @@ namespace AlaBackEnd.BLL.Services
             {
                 var tags = await _Tags.tags
                     .Where(t => dto.Tags.Contains(t.Id))
-                    .AsNoTracking()
+                    
                     .ToListAsync();
                     
                 entity.Tags = tags;

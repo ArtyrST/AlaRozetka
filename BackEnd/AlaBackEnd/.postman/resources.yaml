@@ -1,0 +1,7 @@
+# Use this workspace to collaborate
+workspace:
+  id: e2f6ceb4-924c-4684-8b17-428e04ca00f0
+
+localResources:
+  specs:
+    - ..\AlaBackEnd\obj\Debug\net10.0\EndpointInfo\AlaBackEnd.json
