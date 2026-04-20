@@ -25,9 +25,9 @@ namespace AlaBackEnd.BLL.Services.LoginService
                 
 
             };
-            foreach (var roleId in user.Roles)
+            foreach (var role in user.Roles)
             {
-                claims.Add(new Claim(ClaimTypes.Role, roleId.ToString()));
+                claims.Add(new Claim("role", role.Name));
             }
 
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["Jwt:Key"]));

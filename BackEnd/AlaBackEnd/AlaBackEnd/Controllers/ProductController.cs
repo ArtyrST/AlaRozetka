@@ -28,7 +28,7 @@ namespace AlaBackEnd.API.Controllers
             
             return this.GetResult(response);
         }
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         
         [HttpGet("by-id")]
         public async Task<IActionResult> GetByIdAsync(int id)
@@ -37,33 +37,34 @@ namespace AlaBackEnd.API.Controllers
             return this.GetResult(response);
         }
         [HttpGet("by-tag")]
+
         public async Task<IActionResult> GetByTagAsync([FromQuery]List<int> tagIds)
         {
             var response = await _productService.GetByTagAsync(tagIds);
             return this.GetResult(response);
         }
-        [Authorize]
+        [Authorize(Roles = "Rieltor")]
         [HttpPost("from-form")]
         public async Task<IActionResult> CreateProductAsync([FromForm] CreateProductDto dto)
         {
             var response = await _productService.CreateAsync(dto);
             return this.GetResult(response);
         }
-        //[Authorize]
+        [Authorize(Roles = "Rieltor")]
         [HttpPut("update")]
         public async Task<IActionResult> UpdateProductAsync([FromForm] UpdateProductDto dto)
         {
             var response = await _productService.UpdateAsync(dto);
             return this.GetResult(response);
         }
-        [Authorize]
+        [Authorize(Roles = "Rieltor")]
         [HttpDelete]
         public async Task<IActionResult> DeleteProductAsync(int id)
         {
             var response = await _productService.DeleteAsync(id);
             return this.GetResult(response);
         }
-        [Authorize]
+        [Authorize(Roles = "Rieltor")]
         [HttpDelete("delete-range")]
         public async Task<IActionResult> DeleteRangeProductsAsync([FromQuery] List<int> ids)
         {

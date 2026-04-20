@@ -28,17 +28,10 @@ namespace AlaBackEnd.BLL.Services
             var entity = _mapper.Map<UserEntity>(dto);
             entity.Roles = new List<RoleEntity>();
 
-            if (dto.Roles  != null && dto.Roles.Any())
+            var defaultRole = await _role.GetByNameAsync("Guest");
+            if (defaultRole != null)
             {
-                foreach(int roleId in dto.Roles)
-                {
-                    var addedRole = await _role.GetByIdAsync(roleId);
-                    if (addedRole != null)
-                    {
-                        entity.Roles.Add(addedRole);
-                    }
-
-                }
+                entity.Roles.Add(defaultRole);
             }
 
             string passwordHash = BCrypt.Net.BCrypt.HashPassword(dto.Password);
