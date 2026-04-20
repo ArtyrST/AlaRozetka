@@ -4,7 +4,7 @@ import RealtorReviews from './realtor-reviews/realtor-reviews';
 export const RealtorPage = () => {
   return (
     <div className="layout">
-      <Realtor />       
+      <Realtor />    
       <RealtorHotels />     
       <RealtorReviews />
     </div>
