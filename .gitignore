@@ -54,10 +54,13 @@ TestResult.xml
 nunit-*.xml
 
 # Visual Studio спеціальні файли
+# Ігноруємо все, що стосується VS
 .vs/
+*.suo
 *.user
-*.userosscache
-*.sln.docstates
+*.bak
+[Dd]ebug/
+[Rr]elease/
 
 # Якщо використовуєш VS Code
 .vscode/
