@@ -1,13 +1,17 @@
 
 using AlaBackEnd.BLL.Services;
 using AlaBackEnd.BLL.Services.ImagesService;
+using AlaBackEnd.BLL.Services.LoginService;
 using AlaBackEnd.DAL;
 using AlaBackEnd.DAL.Repositories;
 using AlaBackEnd.DAL.Seeders;
-using Microsoft.Data.SqlClient;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+//using Microsoft.OpenApi.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.FileProviders;
+using Microsoft.IdentityModel.Tokens;
 using Scalar.AspNetCore;
+using System.Text;
 
 
 
@@ -26,13 +30,17 @@ namespace AlaBackEnd
             builder.Services.AddScoped<ProductRepository>();
             builder.Services.AddScoped<TagRepository>();
             builder.Services.AddScoped<CategoryRepository>();
-            
-            
-            
+            builder.Services.AddScoped<UserRepository>();
+            builder.Services.AddScoped<RoleRepository>();
+
+
             //add services
             builder.Services.AddScoped<ProductService>();
             builder.Services.AddScoped<TagServise>();
             builder.Services.AddScoped<ImageService>();
+            builder.Services.AddScoped<UserService>();
+            builder.Services.AddScoped<IAuthService, AuthService>();
+            builder.Services.AddScoped<JwtService>();
             //add automapper
             builder.Services.AddAutoMapper(cfg =>
             {
@@ -43,6 +51,27 @@ namespace AlaBackEnd
             //    cfg.LicenseKey = ""
             //});
 
+
+
+            builder.Services.AddHttpContextAccessor();
+
+            builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                .AddJwtBearer(options =>
+                {
+                    options.TokenValidationParameters = new TokenValidationParameters
+                    {
+                        ValidateIssuer = true,
+                        ValidateAudience = true,
+                        ValidateLifetime = true,
+                        ValidateIssuerSigningKey = true,
+                        ValidIssuer = builder.Configuration["Jwt:Issuer"],
+                        ValidAudience = builder.Configuration["Jwt:Audience"],
+                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]))
+                    };
+                });
+
+            builder.Services.AddAuthorization();
+           
 
             //EF core connect
             builder.Services.AddDbContext<AppDbContext>(options =>
@@ -58,6 +87,7 @@ namespace AlaBackEnd
             // Add services to the container.
 
             builder.Services.AddControllers();
+            // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
             // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
             builder.Services.AddOpenApi();
 
@@ -92,19 +122,21 @@ namespace AlaBackEnd
                            .WithTheme(ScalarTheme.Moon) // Можна вибрати тему: Solarized, BluePlanet тощо
                            .WithDefaultHttpClient(ScalarTarget.CSharp, ScalarClient.HttpClient);
                 });
+
             }
             if (!app.Environment.IsDevelopment())
             {
                 app.UseHttpsRedirection();
             }
                 app.UseCors();
+            app.UseAuthentication();
             app.UseAuthorization();
 
 
             
             app.MapControllers();
 
-            await app.SeedAsync();
+            //await app.SeedAsync();
 
             app.Run();
         }

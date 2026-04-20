@@ -4,7 +4,9 @@ using AlaBackEnd.DAL.Entity;
 using AlaBackEnd.DAL.Entity.Products;
 using AlaBackEnd.DAL.Repositories;
 using AutoMapper;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
+using System.Security.Claims;
 
 
 namespace AlaBackEnd.BLL.Services
@@ -16,19 +18,20 @@ namespace AlaBackEnd.BLL.Services
         private readonly IMapper _Mapper;
         private readonly TagRepository _Tags;
         private readonly ImageService _Image;
+        private readonly IHttpContextAccessor _httpAccessor;
 
-        public ProductService(ProductRepository ProductRepository, IMapper mapper, TagRepository tags, CategoryRepository categoryRepository, ImageService image)
+        public ProductService(IHttpContextAccessor httpAccessor, ProductRepository ProductRepository, IMapper mapper, TagRepository tags, CategoryRepository categoryRepository, ImageService image)
         {
             _ProductRepository = ProductRepository;
             _Mapper = mapper;
             _Tags = tags;
             _CategoryRepository = categoryRepository;
             _Image = image;
-
+            _httpAccessor = httpAccessor;
         }
         public async Task<ServiceResponse> GetAllAsync(int PageNumber, int PageSize)
         {
-            var entities = await _ProductRepository.GetAllWithCategoryAsync(PageNumber, PageSize);
+            var entities = await _ProductRepository.GetAll(PageNumber, PageSize);
                 
                 
             var dtos = _Mapper.Map<List<ProductDto>>(entities);
@@ -82,6 +85,9 @@ namespace AlaBackEnd.BLL.Services
 
             
             var entity = _Mapper.Map<BaseProductEntity>(dto);
+
+            var userId = _httpAccessor.HttpContext?.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            entity.UserId = int.Parse(userId);
             
             if (dto.Images != null && dto.Images.Count > 0)
             {
@@ -103,7 +109,7 @@ namespace AlaBackEnd.BLL.Services
             }
 
             
-            var categ = await _CategoryRepository.GetAllAsync(dto.CategoryId);
+            var categ = await _CategoryRepository.GetByIdAsync(dto.CategoryId);
 
             if (categ == null)
             {
@@ -118,14 +124,12 @@ namespace AlaBackEnd.BLL.Services
             entity.Tags = new List<ProductTagEntity>();
             if (dto.Tags != null && dto.Tags.Any())
             {
-                foreach (int tagId in dto.Tags)
-                {
-                    var addedTag = await _Tags.GetByIdAsync(tagId);
-                    if (addedTag != null)
-                    {
-                        entity.Tags.Add(addedTag);
-                    }
-                }
+                var tags = await _Tags.tags
+                    .Where(t => dto.Tags.Contains(t.Id))
+                    .AsNoTracking()
+                    .ToListAsync();
+                    
+                entity.Tags = tags;
             }
 
             Console.WriteLine($"DEBUG: Перед збереженням у продукту {entity.Images.Count} картинок.");
@@ -153,6 +157,39 @@ namespace AlaBackEnd.BLL.Services
                 return ServiceResponse.Error($"The name: {dto.Name} is already used");
             }
             string oldName = entity.Name;
+
+            if (dto.UpdateDateFrom != null && dto.UpdateDateTo != null)
+            {
+                entity.DateFrom = DateTime.Parse(dto.UpdateDateFrom).ToUniversalTime();
+                entity.DateTo = DateTime.Parse(dto.UpdateDateTo).ToUniversalTime();
+            }
+            if (dto.Tags.Any())
+            {
+
+                var currentTags = entity.Tags.Select(t => t.Id).ToHashSet();
+                var newTags = dto.Tags.ToHashSet();
+
+                var tagsToRemove = entity.Tags
+                    .Where(t => !newTags.Contains(t.Id))
+                    .ToList();
+                foreach (var tags in  tagsToRemove)
+                {
+                    entity.Tags.Remove(tags);
+                }
+                var newTagsId = newTags.Except(currentTags).ToList();
+                if (newTagsId.Any())
+                {
+                    var tagsToAdd = await _Tags.GetByIdAsync(newTagsId);
+                    foreach (var tag in  tagsToAdd)
+                    {
+                        entity.Tags.Add(tag);
+                    }
+                }
+
+
+            }
+
+
 
             _Mapper.Map(dto, entity);
 
@@ -185,7 +222,22 @@ namespace AlaBackEnd.BLL.Services
                 return ServiceResponse.Error("Something wrong with deleting that product...");
             }
             
-            return ServiceResponse.Success($"Succssfully deleting product with name: {nameOfDeletedProduct}!", true);
+            return ServiceResponse.Success($"Succssfully deleting product with name: {nameOfDeletedProduct}!", null);
+
+        }
+        public async Task<ServiceResponse> DeleteRangeAsync(List<int> id)
+        {
+            var entities = await _ProductRepository.GetRangeByIdAsync(id);
+            if (entities == null )
+            {
+                return ServiceResponse.Error("The products with these id's were not found");
+            }
+            var res = await _ProductRepository.DeleteRangeAsync(entities);
+            if (!res)
+            {
+                return ServiceResponse.Error("Something wrong with deleting these products...");
+            }
+            return ServiceResponse.Success("Successfuly deleting range of products!", null);
 
         }
     }

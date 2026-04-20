@@ -1,10 +1,11 @@
-﻿using System;
+﻿using AlaBackEnd.DAL.Entity.BaseEntity;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace AlaBackEnd.DAL.Entity.Users
 {
-    public class RoleEntity
+    public class RoleEntity : IBaseEntity
     {
         public int Id { get; set; } 
         public string Name { get; set; } = string.Empty;

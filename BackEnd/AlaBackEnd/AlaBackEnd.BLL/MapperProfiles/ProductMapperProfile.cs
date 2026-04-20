@@ -1,6 +1,8 @@
 ﻿using AlaBackEnd.BLL.dto;
+using AlaBackEnd.BLL.dto.UserDto;
 using AlaBackEnd.DAL.Entity;
 using AlaBackEnd.DAL.Entity.Products;
+using AlaBackEnd.DAL.Entity.Users;
 using AlaBackEnd.Entity.Products;
 using AutoMapper;
 
@@ -36,7 +38,9 @@ namespace AlaBackEnd.BLL.MapperProfiles
                 .ForMember(dest => dest.Images, opt => opt.Ignore())
                 .ForMember(dest => dest.Id, opt => opt.Ignore())
                 .ForMember(dest => dest.Tags, opt => opt.Ignore())
-                .ForMember(dest => dest.Category, opt => opt.Ignore());
+                .ForMember(dest => dest.Category, opt => opt.Ignore())
+                .ForMember(dest => dest.DateFrom, opt => opt.MapFrom(src => DateTime.Parse(src.CreateDateFrom).ToUniversalTime()))
+                .ForMember(dest => dest.DateTo, opt => opt.MapFrom(src => DateTime.Parse(src.CreateDateTo).ToUniversalTime()));
 
             //CreateMap<CategoryEntity, CategoryDto>();
 
@@ -45,14 +49,21 @@ namespace AlaBackEnd.BLL.MapperProfiles
             CreateMap<UpdateProductDto, BaseProductEntity>()
                 .ForMember(dest => dest.Id, opt => opt.Ignore())
                 .ForMember(dest => dest.Images, opt => opt.Ignore())
-            .ForAllMembers(opts => opts.Condition((src, dest, srcMember) => srcMember != null));
+                .ForMember(dest => dest.Tags, opt => opt.Ignore())
+                .ForMember(dest => dest.DateFrom, opt => opt.Ignore())
+                .ForMember(dest => dest.DateTo, opt => opt.Ignore())
+                
+                .ForAllMembers(opts => opts.Condition((src, dest, srcMember) => srcMember != null));
 
 
             CreateMap<List<BaseProductEntity>, ProductDto>();
 
 
-            
-            
+
+            //UserDto -> UserEntity
+            CreateMap<RegisterUserDto, UserEntity>()
+                .ForMember(dest => dest.Id, opt => opt.Ignore())
+                .ForMember(dest => dest.Roles, opt => opt.Ignore());
             
 
 

@@ -19,6 +19,12 @@ namespace AlaBackEnd.DAL.Repositories
         {
             return await tags.FirstOrDefaultAsync(t => t.Name == name);
         }
-        
+        public async Task<List<ProductTagEntity>?> GetByIdAsync(List<int> id)
+        {
+            return await tags
+                .Where(t => id.Contains(t.Id))
+                .ToListAsync();
+                
+        }
     }
 }

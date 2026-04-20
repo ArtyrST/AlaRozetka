@@ -94,6 +94,8 @@ namespace AlaBackEnd.DAL
                 entity.Property(p => p.Country).IsRequired(true).HasMaxLength(100);
                 entity.HasMany(p => p.Tags).WithMany(p => p.Products).UsingEntity("ProductsTags");
                 entity.Property(p =>p.Description).IsRequired(true).HasMaxLength(300);
+                entity.Property(p => p.DateFrom).IsRequired(true);
+                entity.Property(p=> p.DateTo).IsRequired(true);
 
                 
 

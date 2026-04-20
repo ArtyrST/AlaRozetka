@@ -32,7 +32,7 @@ namespace AlaBackEnd.DAL.Repositories
         }
         public async Task<bool> UpdateRangeAsync(IEnumerable<TEntity> entities)
         {
-            await _context.Set<TEntity>().AddRangeAsync(entities);
+            _context.Set<TEntity>().UpdateRange(entities);
             int res = await _context.SaveChangesAsync();
             return res != 0;
         }
@@ -60,7 +60,7 @@ namespace AlaBackEnd.DAL.Repositories
             return res != 0;
         }
 
-        public async Task<TEntity?> GetByIdAsync(int id)
+        public virtual async Task<TEntity?> GetByIdAsync(int id)
         {
             return await _context.Set<TEntity>().
                 FirstOrDefaultAsync(e => e.Id ==  id);
