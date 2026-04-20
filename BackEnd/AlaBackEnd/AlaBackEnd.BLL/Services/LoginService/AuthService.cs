@@ -20,7 +20,12 @@ namespace AlaBackEnd.BLL.Services
 
         public async Task<ServiceResponse> LoginAsync(LoginDto dto)
         {
-            var user = await _user.GetByEmailAsync(dto.Email);
+            var user = await _user.GetByMailAsync(dto.Email);
+            Console.WriteLine($"Roles count: {user?.Roles?.Count ?? 0}");
+            foreach (var role in user?.Roles ?? [])
+            {
+                Console.WriteLine($"Role name: {role.Name}");
+            }
             if (user == null || !BCrypt.Net.BCrypt.Verify(dto.PasswordHash, user.Password))
             {
                 return ServiceResponse.Error(@$"Користувача з email : {dto.Email} не знайдено");

@@ -28,7 +28,7 @@ namespace AlaBackEnd.DAL.Repositories
         }
         public async Task<bool> IsExistAsync(string mail)
         {
-            return await GetByEmailAsync(mail) != null;
+            return await GetByMailAsync(mail) != null;
         }
         public async Task<bool> IsExistAsync(string name, params int[] exceptionId)
         {
@@ -38,11 +38,7 @@ namespace AlaBackEnd.DAL.Repositories
                 && !exceptionId.Contains(p.Id));
         }
 
-        public async Task<UserEntity> GetByEmailAsync(string email)
-        {
-            return await _context.Users
-                .AsNoTracking()
-                .FirstOrDefaultAsync(u => u.Email == email);
-        }
+        
+        
     }
 }
