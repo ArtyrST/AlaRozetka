@@ -13,7 +13,7 @@ namespace AlaBackEnd.BLL.Services.ImagesService
 
         public ImageService(IWebHostEnvironment env, IMapper mapper)
         {
-            _basePath = Path.Combine(env.ContentRootPath, "Uploads", "Images");
+            _basePath = Path.Combine("wwwroot", "Uploads", "Images");
             Directory.CreateDirectory(_basePath); 
             _mapper = mapper;
         }
