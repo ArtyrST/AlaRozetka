@@ -7,11 +7,6 @@ $font-main: 'Nunito', sans-serif;
 $transition: all 0.3s ease;
 
 // --- Fonts ---
-@font-face {
-  font-family: 'Nunito';
-  src: url('../src/assets/fonts/Nunito-Regular.ttf') format('truetype');
-  font-weight: 600;
-}
 
 // --- Global Styles ---
 body {

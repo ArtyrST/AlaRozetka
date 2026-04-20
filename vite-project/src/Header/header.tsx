@@ -97,7 +97,7 @@ function Header() {
             Про нас
           </a>
           <a className="pages">
-            <Link to="/Realtor">Контакти</Link>
+            <Link to="/Contacts">Контакти</Link>
           </a>
         </div>
 
