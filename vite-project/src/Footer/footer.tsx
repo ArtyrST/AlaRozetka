@@ -1,5 +1,5 @@
-import './footer.css';
-import { useEffect, useState } from 'react';
+import './footer.scss';
+import {  useState } from 'react';
 
 function Footer() {
   const [email, setEmail] = useState('');
@@ -73,6 +73,49 @@ function Footer() {
           </ul>
         </div>
 
+ <div className="footer-section">
+          <h3 data-i18n="footer.rules">Правила та умови</h3>
+          <ul>
+            <li>
+              <a href="#" data-i18n="footer.user_agreement">
+                Користувацька угода
+              </a>
+            </li>
+            <li>
+              <a href="#" data-i18n="footer.terms">
+                Правила та умови
+              </a>
+            </li>
+            <li>
+              <a href="../Contacts/contacts.html" data-i18n="footer.support">
+                Підтримка
+              </a>
+            </li>
+          </ul>
+        </div>
+
+         <div className="footer-section">
+          <h3 data-i18n="footer.rules">Правила та умови</h3>
+          <ul>
+            <li>
+              <a href="#" data-i18n="footer.user_agreement">
+                Користувацька угода
+              </a>
+            </li>
+            <li>
+              <a href="#" data-i18n="footer.terms">
+                Правила та умови
+              </a>
+            </li>
+            <li>
+              <a href="../Contacts/contacts.html" data-i18n="footer.support">
+                Підтримка
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        
         <div className="newsletter">
           <h3 data-i18n="footer.news">Отримувати новини про знижки</h3>
 
