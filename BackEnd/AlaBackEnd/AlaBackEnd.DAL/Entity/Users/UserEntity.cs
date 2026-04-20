@@ -10,7 +10,7 @@ namespace AlaBackEnd.DAL.Entity.Users
         public required string Email { get;set; }  
         public required string FirstName { get;set; } 
         public required string SecondName { get;set; }
-        public string LastName { get; set; } = string.Empty;
+        public string Login { get; set; } = string.Empty;
         public string Password { get; set; } = string.Empty;
         public int UserRate { get; set; }
 

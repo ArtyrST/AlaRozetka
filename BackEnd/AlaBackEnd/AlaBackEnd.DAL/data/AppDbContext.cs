@@ -59,7 +59,7 @@ namespace AlaBackEnd.DAL
                 .IsRequired(true);
 
             builder.Entity<UserEntity>()
-                .Property(u => u.LastName)
+                .Property(u => u.Login)
                 .HasMaxLength(30);
 
             //Roles

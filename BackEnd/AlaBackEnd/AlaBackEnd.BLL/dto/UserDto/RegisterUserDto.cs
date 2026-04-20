@@ -15,7 +15,7 @@ namespace AlaBackEnd.BLL.dto.UserDto
 
         public string SecondName { get; set; } = string.Empty;
         
-        public string LastName { get; set; } = string.Empty;
+        public string Login { get; set; } = string.Empty;
         public string Password {  get; set; } = string.Empty;
         //public List<int> Roles { get; set; } = [];
 
