@@ -20,7 +20,7 @@ namespace AlaBackEnd.API.Controllers
             _productService = productService;
             
         }
-        [Authorize]
+        //[Authorize]
         [HttpGet] 
         public async Task<IActionResult> GetAsync([FromQuery] int PageNumber)
         {
@@ -49,7 +49,7 @@ namespace AlaBackEnd.API.Controllers
             var response = await _productService.CreateAsync(dto);
             return this.GetResult(response);
         }
-        [Authorize]
+        //[Authorize]
         [HttpPut("update")]
         public async Task<IActionResult> UpdateProductAsync([FromForm] UpdateProductDto dto)
         {
