@@ -4,6 +4,7 @@ using AlaBackEnd.DAL.Repositories;
 using AutoMapper;
 using Org.BouncyCastle.Crypto.Generators;
 using BCrypt.Net;
+using AlaBackEnd.DAL.Entity.ProductCart;
 
 
 namespace AlaBackEnd.BLL.Services
@@ -13,11 +14,13 @@ namespace AlaBackEnd.BLL.Services
         private readonly IMapper _mapper;
         private readonly UserRepository _userRepository;
         private readonly RoleRepository _role;
+        
         public UserService(IMapper mapper, UserRepository userRepository, RoleRepository role)
         {
             _mapper = mapper;
             _userRepository = userRepository;
             _role = role;
+            
         }
         public async Task<ServiceResponse> RegisterUserAsync(RegisterUserDto dto)
         {
@@ -33,6 +36,9 @@ namespace AlaBackEnd.BLL.Services
             {
                 entity.Roles.Add(defaultRole);
             }
+
+            entity.Cart = new CartEntity();
+            
 
             string passwordHash = BCrypt.Net.BCrypt.HashPassword(dto.Password);
 

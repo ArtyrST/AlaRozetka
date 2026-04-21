@@ -3,6 +3,7 @@ using System;
 using AlaBackEnd.DAL;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace AlaBackEnd.DAL.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260421205320_UserWithOrderItem")]
+    partial class UserWithOrderItem
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -165,6 +168,9 @@ namespace AlaBackEnd.DAL.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
+                    b.Property<int>("Amount")
+                        .HasColumnType("integer");
+
                     b.Property<int>("CartId")
                         .HasColumnType("integer");
 
@@ -180,13 +186,7 @@ namespace AlaBackEnd.DAL.Migrations
                     b.Property<DateTime>("TimeTo")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<double>("TotalPrice")
-                        .HasColumnType("double precision");
-
                     b.Property<int>("UserId")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("VisitorsCount")
                         .HasColumnType("integer");
 
                     b.HasKey("Id");

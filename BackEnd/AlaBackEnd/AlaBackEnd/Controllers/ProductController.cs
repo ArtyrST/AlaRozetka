@@ -13,12 +13,13 @@ namespace AlaBackEnd.API.Controllers
     public class ProductController : ControllerBase
     {
         private readonly ProductService _productService;
+        private readonly OrderItemService _orderItemService;
         
 
-        public ProductController(ProductService productService)
+        public ProductController(ProductService productService, OrderItemService orderItemService)
         {
             _productService = productService;
-            
+            _orderItemService = orderItemService;
         }
         //[Authorize]
         [HttpGet] 
@@ -69,6 +70,13 @@ namespace AlaBackEnd.API.Controllers
         public async Task<IActionResult> DeleteRangeProductsAsync([FromQuery] List<int> ids)
         {
             var response = await _productService.DeleteRangeAsync(ids);
+            return this.GetResult(response);
+        }
+        [Authorize(Roles = "Guest")]
+        [HttpPost("make-order")]
+        public async Task<IActionResult> MakeOrderAsync([FromForm] CreateOrderDto dto)
+        {
+            var response = await _orderItemService.CreateOrderAsync(dto);
             return this.GetResult(response);
         }
 

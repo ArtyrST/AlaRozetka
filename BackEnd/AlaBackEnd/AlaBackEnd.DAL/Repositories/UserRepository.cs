@@ -15,7 +15,9 @@ namespace AlaBackEnd.DAL.Repositories
             _context = context;
         }
         public IQueryable<UserEntity> users => GetAll()
-            .Include(u => u.Roles);
+            .Include(u => u.Roles)
+            .Include(u => u.Cart)
+            .AsSplitQuery();
 
         public async Task<UserEntity?> GetByMailAsync(string mail)
         {
@@ -36,6 +38,11 @@ namespace AlaBackEnd.DAL.Repositories
                 .AsNoTracking()
                 .AnyAsync(p => p.FirstName.ToLower() == name.ToLower()
                 && !exceptionId.Contains(p.Id));
+        }
+        public override async Task<UserEntity?> GetByIdAsync(int id)
+        {
+            return await users
+                .FirstOrDefaultAsync(u => u.Id == id);
         }
 
         

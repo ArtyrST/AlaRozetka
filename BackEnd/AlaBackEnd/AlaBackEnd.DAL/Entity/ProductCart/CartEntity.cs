@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿
 using AlaBackEnd.DAL.Entity.Users;
+using AlaBackEnd.DAL.Entity.BaseEntity;
 
 namespace AlaBackEnd.DAL.Entity.ProductCart
 {
-    public class CartEntity
+    public class CartEntity : IBaseEntity
     {
         public int Id { get; set; }
 

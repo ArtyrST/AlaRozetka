@@ -1,17 +1,18 @@
-﻿using AlaBackEnd.DAL.Entity.ProductCart;
-using AlaBackEnd.DAL.Entity;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿
+using AlaBackEnd.DAL.Entity.Users;
+using AlaBackEnd.DAL.Entity.BaseEntity;
 
 namespace AlaBackEnd.DAL.Entity.ProductCart
 {
-    public class OrderItemEntity
+    public class OrderItemEntity : IBaseEntity
     {
         public int Id { get; set; }
-        public int Amount { get; set; }
+        
         public DateTime TimeFrom { get; set; }
         public DateTime TimeTo { get; set; }
+        public int UserId { get; set; }
+        public double TotalPrice { get; set; }
+        public int VisitorsCount { get; set; }
         
         //with cart
         public int CartId { get; set; }
@@ -21,6 +22,10 @@ namespace AlaBackEnd.DAL.Entity.ProductCart
         //with product
         public BaseProductEntity? Product { get; set; }
         public int ProductId { get; set; }
+
+        //with user
+        public UserEntity? Rieltor { get; set; }
+        public int? RieltorId { get; set; }
         
         
 

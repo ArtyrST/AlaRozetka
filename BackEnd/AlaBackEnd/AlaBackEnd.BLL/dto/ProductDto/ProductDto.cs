@@ -1,15 +1,8 @@
 ﻿
 
-//public int Id { get; set; }
-//public required string Name { get; set; } = string.Empty;
-//public required double Price { get; set; }
-//public required string Country { get; set; } = string.Empty;
-//public required string City { get; set; } = string.Empty;
-//public required string Descriprion { get; set; } = string.Empty;
-//public DateTime Date { get; set; } = DateTime.UtcNow;
 
-using AlaBackEnd.DAL.Entity;
-using System.Globalization;
+
+
 
 namespace AlaBackEnd.BLL.dto
 {
