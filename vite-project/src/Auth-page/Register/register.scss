@@ -6,11 +6,6 @@ $text-dark: #000000;
 $text-muted: #444;
 $font-main: 'Nunito', sans-serif;
 
-// Шрифти
-@font-face {
-  font-family: 'Nunito';
-  src: url('../src/assets/fonts/Nunito-Regular.ttf') format('truetype');
-}
 
 .register-wrapper {
   font-family: $font-main;

@@ -1,16 +1,27 @@
+ @font-face {
+            font-family: 'Nunito';
+            src: url('./assets/fonts/Nunito-Regular.ttf') format('woff2');
+            font-weight: 400;
+}
+
+ 
+ 
  * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: 'Nunito', sans-serif;
+
+
         }
 
         main {
             
             margin-left: 100px;
             margin-right: 100px;
+            
         }
-
+    
     /* Animation utilities */
     .animate {
       opacity: 0;
