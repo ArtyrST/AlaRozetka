@@ -32,6 +32,8 @@ namespace AlaBackEnd
             builder.Services.AddScoped<CategoryRepository>();
             builder.Services.AddScoped<UserRepository>();
             builder.Services.AddScoped<RoleRepository>();
+            builder.Services.AddScoped<OrderRepository>();
+            builder.Services.AddScoped<UserCartRepository>();
 
 
             //add services
@@ -41,6 +43,7 @@ namespace AlaBackEnd
             builder.Services.AddScoped<UserService>();
             builder.Services.AddScoped<IAuthService, AuthService>();
             builder.Services.AddScoped<JwtService>();
+            builder.Services.AddScoped<OrderItemService>();
             //add automapper
             builder.Services.AddAutoMapper(cfg =>
             {

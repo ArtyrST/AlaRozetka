@@ -3,6 +3,7 @@ using System;
 using AlaBackEnd.DAL;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace AlaBackEnd.DAL.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260420173127_fixes")]
+    partial class fixes
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -62,9 +65,6 @@ namespace AlaBackEnd.DAL.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("character varying(100)");
 
-                    b.Property<int?>("OrderId")
-                        .HasColumnType("integer");
-
                     b.Property<double>("Price")
                         .HasColumnType("double precision");
 
@@ -74,8 +74,6 @@ namespace AlaBackEnd.DAL.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("CategoryId");
-
-                    b.HasIndex("OrderId");
 
                     b.HasIndex("UserId");
 
@@ -165,13 +163,13 @@ namespace AlaBackEnd.DAL.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
+                    b.Property<int>("Amount")
+                        .HasColumnType("integer");
+
                     b.Property<int>("CartId")
                         .HasColumnType("integer");
 
                     b.Property<int>("ProductId")
-                        .HasColumnType("integer");
-
-                    b.Property<int?>("RieltorId")
                         .HasColumnType("integer");
 
                     b.Property<DateTime>("TimeFrom")
@@ -180,22 +178,11 @@ namespace AlaBackEnd.DAL.Migrations
                     b.Property<DateTime>("TimeTo")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<double>("TotalPrice")
-                        .HasColumnType("double precision");
-
-                    b.Property<int>("UserId")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("VisitorsCount")
-                        .HasColumnType("integer");
-
                     b.HasKey("Id");
 
                     b.HasIndex("CartId");
 
                     b.HasIndex("ProductId");
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("OrderItems");
                 });
@@ -330,18 +317,12 @@ namespace AlaBackEnd.DAL.Migrations
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.SetNull);
 
-                    b.HasOne("AlaBackEnd.DAL.Entity.ProductCart.OrderItemEntity", "Order")
-                        .WithMany()
-                        .HasForeignKey("OrderId");
-
                     b.HasOne("AlaBackEnd.DAL.Entity.Users.UserEntity", "User")
                         .WithMany("Products")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.NoAction);
 
                     b.Navigation("Category");
-
-                    b.Navigation("Order");
 
                     b.Navigation("User");
                 });
@@ -401,17 +382,9 @@ namespace AlaBackEnd.DAL.Migrations
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("AlaBackEnd.DAL.Entity.Users.UserEntity", "Rieltor")
-                        .WithMany("Orders")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.SetNull)
-                        .IsRequired();
-
                     b.Navigation("Cart");
 
                     b.Navigation("Product");
-
-                    b.Navigation("Rieltor");
                 });
 
             modelBuilder.Entity("ProductsTags", b =>
@@ -461,8 +434,6 @@ namespace AlaBackEnd.DAL.Migrations
                     b.Navigation("Cart");
 
                     b.Navigation("FeedBacks");
-
-                    b.Navigation("Orders");
 
                     b.Navigation("Products");
                 });

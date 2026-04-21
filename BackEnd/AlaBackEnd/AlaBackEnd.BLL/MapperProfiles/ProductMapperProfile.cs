@@ -1,6 +1,7 @@
 ﻿using AlaBackEnd.BLL.dto;
 using AlaBackEnd.BLL.dto.UserDto;
 using AlaBackEnd.DAL.Entity;
+using AlaBackEnd.DAL.Entity.ProductCart;
 using AlaBackEnd.DAL.Entity.Products;
 using AlaBackEnd.DAL.Entity.Users;
 using AlaBackEnd.Entity.Products;
@@ -64,9 +65,14 @@ namespace AlaBackEnd.BLL.MapperProfiles
             CreateMap<RegisterUserDto, UserEntity>()
                 .ForMember(dest => dest.Id, opt => opt.Ignore())
                 .ForMember(dest => dest.Roles, opt => opt.Ignore());
-            
 
 
+            //CreateOrderDto -> OrderEntity
+            CreateMap<CreateOrderDto, OrderItemEntity>()
+                .ForMember(dest => dest.Id, opt => opt.Ignore())
+                .ForMember(dest => dest.UserId, opt => opt.Ignore())
+                .ForMember(dest => dest.TotalPrice, opt => opt.Ignore());
+                
         }
     }
 }

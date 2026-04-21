@@ -19,9 +19,9 @@ namespace AlaBackEnd.BLL.dto
         public string Description { get; set; } = string.Empty;
         [Required(ErrorMessage = "Category is required")]
         public int CategoryId { get; set; }
-        [Required(ErrorMessage = "DateFrom is required")]
+        //[Required(ErrorMessage = "DateFrom is required")]
         public string CreateDateFrom { get; set; } = string.Empty;
-        [Required(ErrorMessage = "DateTo is required")]
+        //[Required(ErrorMessage = "DateTo is required")]
         public string CreateDateTo { get; set; } = string.Empty;
         [FromForm]
         public List<int> Tags { get; set; } = [];

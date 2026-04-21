@@ -1,5 +1,6 @@
 ﻿
 using AlaBackEnd.DAL.Entity.BaseEntity;
+using AlaBackEnd.DAL.Entity.ProductCart;
 using AlaBackEnd.DAL.Entity.Products;
 using AlaBackEnd.DAL.Entity.Users;
 using AlaBackEnd.Entity.Products;
@@ -34,6 +35,10 @@ namespace AlaBackEnd.DAL.Entity
 
         //with feedbacks
         public List<FeedBackEntity> Feedbacks { get; set; } = [];
+
+        //with order
+        public int? OrderId { get; set; }
+        public OrderItemEntity? Order { get; set; }
        
         
         

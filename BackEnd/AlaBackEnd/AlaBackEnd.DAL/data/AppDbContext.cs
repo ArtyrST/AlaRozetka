@@ -4,9 +4,7 @@ using AlaBackEnd.DAL.Entity.Products;
 using AlaBackEnd.DAL.Entity.Users;
 using AlaBackEnd.Entity.Products;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Metadata;
-using System.Reflection.Emit;
+
 
 
 
@@ -29,10 +27,13 @@ namespace AlaBackEnd.DAL
         
         
         
+        
         protected override void OnModelCreating(ModelBuilder builder)
         {
 
             base.OnModelCreating(builder);
+
+            
 
             builder.Entity<BaseProductEntity>()
                 .Navigation(p => p.Tags)
@@ -202,6 +203,15 @@ namespace AlaBackEnd.DAL
                 .HasForeignKey(b => b.ProductId)
                 .OnDelete(DeleteBehavior.Cascade);
             });
+            //order with user
+            builder.Entity<UserEntity>(u =>
+            {
+                u.HasMany(u => u.Orders)
+                .WithOne(u => u.Rieltor)
+                .HasForeignKey(u => u.UserId)
+                .OnDelete(DeleteBehavior.SetNull);
+            });
+
 
         }        
     }
