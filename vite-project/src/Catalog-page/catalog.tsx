@@ -6,10 +6,10 @@ type ApiHotel = {
   name: string
   country: string
   price: number
-  categoryId: number
+  categoryName: string
   date: string
   city: string
-  categoryName: string
+  
 }
 
 type Hotel = {

@@ -133,12 +133,15 @@ function Header() {
           </div>
 
           <div className="user-section">
-            <button type="button">
+            <a  title="Вихід">
+            <Link to="/logout" type="button">
               <img src="/src/assets/Bell_fill.png" alt="Notifications" />
-            </button>
+            </Link>
+            </a>
+
 
             <a  title="Реєстрація">
-              <Link to="/register" type="button">
+              <Link to="/protected" type="button">
                 <img src="/src/assets/User_fill.png" alt="User" />
               </Link>
             </a>
