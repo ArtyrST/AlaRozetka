@@ -37,7 +37,7 @@ namespace AlaBackEnd.BLL.Services
             {
                 return ServiceResponse.Error("Rieltor was not found");
             }
-            entity.RieltorId = rieltor.Id;
+            entity.RieltorId = rieltor.UserId;
             entity.VisitorsCount = dto.VisitorsCount;
 
             
