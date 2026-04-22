@@ -1,37 +1,63 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import './login.scss';
+import { Link, useNavigate } from 'react-router-dom'; 
+import './Login.scss';
 
 import logo from '../../assets/Group 3.svg';
 import sideImage from '../../assets/Rectangle 53.png';
 
 export default function Login() {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
-    email: '',
+    login: '', 
     password: '',
   });
+  
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-
     setFormData((prev) => ({
       ...prev,
       [name]: value,
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setError(null);
+    setLoading(true);
 
     try {
-      sessionStorage.setItem('authSuccess', 'true');
-    } catch (err) {
-      console.error(err);
+      const params = new URLSearchParams();
+      params.append('Email', formData.login);
+      params.append('PasswordHash', formData.password);
+
+      const response = await fetch('https://localhost:7147/api/user/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: params,
+      });
+
+      const result = await response.text();
+
+      if (!response.ok) {
+        throw new Error(result || 'Невірний логін або пароль');
+      }
+
+
+      localStorage.setItem('token', result); 
+      
+      console.log('Вхід успішний');
+      navigate('/'); 
+      
+    } catch (err: any) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
     }
-
-    console.log('Форма логіну:', formData);
-
-    // тут потім сам додаси navigate('/') або API
   };
 
   return (
@@ -43,13 +69,15 @@ export default function Login() {
         <h1>місця з нами</h1>
 
         <form onSubmit={handleSubmit}>
+          {error && <div className="error-message" style={{ color: 'red', marginBottom: '10px' }}>{error}</div>}
+          
           <div className="form-field">
-            <label htmlFor="email">Пошта</label>
+            <label htmlFor="login">Логін</label>
             <input
-              type="email"
-              id="email"
-              name="email"
-              value={formData.email}
+              type="text"
+              id="login"
+              name="login" 
+              value={formData.login}
               onChange={handleChange}
               required
             />
@@ -68,7 +96,9 @@ export default function Login() {
           </div>
 
           <div className="login-cta">
-            <button type="submit">Вхід</button>
+            <button type="submit" disabled={loading}>
+              {loading ? 'Вхід...' : 'Вхід'}
+            </button>
           </div>
 
           <p>
