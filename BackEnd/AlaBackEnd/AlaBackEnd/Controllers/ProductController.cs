@@ -14,12 +14,14 @@ namespace AlaBackEnd.API.Controllers
     {
         private readonly ProductService _productService;
         private readonly OrderItemService _orderItemService;
+        private readonly FeedBackService _feedbackService;
         
 
-        public ProductController(ProductService productService, OrderItemService orderItemService)
+        public ProductController(ProductService productService, OrderItemService orderItemService, FeedBackService feedBackService)
         {
             _productService = productService;
             _orderItemService = orderItemService;
+            _feedbackService = feedBackService;
         }
         //[Authorize]
         [HttpGet] 
@@ -77,6 +79,13 @@ namespace AlaBackEnd.API.Controllers
         public async Task<IActionResult> MakeOrderAsync([FromForm] CreateOrderDto dto)
         {
             var response = await _orderItemService.CreateOrderAsync(dto);
+            return this.GetResult(response);
+        }
+        [Authorize(Roles = "Guest")]
+        [HttpPost("create-feedback")]
+        public async Task<IActionResult> CreateFeedBackAsync([FromForm] CreateFeedBackDto dto)
+        {
+            var response = await _feedbackService.CreateAsync(dto);
             return this.GetResult(response);
         }
 
