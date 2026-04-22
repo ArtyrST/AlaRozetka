@@ -72,6 +72,12 @@ namespace AlaBackEnd.BLL.MapperProfiles
                 .ForMember(dest => dest.Id, opt => opt.Ignore())
                 .ForMember(dest => dest.UserId, opt => opt.Ignore())
                 .ForMember(dest => dest.TotalPrice, opt => opt.Ignore());
+
+            //CreateFeedBackDto -> FeedBackDto
+            CreateMap<CreateFeedBackDto, FeedBackEntity>()
+                .ForMember(dest => dest.Id, opt => opt.Ignore())
+                .ForMember(dest => dest.UserId, opt => opt.Ignore());
+
                 
         }
     }

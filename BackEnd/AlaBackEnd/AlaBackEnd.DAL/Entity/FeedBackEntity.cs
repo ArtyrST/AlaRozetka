@@ -1,15 +1,14 @@
 ﻿using AlaBackEnd.DAL.Entity.Users;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using AlaBackEnd.DAL.Entity.BaseEntity;
+
 
 namespace AlaBackEnd.DAL.Entity
 {
-    public class FeedBackEntity
+    public class FeedBackEntity : IBaseEntity
     {
         public int Id { get; set; }
         public string Description { get; set; } = string.Empty;
-        public int StarCount { get; set; }
+        public float StarCount { get; set; }
 
         //user
         public UserEntity? User { get; set; }
