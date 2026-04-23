@@ -9,6 +9,7 @@ import ContactPage from "./Contact-page/contact.tsx";
 import ProtectedRoute from "./ProtectedRoute.tsx";
 import DeleteToken from "./DeleteToken.tsx";
 import RealtorProfile from "./Realtor-profile/realtor-profile.tsx";
+import AddHotel from "./Add-hotel-page/add-hotel.tsx";
 import './App.css';
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
       <Route path="contacts" element={<ContactPage />} />
       <Route path="realtor" element={<RealtorPage />} />
       <Route path="realtor-profile" element={<RealtorProfile />} />
+      <Route path="add-hotel" element={<AddHotel />} />
     </Route>
 
     <Route path="/register" element={<Register />} />

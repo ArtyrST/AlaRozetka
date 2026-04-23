@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './realtor-profile.scss';
 import RealtorFullInfo from './realtor-full-info/realtor-full-info.tsx';
-
+import CreateHotelPage from './create-hotel-component/create-hotel-btn.tsx';
 
 const RealtorProfile = () => {
   const [activeItem, setActiveItem] = useState('Головна');
@@ -20,7 +20,7 @@ const RealtorProfile = () => {
       case 'Особисті дані':
         return <RealtorFullInfo />;
       case 'Мої готелі':
-        return <div>{/* <MyHotels /> */}</div>;
+        return <CreateHotelPage />;
       case 'Відгуки':
         return <div></div>;
       case 'Головна':

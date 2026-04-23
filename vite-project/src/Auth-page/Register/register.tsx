@@ -65,7 +65,7 @@ const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     });
 
     
-    const result = await response.text();
+  
 
     navigate('/login');
     
