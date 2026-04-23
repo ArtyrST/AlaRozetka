@@ -9,7 +9,7 @@ const ProtectedRoute = () => {
         return <Navigate to="/login" replace />;
     }
 
-    return <Navigate to="/Realtor" replace />;
+    return <Navigate to="/realtor-profile" replace />;
 };
 
 export default ProtectedRoute;
