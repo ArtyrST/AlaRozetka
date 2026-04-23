@@ -65,9 +65,8 @@ const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     });
 
     
-    const result = await response.text();
+  
 
-    console.log('Реєстрація успішна:', result);
     navigate('/login');
     
   } catch (err: any) {

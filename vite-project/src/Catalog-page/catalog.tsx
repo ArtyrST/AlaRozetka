@@ -108,8 +108,8 @@ useEffect(() => {
   }
 
   const resetFilters = (): void => {
-    setPriceMin(4000)
-    setPriceMax(8000)
+    setPriceMin(0)
+    setPriceMax(20000)
     setCountryInput('')
     setConfirmedCountry('')
     setSelectedRatings([])
