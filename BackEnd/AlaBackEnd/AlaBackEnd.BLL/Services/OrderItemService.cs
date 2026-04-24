@@ -44,7 +44,7 @@ namespace AlaBackEnd.BLL.Services
             
                         if (!await _orderRepository.IsDateOverlap(dto.ProductId, DateTime.Parse(dto.From), DateTime.Parse(dto.To)))
                         {
-                            return ServiceResponse.Error(@"Ця дата вже заброньована");
+                            return ServiceResponse.Error(@"Ця дата вже заброньована, або бронювання на цей час неможливе");
                         }
             
             
