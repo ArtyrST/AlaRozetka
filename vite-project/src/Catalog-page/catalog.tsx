@@ -1,28 +1,33 @@
 import { useEffect, useMemo, useState, type JSX } from 'react'
 import './catalog.scss'
 
-type ApiHotel = {
-  id: number
-  name: string
-  country: string
-  price: number
-  categoryName: string
-  date: string
-  city: string
-  
+type ImageDto = {
+  id: number;
+  path: string;      
+  isPreview: boolean; 
 }
 
 type Hotel = {
-  id: number
-  title: string
-  location: string
-  country: string
-  rating: number
-  price: number
-  image: string
-  realtor: string
-  roomType: string
-  oldPrice?: number
+  id: number;
+  name: string;
+  price: number;
+  country: string;
+  city: string;
+  description: string;
+  categoryId: number;
+  categoryName: string;
+  tags: number[];
+  images: ImageDto[];
+  dateFrom: string; 
+  dateTo: string;
+  userId: number;
+
+
+
+  location: string;      // Ось це виправить твою помилку!
+  displayImage: string;  // Це теж знадобиться для картинок
+  oldPrice: number;      // Це для цін
+  rating: number;
 }
 
 function Catalog(): JSX.Element {
@@ -38,44 +43,60 @@ function Catalog(): JSX.Element {
   const [selectedRatings, setSelectedRatings] = useState<number[]>([])
   const [sortSelect, setSortSelect] = useState<string>('default')
 
-  useEffect(() => {
+useEffect(() => {
     const fetchHotels = async () => {
       try {
         setLoading(true)
         setError('')
 
-        const response = await fetch('/api/hotels')
+        const response = await fetch('https://localhost:7147/api/products')
 
         if (!response.ok) {
           throw new Error('Не вдалося отримати готелі')
         }
 
-        const data: ApiHotel[] = await response.json()
+        const data = await response.json() as any
 
-        const mappedHotels: Hotel[] = data.map((hotel) => ({
-          id: hotel.id,
-          title: hotel.name,
-          location: `${hotel.city}, ${hotel.country}`,
-          country: hotel.country,
-          price: hotel.price,
+        if (data && Array.isArray(data.payLoad)) {
+          const mappedHotels: Hotel[] = data.payLoad.map((hotel: any) => {
+            const previewImage = hotel.images?.find((img: any) => img.isPreview)?.path 
+              || hotel.images?.[0]?.path 
+              || 'https://via.placeholder.com/400x250?text=No+Image'
 
-          // залишаємо як у початковому варіанті / заглушки
-          rating: 8.5,
-          image: 'https://via.placeholder.com/400x250?text=Hotel',
-          realtor: 'Ще не додано',
-          roomType: 'Ще не додано',
-          oldPrice: Math.round(hotel.price * 1.1),
-        }))
+            return {
+              id: hotel.id,
+              name: hotel.name,
+              price: hotel.price,
+              country: hotel.country,
+              city: hotel.city,
+              description: hotel.description,
+              categoryId: hotel.categoryId,
+              categoryName: hotel.categoryName,
+              tags: hotel.tags,
+              userId: hotel.userId,
+              images: hotel.images,
+              dateFrom: hotel.dateFrom,
+              dateTo: hotel.dateTo,
+              location: `${hotel.city}, ${hotel.country}`,
+              displayImage: previewImage,
+              oldPrice: Math.round(hotel.price * 1.15),
+              rating: 8.5,
+              formattedDateFrom: new Date(hotel.dateFrom).toLocaleDateString('uk-UA'),
+              formattedDateTo: new Date(hotel.dateTo).toLocaleDateString('uk-UA'),
+            }
+          })
 
-        setHotels(mappedHotels)
+          setHotels(mappedHotels)
+        } 
+
       } catch (err) {
         setError(err instanceof Error ? err.message : 'Сталася помилка')
       } finally {
         setLoading(false)
       }
-    }
+    } 
 
-    fetchHotels()
+    fetchHotels() // Тепер цей виклик буде працювати коректно
   }, [])
 
   const toggleRating = (value: number): void => {
@@ -87,8 +108,8 @@ function Catalog(): JSX.Element {
   }
 
   const resetFilters = (): void => {
-    setPriceMin(4000)
-    setPriceMax(8000)
+    setPriceMin(0)
+    setPriceMax(20000)
     setCountryInput('')
     setConfirmedCountry('')
     setSelectedRatings([])
@@ -105,7 +126,7 @@ function Catalog(): JSX.Element {
         hotel.country.toLowerCase().includes(confirmedCountry.trim().toLowerCase())
       )
     }
-
+/*
     if (selectedRatings.length > 0) {
       filtered = filtered.filter((hotel) =>
         selectedRatings.some((rating) => {
@@ -117,7 +138,7 @@ function Catalog(): JSX.Element {
         })
       )
     }
-
+*/
     const sorted = [...filtered]
 
     if (sortSelect === 'price_asc') {
@@ -324,26 +345,25 @@ function Catalog(): JSX.Element {
                 <div className="card-image-container">
                   <img
                     className="apartment-img"
-                    src={hotel.image}
-                    alt={hotel.title}
+
                   />
                   <div className="favorite-icon">♡</div>
                 </div>
 
                 <div className="apartment-info">
-                  <div className="apartment-title">{hotel.title}</div>
+                  <div className="apartment-title">{hotel.name}</div>
 
                   <div className="apartment-location">{hotel.location}</div>
 
-                  <div className="room-type">{hotel.roomType}</div>
+                  <div className="room-type">{hotel.categoryName}</div>
 
                   <div className="realtor-info">
-                    Ріелтор: <span>{hotel.realtor}</span>
+                    Ріелтор: <span>{hotel.userId}</span>
                   </div>
 
                   <div className="rating-container">
                     <div className="apartment-rating">
-                      <span className="star">★</span> {hotel.rating}
+                      <span className="star">★</span> 
                     </div>
                   </div>
 
