@@ -37,6 +37,10 @@ namespace AlaBackEnd.BLL.Services
             {
                 return ServiceResponse.Error("Rieltor was not found");
             }
+            if ((rieltor.DateFrom > DateTime.Parse(dto.From) || rieltor.DateTo < DateTime.Parse(dto.To)))
+            {
+                return ServiceResponse.Error("This product not available at this time");
+            }    
             entity.RieltorId = rieltor.UserId;
             entity.VisitorsCount = dto.VisitorsCount;
 

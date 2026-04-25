@@ -31,7 +31,7 @@ namespace AlaBackEnd.DAL.Repositories
 
 
 
-            return !((prod.TimeFrom < To && prod.TimeTo > From) && (prod.Product.DateFrom <= From && prod.Product.DateTo >= To));
+            return !(prod.TimeFrom < To && prod.TimeTo > From);
 
         }
         public async Task<double> PriceCounterAsync(double period, int prodId)
