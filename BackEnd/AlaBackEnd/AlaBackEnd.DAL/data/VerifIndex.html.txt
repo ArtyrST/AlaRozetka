@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background-color: #f0f4f8;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+        }
+
+        .header {
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            padding: 40px 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            color: white;
+            font-size: 26px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .header p {
+            color: rgba(255,255,255,0.8);
+            margin-top: 6px;
+            font-size: 14px;
+        }
+
+        .body {
+            padding: 40px 30px;
+            text-align: center;
+        }
+
+        .body p {
+            color: #64748b;
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        .code-box {
+            margin: 30px auto;
+            background: #f8fafc;
+            border: 2px dashed #6366f1;
+            border-radius: 12px;
+            padding: 24px;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .code {
+            font-size: 42px;
+            font-weight: 800;
+            letter-spacing: 10px;
+            color: #6366f1;
+        }
+
+        .timer {
+            margin-top: 10px;
+            font-size: 13px;
+            color: #94a3b8;
+        }
+
+        .warning {
+            background: #fff7ed;
+            border-left: 4px solid #f97316;
+            border-radius: 8px;
+            padding: 14px 18px;
+            text-align: left;
+            margin-top: 20px;
+        }
+
+        .warning p {
+            color: #c2410c;
+            font-size: 13px;
+        }
+
+        .footer {
+            background: #f8fafc;
+            padding: 20px 30px;
+            text-align: center;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .footer p {
+            color: #94a3b8;
+            font-size: 12px;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <div class="header">
+            <h1>✉️ EasyStay</h1>
+            <p>Підтвердження електронної пошти</p>
+        </div>
+
+        <div class="body">
+            <p>Дякуємо за реєстрацію! Введіть цей код для підтвердження вашого акаунту:</p>
+
+            <div class="code-box">
+                <div class="code">{{CODE}}</div>
+                <div class="timer">⏱ Дійсний протягом 10 хвилин</div>
+            </div>
+
+            <div class="warning">
+                <p>⚠️ Якщо ви не реєструвались на EasyStay — просто ігноруйте цей лист.</p>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>Цей лист відправлено автоматично.<br>Будь ласка, не відповідайте на нього.</p>
+            <p style="margin-top: 8px;">© 2024 EasyStay. Всі права захищені.</p>
+        </div>
+
+    </div>
+</body>
+</html>
