@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import { Link , useNavigate} from 'react-router-dom';
-
 import './register.scss';
-
 import logo from '../../assets/Group 3.svg';
 import sideImage from '../../assets/Rectangle 53.png';
 
@@ -13,6 +11,9 @@ export default function Register() {
 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [verificationCode, setVerificationCode] = useState("");
 
   const [formData, setFormData] = useState({
     name: '',
@@ -48,7 +49,7 @@ const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
   setLoading(true);
 
   try {
-    // Створюємо об'єкт параметрів відповідно до RegisterUserDto
+   
     const params = new URLSearchParams();
     params.append('FirstName', formData.name);     
     params.append('SecondName', formData.surname);  
@@ -64,10 +65,14 @@ const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
       body: params,
     });
 
-    
-  
 
-    navigate('/login');
+    if (response.ok) {
+        
+        setIsModalOpen(true);
+      } else {
+        const errorData = await response.json();
+        setError(errorData.message || 'Помилка реєстрації');
+      }
     
   } catch (err: any) {
     setError(err.message);
@@ -75,6 +80,37 @@ const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setLoading(false);
   }
 };
+
+const handleVerify = async () => {
+  setLoading(true);
+  try {
+    const params = new URLSearchParams();
+    params.append('Email', formData.email);
+    params.append('Code', verificationCode);
+
+    const response = await fetch('https://localhost:7147/api/user/verification', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded', 
+      },
+      body: params,
+    });
+
+    const result = await response.json();
+    if (response.ok && result.isSuccess) {
+      setIsModalOpen(false);
+      navigate('/login');
+    } else {
+      setError(result.message || "Невірний код");
+    }
+  } catch (err) {
+    setError("Помилка сервера");
+  } finally {
+    setLoading(false);
+  }
+};
+
+
 
   return (
     <div className="register-wrapper">
@@ -126,6 +162,24 @@ const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
       </div>
 
       <div className="side-image" style={{ backgroundImage: `url(${sideImage})` }}></div>
+
+
+
+      {isModalOpen && (
+        <div className="modal-overlay">
+          <div className="modal-content">
+            <h3>Підтвердіть ваш Email</h3>
+            <p>Ми відправили код на {formData.email}</p>
+            <input 
+              type="text" 
+              value={verificationCode} 
+              onChange={(e) => setVerificationCode(e.target.value)} 
+              placeholder="000000"
+            />
+            <button className="modal-action-button" onClick={handleVerify}>Підтвердити</button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
