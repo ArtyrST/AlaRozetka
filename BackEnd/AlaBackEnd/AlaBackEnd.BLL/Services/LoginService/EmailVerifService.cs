@@ -5,6 +5,7 @@ using Microsoft.Extensions.Configuration;
 using MimeKit;
 using MailKit.Net.Smtp;
 using MailKit.Security;
+using AlaBackEnd.DAL;
 
 
 namespace AlaBackEnd.BLL.Services.LoginService
@@ -67,6 +68,8 @@ namespace AlaBackEnd.BLL.Services.LoginService
 
         private async Task SendAsync(string to, string subject, string body)
         {
+
+
             var message = new MimeMessage();
             message.From.Add(new MailboxAddress("EasyStay", _config["EmailSettings:Email"]));
             message.To.Add(new MailboxAddress("", to));

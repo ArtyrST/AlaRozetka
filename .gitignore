@@ -67,3 +67,6 @@ nunit-*.xml
 
 # Якщо раптом захочеш спробувати JetBrains Rider
 .idea/
+
+appsettings.json
+appsettings.*.json
