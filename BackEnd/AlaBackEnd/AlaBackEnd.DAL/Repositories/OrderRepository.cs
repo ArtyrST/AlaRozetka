@@ -28,7 +28,8 @@ namespace AlaBackEnd.DAL.Repositories
             {
                 return true;
             }
-            
+
+
 
             return !(prod.TimeFrom < To && prod.TimeTo > From);
 

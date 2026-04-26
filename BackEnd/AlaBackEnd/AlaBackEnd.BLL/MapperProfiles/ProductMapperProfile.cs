@@ -1,5 +1,6 @@
 ﻿using AlaBackEnd.BLL.dto;
 using AlaBackEnd.BLL.dto.UserDto;
+using AlaBackEnd.BLL.Services.LoginService;
 using AlaBackEnd.DAL.Entity;
 using AlaBackEnd.DAL.Entity.ProductCart;
 using AlaBackEnd.DAL.Entity.Products;
@@ -78,7 +79,13 @@ namespace AlaBackEnd.BLL.MapperProfiles
                 .ForMember(dest => dest.Id, opt => opt.Ignore())
                 .ForMember(dest => dest.UserId, opt => opt.Ignore());
 
-                
+            //PandingDto -> PandingEntity
+                CreateMap<PandingUserDto, PandingUserEntity>()
+                .ForMember(dest => dest.Id, opt => opt.Ignore());
+
+            //PandingEntity -> UserEntity
+            CreateMap<PandingUserEntity, UserEntity>()
+                .ForMember(dest => dest.Id, opt => opt.Ignore());
         }
     }
 }

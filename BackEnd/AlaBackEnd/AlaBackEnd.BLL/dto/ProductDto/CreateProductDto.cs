@@ -27,7 +27,7 @@ namespace AlaBackEnd.BLL.dto
         public List<int> Tags { get; set; } = [];
 
         [FromForm]
-        public List<IFormFile>? Images { get; set; } = [];
+        public List<IFormFile?>? Images { get; set; } = [];
         public int PreviewImageId { get; set; }
     }
 }

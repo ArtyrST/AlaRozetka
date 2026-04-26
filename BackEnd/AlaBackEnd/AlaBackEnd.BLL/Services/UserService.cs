@@ -2,9 +2,9 @@
 using AlaBackEnd.DAL.Entity.Users;
 using AlaBackEnd.DAL.Repositories;
 using AutoMapper;
-using Org.BouncyCastle.Crypto.Generators;
-using BCrypt.Net;
+using AlaBackEnd.BLL.Services.LoginService;
 using AlaBackEnd.DAL.Entity.ProductCart;
+
 
 
 namespace AlaBackEnd.BLL.Services
@@ -14,42 +14,70 @@ namespace AlaBackEnd.BLL.Services
         private readonly IMapper _mapper;
         private readonly UserRepository _userRepository;
         private readonly RoleRepository _role;
+        private readonly PandingUserPerository _panding;
+        private readonly EmailVerifService _emailv;
         
-        public UserService(IMapper mapper, UserRepository userRepository, RoleRepository role)
+        public UserService(EmailVerifService emailv, IMapper mapper, UserRepository userRepository, RoleRepository role, PandingUserPerository panding)
         {
             _mapper = mapper;
             _userRepository = userRepository;
             _role = role;
-            
+            _panding = panding;
+            _emailv = emailv;
         }
-        public async Task<ServiceResponse> RegisterUserAsync(RegisterUserDto dto)
+        public async Task<ServiceResponse> RegisterUserAsync(PandingUserDto dto)
         {
             if (await _userRepository.IsExistAsync(dto.Email))
             {
                 return ServiceResponse.Error($"User with mail: {dto.Email} is already exists");
             }
-            var entity = _mapper.Map<UserEntity>(dto);
-            entity.Roles = new List<RoleEntity>();
+            dto.Password = BCrypt.Net.BCrypt.HashPassword(dto.Password);
 
-            var defaultRole = await _role.GetByNameAsync("Guest");
-            if (defaultRole != null)
+            var entity = _mapper.Map<PandingUserEntity>(dto);
+            if (entity == null)
             {
-                entity.Roles.Add(defaultRole);
+                return ServiceResponse.Error("Problem of registration");
             }
 
-            entity.Cart = new CartEntity();
             
 
-            string passwordHash = BCrypt.Net.BCrypt.HashPassword(dto.Password);
+            bool panding = await _panding.CreateAsync(entity);
+            if (!panding)
+            {
+                return ServiceResponse.Error("Problems...");
+            }
+            var code = await _emailv.SendOtpAsync(entity.Email);
+            return ServiceResponse.Success("Code was sent", null);
 
-            entity.Password = passwordHash;
+        }
+        public async Task<ServiceResponse> CreateVerifAsync(VerifyDto dto)
+        {
+            bool verify = await _emailv.VerifyAsync(dto.Email, dto.Code);
+            if (!verify)
+            {
+                return ServiceResponse.Error("Wrong code");
+            }
+
+
+
+            var panding = await _panding.GetByEmailAsync(dto.Email);
+            if (panding == null)
+            {
+                return ServiceResponse.Error("User was not found, try again");
+            }
+
+            var entity = _mapper.Map<UserEntity>(panding);
+
+            entity.Cart = new CartEntity();
+
             bool res = await _userRepository.CreateAsync(entity);
             if (!res)
             {
-                return ServiceResponse.Error("Something wrong with creating this user");
-
+                return ServiceResponse.Error("Problem with creating user");
             }
-            return ServiceResponse.Success("Success!", null);
+            bool panding_delete = await _panding.DeleteEntityAsync(panding);
+
+            return ServiceResponse.Success("Successfuly verificate account", null);
 
         }
     }

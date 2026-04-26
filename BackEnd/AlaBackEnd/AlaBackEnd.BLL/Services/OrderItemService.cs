@@ -37,14 +37,18 @@ namespace AlaBackEnd.BLL.Services
             {
                 return ServiceResponse.Error("Rieltor was not found");
             }
-            entity.RieltorId = rieltor.Id;
+            if ((rieltor.DateFrom > DateTime.Parse(dto.From) || rieltor.DateTo < DateTime.Parse(dto.To)))
+            {
+                return ServiceResponse.Error("This product not available at this time");
+            }    
+            entity.RieltorId = rieltor.UserId;
             entity.VisitorsCount = dto.VisitorsCount;
 
             
             
                         if (!await _orderRepository.IsDateOverlap(dto.ProductId, DateTime.Parse(dto.From), DateTime.Parse(dto.To)))
                         {
-                            return ServiceResponse.Error(@"Ця дата вже заброньована");
+                            return ServiceResponse.Error(@"Ця дата вже заброньована, або бронювання на цей час неможливе");
                         }
             
             
