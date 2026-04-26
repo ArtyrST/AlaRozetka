@@ -35,6 +35,8 @@ namespace AlaBackEnd
             builder.Services.AddScoped<OrderRepository>();
             builder.Services.AddScoped<UserCartRepository>();
             builder.Services.AddScoped<FeedBackRepository>();
+            builder.Services.AddScoped<EmailCodeRepository>();
+            builder.Services.AddScoped<PandingUserPerository>();
 
 
             //add services
@@ -46,6 +48,8 @@ namespace AlaBackEnd
             builder.Services.AddScoped<JwtService>();
             builder.Services.AddScoped<OrderItemService>();
             builder.Services.AddScoped<FeedBackService>();
+            builder.Services.AddScoped<EmailVerifService>();
+            
             //add automapper
             builder.Services.AddAutoMapper(cfg =>
             {

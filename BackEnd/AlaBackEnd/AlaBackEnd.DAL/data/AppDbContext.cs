@@ -24,7 +24,8 @@ namespace AlaBackEnd.DAL
         public DbSet<ProductTagEntity> ProductTag { get; set; }
         public DbSet<ImageEntity> Images { get; set; }
         public DbSet<FeedBackEntity> Feedbacks { get; set; }
-        
+        public DbSet<EmailCodeEntity> OtpCodes { get; set; }
+        public DbSet<PandingUserEntity> PandingUsers {  get; set; }
         
         
         
@@ -39,7 +40,11 @@ namespace AlaBackEnd.DAL
                 .Navigation(p => p.Tags)
                 .AutoInclude();
 
-            
+            builder.Entity<PandingUserEntity>(entity =>
+            {
+                entity.HasKey(p => p.Id);
+               
+            });
 
             //User
             builder.Entity<UserEntity>()
@@ -114,6 +119,16 @@ namespace AlaBackEnd.DAL
                 entity.HasKey(i => i.Id);
                 entity.Property(i => i.Path).IsRequired(true).HasMaxLength(150);
                 entity.Property(i => i.IsPreview).IsRequired(true);
+            });
+
+            //email-code
+            builder.Entity<EmailCodeEntity>(entity =>
+            {
+                entity.HasKey(c => c.Id);
+                entity.Property(c => c.Email).IsRequired(true);
+                entity.Property(c => c.Code).IsRequired(true);
+                
+
             });
             
 
