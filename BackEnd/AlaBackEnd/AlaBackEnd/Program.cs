@@ -1,7 +1,9 @@
 
 using AlaBackEnd.BLL.Services;
 using AlaBackEnd.BLL.Services.ImagesService;
+using AlaBackEnd.BLL.Services.Interfaces;
 using AlaBackEnd.BLL.Services.LoginService;
+using AlaBackEnd.BLL.Services.ProductsService;
 using AlaBackEnd.DAL;
 using AlaBackEnd.DAL.Repositories;
 using AlaBackEnd.DAL.Seeders;
@@ -37,6 +39,7 @@ namespace AlaBackEnd
             builder.Services.AddScoped<FeedBackRepository>();
             builder.Services.AddScoped<EmailCodeRepository>();
             builder.Services.AddScoped<PandingUserPerository>();
+            builder.Services.AddScoped<ProductCartRepository>();
 
 
             //add services
@@ -49,6 +52,7 @@ namespace AlaBackEnd
             builder.Services.AddScoped<OrderItemService>();
             builder.Services.AddScoped<FeedBackService>();
             builder.Services.AddScoped<EmailVerifService>();
+            builder.Services.AddScoped<IProductCartInterface, ProductCartService>();
             
             //add automapper
             builder.Services.AddAutoMapper(cfg =>

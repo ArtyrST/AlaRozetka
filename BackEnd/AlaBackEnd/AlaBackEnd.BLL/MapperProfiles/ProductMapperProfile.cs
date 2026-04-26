@@ -7,6 +7,7 @@ using AlaBackEnd.DAL.Entity.Products;
 using AlaBackEnd.DAL.Entity.Users;
 using AlaBackEnd.Entity.Products;
 using AutoMapper;
+using AlaBackEnd.BLL.dto;
 
 
 namespace AlaBackEnd.BLL.MapperProfiles
@@ -86,6 +87,14 @@ namespace AlaBackEnd.BLL.MapperProfiles
             //PandingEntity -> UserEntity
             CreateMap<PandingUserEntity, UserEntity>()
                 .ForMember(dest => dest.Id, opt => opt.Ignore());
+
+            CreateMap<CartEntity, CartDto>()
+    .ForMember(dest => dest.Orders , opt => opt.MapFrom(src => src.OrderItems));
+
+            CreateMap<OrderItemEntity, OrderDto>()
+                .ForMember(dest => dest.IdHash, opt => opt.MapFrom(src => src.Id))
+                .ForMember(dest => dest.VisitersCount, opt => opt.MapFrom(src => src.VisitorsCount))
+                .ForMember(dest => dest.Price, opt => opt.MapFrom(src => src.TotalPrice));
         }
     }
 }

@@ -19,5 +19,9 @@ namespace AlaBackEnd.DAL.Repositories
             return await _context.PandingUsers
                 .FirstOrDefaultAsync(p => p.Email == email);
         }
+        public async Task<bool> IsExistAsync(string email)
+        {
+            return _context.PandingUsers.Any(p => p.Email.Trim() == email);
+        }
     }
 }

@@ -27,12 +27,13 @@ namespace AlaBackEnd.BLL.Services
         }
         public async Task<ServiceResponse> RegisterUserAsync(PandingUserDto dto)
         {
-            if (await _userRepository.IsExistAsync(dto.Email))
+            dto.Email = dto.Email.Trim();
+            if (await _panding.IsExistAsync(dto.Email))
             {
                 return ServiceResponse.Error($"User with mail: {dto.Email} is already exists");
             }
             dto.Password = BCrypt.Net.BCrypt.HashPassword(dto.Password);
-
+            
             var entity = _mapper.Map<PandingUserEntity>(dto);
             if (entity == null)
             {
@@ -52,6 +53,8 @@ namespace AlaBackEnd.BLL.Services
         }
         public async Task<ServiceResponse> CreateVerifAsync(VerifyDto dto)
         {
+            dto.Email = dto.Email.Trim();
+            dto.Code = dto.Code.Trim();
             bool verify = await _emailv.VerifyAsync(dto.Email, dto.Code);
             if (!verify)
             {
@@ -69,6 +72,12 @@ namespace AlaBackEnd.BLL.Services
             var entity = _mapper.Map<UserEntity>(panding);
 
             entity.Cart = new CartEntity();
+
+            var defaultRole = await _role.GetByNameAsync("Guest");
+            if (defaultRole != null)
+            {
+                entity.Roles.Add(defaultRole);
+            }
 
             bool res = await _userRepository.CreateAsync(entity);
             if (!res)

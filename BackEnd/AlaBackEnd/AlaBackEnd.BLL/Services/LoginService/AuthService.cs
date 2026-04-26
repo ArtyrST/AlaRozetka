@@ -20,6 +20,7 @@ namespace AlaBackEnd.BLL.Services
 
         public async Task<ServiceResponse> LoginAsync(LoginDto dto)
         {
+            dto.Email = dto.Email.Trim();
             var user = await _user.GetByMailAsync(dto.Email);
             Console.WriteLine($"Roles count: {user?.Roles?.Count ?? 0}");
             foreach (var role in user?.Roles ?? [])
