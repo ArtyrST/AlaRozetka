@@ -11,8 +11,6 @@ const RealtorProfile = () => {
     'Особисті дані',
     'Мої готелі',
     'Відгуки',
-    'Архів',
-    'Знижки'
   ];
 
   const renderContent = () => {

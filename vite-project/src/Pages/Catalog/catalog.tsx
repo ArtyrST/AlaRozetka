@@ -8,7 +8,7 @@ function Catalog(): JSX.Element {
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string>('');
 
-  // Стани для фільтрів
+  
   const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(false);
   const [priceMin, setPriceMin] = useState<number>(0);
   const [priceMax, setPriceMax] = useState<number>(20000);
