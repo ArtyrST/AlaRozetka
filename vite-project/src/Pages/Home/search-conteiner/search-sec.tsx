@@ -1,5 +1,5 @@
 
-import searchImg from '../../Assets/Search.png';
+import searchImg from '../../../Assets/Search.png';
 import './search-sec.css';
 function SearchSection() {
   return (

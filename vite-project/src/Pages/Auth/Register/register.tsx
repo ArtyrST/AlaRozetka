@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Link , useNavigate} from 'react-router-dom';
 import './register.scss';
-import logo from '../../assets/Group 3.svg';
-import sideImage from '../../assets/Rectangle 53.png';
+import logo from '../../../assets/Group 3.svg';
+import sideImage from '../../../assets/Rectangle 53.png';
 
 
 

@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import './hero-sec.css';
-import heroImg from '../../Assets/hyro_section.jpg';
+import heroImg from '../../../Assets/hyro_section.jpg';
 
 function HeroSection (){
     return(

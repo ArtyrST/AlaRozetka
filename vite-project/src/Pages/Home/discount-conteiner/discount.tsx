@@ -1,4 +1,4 @@
-import discountImg from "../../Assets/disc_section.jpg"
+import discountImg from "../../../Assets/disc_section.jpg"
 import './discount.css';
 function Discount() {
     return(

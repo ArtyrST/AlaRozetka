@@ -41,7 +41,7 @@ $font-main: 'Nunito', sans-serif;
 
 // --- Sidebar Filter ---
 .apartments-filter {
-  height: 540px;
+  height: fit-content;
   max-width: 340px;
   background: $bg-filter;
   border-radius: 18px;

@@ -1,15 +1,15 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import MainLayout from './MainLayout.tsx';
-import {HomePage} from './Home-page/home.tsx';
-import Catalog from './Catalog-page/catalog.tsx';
-import Register from './Auth-page/Register/register.tsx';
-import Login from "./Auth-page/Login/Login.tsx";
-import {RealtorPage}  from "./Realtor-page/realtor-page.tsx";
-import ContactPage from "./Contact-page/contact.tsx";
+import {HomePage} from './Pages/Home/home.tsx';
+import Catalog from './Pages/Catalog/catalog.tsx';
+import Register from './Pages/Auth/Register/register.tsx';
+import Login from "./Pages/Auth/Login/Login.tsx";
+import {RealtorPage}  from "./Pages/Realtor-office/realtor-page.tsx";
+import ContactPage from "./Pages/Contact/contact.tsx";
 import ProtectedRoute from "./ProtectedRoute.tsx";
 import DeleteToken from "./DeleteToken.tsx";
-import RealtorProfile from "./Realtor-profile/realtor-profile.tsx";
-import AddHotel from "./Add-hotel-page/add-hotel.tsx";
+import RealtorProfile from "./Pages/Realtor-profile/realtor-profile.tsx";
+import AddHotel from "./Pages/Add-hotel/add-hotel.tsx";
 import './App.css';
 function App() {
   return (
