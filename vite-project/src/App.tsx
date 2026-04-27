@@ -1,13 +1,13 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import MainLayout from './MainLayout.tsx';
+import MainLayout from './Components/MainLayout.tsx';
 import {HomePage} from './Pages/Home/home.tsx';
 import Catalog from './Pages/Catalog/catalog.tsx';
 import Register from './Pages/Auth/Register/register.tsx';
 import Login from "./Pages/Auth/Login/Login.tsx";
 import {RealtorPage}  from "./Pages/Realtor-office/realtor-page.tsx";
 import ContactPage from "./Pages/Contact/contact.tsx";
-import ProtectedRoute from "./ProtectedRoute.tsx";
-import DeleteToken from "./DeleteToken.tsx";
+import ProtectedRoute from "./Components/ProtectedRoute.tsx";
+import DeleteToken from "./Components/DeleteToken.tsx";
 import RealtorProfile from "./Pages/Realtor-profile/realtor-profile.tsx";
 import AddHotel from "./Pages/Add-hotel/add-hotel.tsx";
 import './App.css';
