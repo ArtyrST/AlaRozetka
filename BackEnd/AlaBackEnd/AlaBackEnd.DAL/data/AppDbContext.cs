@@ -26,6 +26,7 @@ namespace AlaBackEnd.DAL
         public DbSet<FeedBackEntity> Feedbacks { get; set; }
         public DbSet<EmailCodeEntity> OtpCodes { get; set; }
         public DbSet<PandingUserEntity> PandingUsers {  get; set; }
+        public DbSet<RieltorAcceptEntity> RieltorBecomingRequests { get; set; }
         
         
         
@@ -105,6 +106,11 @@ namespace AlaBackEnd.DAL
 
                 
 
+            });
+            builder.Entity<RieltorAcceptEntity>(entity =>
+            {
+                entity.HasKey(r => r.Id);
+                entity.Property(r => r.PhoneNumber).HasMaxLength(15);
             });
 
             //prod tag

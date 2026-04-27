@@ -95,6 +95,12 @@ namespace AlaBackEnd.BLL.MapperProfiles
                 .ForMember(dest => dest.IdHash, opt => opt.MapFrom(src => src.Id))
                 .ForMember(dest => dest.VisitersCount, opt => opt.MapFrom(src => src.VisitorsCount))
                 .ForMember(dest => dest.Price, opt => opt.MapFrom(src => src.TotalPrice));
+
+
+            CreateMap<RieltorAcceptEntity, RieltorRequestsDto>();
+            CreateMap<RieltorRequestsDto, RieltorAcceptEntity>()
+                .ForMember(dest => dest.Id, opt => opt.Ignore());
+
         }
     }
 }

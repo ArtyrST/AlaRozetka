@@ -40,6 +40,7 @@ namespace AlaBackEnd
             builder.Services.AddScoped<EmailCodeRepository>();
             builder.Services.AddScoped<PandingUserPerository>();
             builder.Services.AddScoped<ProductCartRepository>();
+            builder.Services.AddScoped<RieltorRequestsRepository>();
 
 
             //add services
@@ -53,6 +54,7 @@ namespace AlaBackEnd
             builder.Services.AddScoped<FeedBackService>();
             builder.Services.AddScoped<EmailVerifService>();
             builder.Services.AddScoped<IProductCartInterface, ProductCartService>();
+            builder.Services.AddScoped<IRieltorAcceptService, RieltorRequestsService>();
             
             //add automapper
             builder.Services.AddAutoMapper(cfg =>
@@ -123,6 +125,7 @@ namespace AlaBackEnd
                     Path.Combine(builder.Environment.ContentRootPath, "Uploads")),
                     RequestPath = "/uploads"
             });
+            app.UseStaticFiles();
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
             {
