@@ -44,60 +44,77 @@ function Catalog(): JSX.Element {
   const [sortSelect, setSortSelect] = useState<string>('default')
 
 useEffect(() => {
-    const fetchHotels = async () => {
-      try {
-        setLoading(true)
-        setError('')
+  const fetchHotels = async () => {
+    try {
+      setLoading(true);
+      setError('');
 
-        const response = await fetch('https://localhost:7147/api/products')
+      // Використовуємо порт 5164, який ми бачили в логах бекенду
+      const response = await fetch('http://localhost:5164/api/products');
 
-        if (!response.ok) {
-          throw new Error('Не вдалося отримати готелі')
-        }
-
-        const data = await response.json() as any
-
-        if (data && Array.isArray(data.payLoad)) {
-          const mappedHotels: Hotel[] = data.payLoad.map((hotel: any) => {
-            const previewImage = hotel.images?.find((img: any) => img.isPreview)?.path 
-              || hotel.images?.[0]?.path 
-              || 'https://via.placeholder.com/400x250?text=No+Image'
-
-            return {
-              id: hotel.id,
-              name: hotel.name,
-              price: hotel.price,
-              country: hotel.country,
-              city: hotel.city,
-              description: hotel.description,
-              categoryId: hotel.categoryId,
-              categoryName: hotel.categoryName,
-              tags: hotel.tags,
-              userId: hotel.userId,
-              images: hotel.images,
-              dateFrom: hotel.dateFrom,
-              dateTo: hotel.dateTo,
-              location: `${hotel.city}, ${hotel.country}`,
-              displayImage: previewImage,
-              oldPrice: Math.round(hotel.price * 1.15),
-              rating: 8.5,
-              formattedDateFrom: new Date(hotel.dateFrom).toLocaleDateString('uk-UA'),
-              formattedDateTo: new Date(hotel.dateTo).toLocaleDateString('uk-UA'),
-            }
-          })
-
-          setHotels(mappedHotels)
-        } 
-
-      } catch (err) {
-        setError(err instanceof Error ? err.message : 'Сталася помилка')
-      } finally {
-        setLoading(false)
+      if (!response.ok) {
+        throw new Error('Не вдалося отримати готелі');
       }
-    } 
 
-    fetchHotels() // Тепер цей виклик буде працювати коректно
-  }, [])
+      const data = await response.json();
+      
+      // Базова адреса бекенду для формування шляху до фото
+      const API_URL = 'http://localhost:5164';
+
+      if (data && Array.isArray(data.payLoad)) {
+        const mappedHotels: Hotel[] = data.payLoad.map((hotel: any) => {
+          // Шукаємо прев'ю або беремо першу картинку з масиву
+          const rawPath = hotel.images?.find((img: any) => img.isPreview)?.path 
+            || hotel.images?.[0]?.path;
+
+          let fullPath = 'https://via.placeholder.com/400x250?text=No+Image';
+
+          if (rawPath) {
+            // ВАЖЛИВО: Виправляємо шлях, щоб він відповідав папкам на диску (Uploads/Images)
+            // Робимо заміну, якщо бекенд прислав шлях з маленької літери
+            const correctedPath = rawPath
+              .replace('/uploads/', '/Uploads/')
+              .replace('/images/', '/Images/');
+            
+            // Склеюємо домен і шлях
+            fullPath = `${API_URL}${correctedPath.startsWith('/') ? '' : '/'}${correctedPath}`;
+          }
+
+          // Повертаємо об'єкт готелю, адаптований під наш інтерфейс
+          return {
+            id: hotel.id,
+            name: hotel.name,
+            price: hotel.price,
+            country: hotel.country,
+            city: hotel.city,
+            description: hotel.description,
+            categoryId: hotel.categoryId,
+            categoryName: hotel.categoryName,
+            tags: hotel.tags,
+            userId: hotel.userId,
+            images: hotel.images,
+            dateFrom: hotel.dateFrom,
+            dateTo: hotel.dateTo,
+            location: `${hotel.city}, ${hotel.country}`,
+            displayImage: fullPath,
+            oldPrice: Math.round(hotel.price * 1.15),
+            rating: 8.5,
+            formattedDateFrom: new Date(hotel.dateFrom).toLocaleDateString('uk-UA'),
+            formattedDateTo: new Date(hotel.dateTo).toLocaleDateString('uk-UA'),
+          };
+        }); // Тут ми закрили .map()
+
+        setHotels(mappedHotels);
+      }
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Сталася помилка');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  fetchHotels();
+}, []);
 
   const toggleRating = (value: number): void => {
     setSelectedRatings((prev) =>
@@ -345,7 +362,7 @@ useEffect(() => {
                 <div className="card-image-container">
                   <img
                     className="apartment-img"
-
+                    src={hotel.displayImage}
                   />
                   <div className="favorite-icon">♡</div>
                 </div>
