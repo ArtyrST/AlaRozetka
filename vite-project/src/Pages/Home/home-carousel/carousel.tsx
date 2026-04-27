@@ -1,4 +1,4 @@
-import arrowImg from '../../Assets/arrow.png';
+import arrowImg from '../../../Assets/arrow.png';
 import './carousel.css';
 function Carousel() {
     return(

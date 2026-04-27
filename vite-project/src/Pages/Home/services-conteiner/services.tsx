@@ -1,8 +1,8 @@
-import service1 from '../../Assets/PoslygiSec1.png';
-import service2 from '../../Assets/Poslygi2.png';
-import service3 from '../../Assets/Poslugi3.png';
-import service4 from '../../Assets/Poslugi4.png';
-import service5 from '../../Assets/Poslugi5.png';
+import service1 from '../../../Assets/PoslygiSec1.png';
+import service2 from '../../../Assets/Poslygi2.png';
+import service3 from '../../../Assets/Poslugi3.png';
+import service4 from '../../../Assets/Poslugi4.png';
+import service5 from '../../../Assets/Poslugi5.png';
 import './services.css';
 function Services() {
     return(
