@@ -15,11 +15,13 @@ namespace AlaBackEnd.Controllers
         private readonly UserService _user;
         private readonly IAuthService _authService;
         private readonly IProductCartInterface _cart;
-        public UserController(UserService user, IAuthService authService, IProductCartInterface cart)
+        private readonly IRieltorAcceptService _request;
+        public UserController(UserService user, IAuthService authService, IProductCartInterface cart, IRieltorAcceptService request)
         {
             _user = user;
             _authService = authService;
             _cart = cart;
+            _request = request;
         }
         [HttpPost("register")]
         public async Task<IActionResult> RegisterUserAsync([FromForm] PandingUserDto dto)
@@ -45,6 +47,27 @@ namespace AlaBackEnd.Controllers
         public async Task<IActionResult> GetCartAsync()
         {
             var response = await _cart.GetUserCartAsync();
+            return this.GetResult(response);
+        }
+        [Authorize(Roles = "Admin")]
+        [HttpGet("get-requests")]
+        public async Task<IActionResult> GetAllRequestsAsync()
+        {
+            var response = await _request.GetAllRequests();
+            return this.GetResult(response);
+        }
+        [Authorize(Roles = "Admin")]
+        [HttpPost("make-choise-rieltor-role")]
+        public async Task<IActionResult> ChoiseRieltorRoleRequestAsync(AcceptRieltorRoleDto dto)
+        {
+            var response = await _request.CreateChoiseAsync(dto);
+            return this.GetResult(response);
+        }
+        [Authorize(Roles = "Guest")]
+        [HttpPost("create-rieltor-request")]
+        public async Task<IActionResult> CreateRieltorRequestAsync([FromForm] RieltorRequestsDto dto)
+        {
+            var response = await _request.CreateRequest(dto);
             return this.GetResult(response);
         }
 
