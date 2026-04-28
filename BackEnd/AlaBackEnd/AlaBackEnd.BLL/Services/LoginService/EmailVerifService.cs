@@ -66,7 +66,7 @@ namespace AlaBackEnd.BLL.Services.LoginService
 
         }
 
-        private async Task SendAsync(string to, string subject, string body)
+        public async Task SendAsync(string to, string subject, string body)
         {
 
 

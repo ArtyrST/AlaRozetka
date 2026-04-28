@@ -9,5 +9,6 @@ namespace AlaBackEnd.BLL.Services.Interfaces
     {
         public Task<ServiceResponse> GetAllRequests();
         public Task<ServiceResponse> CreateRequest(RieltorRequestsDto dto);
+        public Task<ServiceResponse> CreateChoiseAsync(AcceptRieltorRoleDto dto);
     }
 }

@@ -56,6 +56,13 @@ namespace AlaBackEnd.Controllers
             var response = await _request.GetAllRequests();
             return this.GetResult(response);
         }
+        [Authorize(Roles = "Admin")]
+        [HttpPost("make-choise-rieltor-role")]
+        public async Task<IActionResult> ChoiseRieltorRoleRequestAsync(AcceptRieltorRoleDto dto)
+        {
+            var response = await _request.CreateChoiseAsync(dto);
+            return this.GetResult(response);
+        }
         [Authorize(Roles = "Guest")]
         [HttpPost("create-rieltor-request")]
         public async Task<IActionResult> CreateRieltorRequestAsync([FromForm] RieltorRequestsDto dto)

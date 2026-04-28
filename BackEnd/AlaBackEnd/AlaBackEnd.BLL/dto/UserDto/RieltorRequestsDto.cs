@@ -9,5 +9,6 @@ namespace AlaBackEnd.BLL.dto.UserDto
         
         public string PhoneNumber { get; set; } = string.Empty;
         
+        
     }
 }
