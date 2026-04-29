@@ -40,7 +40,6 @@ $font-main: 'Nunito', sans-serif;
   flex-direction: column;
   align-items: center;
   box-sizing: border-box;
-
   h1 {
     font-size: 36px;
     margin: 0;
@@ -128,7 +127,9 @@ $font-main: 'Nunito', sans-serif;
 .login-cta {
   margin-top: 12px;
   text-align: center;
-
+  display: flex;
+  justify-content: center;
+  align-items: center;
   button {
     background: $primary-color;
     color: #fff;
@@ -140,7 +141,7 @@ $font-main: 'Nunito', sans-serif;
     height: 46px;
     font-size: 15px;
     transition: 0.2s;
-
+    align-items: center;
     &:hover {
       background: $primary-hover;
     }
