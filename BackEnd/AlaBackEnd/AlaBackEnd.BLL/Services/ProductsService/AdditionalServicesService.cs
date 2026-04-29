@@ -2,6 +2,7 @@
 using AlaBackEnd.DAL.Entity.Products;
 using AlaBackEnd.DAL.Repositories;
 using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 
 
 namespace AlaBackEnd.BLL.Services.ProductsService
@@ -17,22 +18,19 @@ namespace AlaBackEnd.BLL.Services.ProductsService
             _mapper = mapper;
             _product = product;
         }
-        //public async Task<bool> AddAdditionalService(CreateAdditionalServiceDto dto)
-        //{
-            //if (await _additionalservices.isexistbynameasync(dto.name))
-            //{
-            //    return serviceresponse.success("the service with this name is now exist", await _additionalservices
-            //        .getbynameasync(dto.name));
-            //}
-
-            //var entity = _mapper.map<additionalservicesentity>(dto);
-
-            //bool res = await _additionalservices.createasync(entity);
-            //if (!res)
-            //{
-            //    return serviceresponse.error("something wrong");
-            //}
-            //return serviceresponse.success("successfuly add a service", entity);
-        //}
+        public async Task<ServiceResponse> GetAllServices()
+        {
+            var entitys = await _additionalServices.GetAll().ToListAsync();
+            if (entitys == null)
+            {
+                return ServiceResponse.Error("The list of services is null");
+            }
+            var entity = _mapper.Map<List<GetAdditionalServicesDto>>(entitys);
+            if (entity == null)
+            {
+                return ServiceResponse.Error("Something wrong");
+            }
+            return ServiceResponse.Success("Success", entity);
+        }
     }
 }

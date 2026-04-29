@@ -95,18 +95,8 @@ namespace AlaBackEnd.BLL.Services
             
             if (dto.AdditionalServices != null && dto.AdditionalServices.Count > 0)
             {
-                for (int i = 0; i < dto.AdditionalServices.Count; i++)
-                {
-                    var addServices = dto.AdditionalServices[i];
-                    var newAdditionalService = new AdditionalServicesEntity
-                    {
-                        Name = addServices.Name,
-                        Price = addServices.Price,
-                        
-                    };
-
-                    entity.AdditionalServices.Add(newAdditionalService);
-                }
+                var mapped = _Mapper.Map<List<AdditionalServicesEntity>>(dto.AdditionalServices);
+                entity.AdditionalServices.AddRange(mapped); // замість циклу
                 //var addServicesMapped = _Mapper.Map<List<AdditionalServicesEntity>>(dto.AdditionalServices);
                 //bool addingRes = await _additionalServices.CreateRangeListAsync(addServicesMapped);
                 //if (!addingRes)

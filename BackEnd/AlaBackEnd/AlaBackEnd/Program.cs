@@ -56,6 +56,7 @@ namespace AlaBackEnd
             builder.Services.AddScoped<EmailVerifService>();
             builder.Services.AddScoped<IProductCartInterface, ProductCartService>();
             builder.Services.AddScoped<IRieltorAcceptService, RieltorRequestsService>();
+            builder.Services.AddScoped<AdditionalServicesService>();
             
             //add automapper
             builder.Services.AddAutoMapper(cfg =>

@@ -248,6 +248,14 @@ namespace AlaBackEnd.DAL
                 .UsingEntity("AdditionalServicesWithProducts");
                 
             });
+            builder.Entity<OrderItemEntity>(entity =>
+            {
+                entity
+                .HasMany(a => a.AdditionalServices)
+                .WithMany(a => a.Services)
+                .UsingEntity("AdditionalServicesWithOrders");
+
+            });
 
 
         }        

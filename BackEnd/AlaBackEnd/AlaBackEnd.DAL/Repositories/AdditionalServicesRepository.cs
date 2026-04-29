@@ -27,6 +27,16 @@ namespace AlaBackEnd.DAL.Repositories
                 .FirstOrDefaultAsync(a => a.Name.ToLower() == name.ToLower());
                 
         }
+        public async Task<List<AdditionalServicesEntity>?> GetRangeByIdAsync(List<int> names)
+        {
+            
+
+            return await _context
+                .AdditionalServices
+                .Where(a => names.Contains(a.Id))
+                .ToListAsync();
+
+        }
         public async Task<bool> CreateRangeListAsync(List<AdditionalServicesEntity> entitis)
         {
             await _context.AdditionalServices.AddRangeAsync(entitis);

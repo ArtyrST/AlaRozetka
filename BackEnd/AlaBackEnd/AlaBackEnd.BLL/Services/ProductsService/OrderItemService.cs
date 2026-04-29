@@ -1,6 +1,7 @@
 ﻿using AlaBackEnd.BLL.dto;
 
 using AlaBackEnd.DAL.Entity.ProductCart;
+using AlaBackEnd.DAL.Entity.Products;
 using AlaBackEnd.DAL.Repositories;
 using AutoMapper;
 using Microsoft.AspNetCore.Http;
@@ -15,13 +16,15 @@ namespace AlaBackEnd.BLL.Services
         private readonly ProductRepository _product;
         private readonly IHttpContextAccessor _httpAccessor;
         private readonly UserRepository _user;
-        public OrderItemService(OrderRepository orderRepository, IMapper mapper, ProductRepository product, IHttpContextAccessor httpAccessor, UserRepository user)
+        private readonly AdditionalServicesRepository _addServices;
+        public OrderItemService(AdditionalServicesRepository addServices, OrderRepository orderRepository, IMapper mapper, ProductRepository product, IHttpContextAccessor httpAccessor, UserRepository user)
         {
             _orderRepository = orderRepository;
             _mapper = mapper;
             _product = product;
             _httpAccessor = httpAccessor;
             _user = user;
+            _addServices = addServices;
         }
         public async Task<ServiceResponse> CreateOrderAsync(CreateOrderDto dto)
         {
@@ -31,6 +34,16 @@ namespace AlaBackEnd.BLL.Services
             }
             
             var entity = _mapper.Map<OrderItemEntity>(dto);
+            if (dto.AdditionalServices != null && dto.AdditionalServices.Count > 0)
+            {
+                var existingServices = await _addServices
+        .GetRangeByIdAsync(dto.AdditionalServices);
+
+                if (existingServices.Count != dto.AdditionalServices.Count)
+                    return ServiceResponse.Error("Деякі додаткові сервіси не знайдені");
+
+                entity.AdditionalServices.AddRange(existingServices);
+            }
             entity.ProductId = dto.ProductId;
             var rieltor = await _product.GetByIdAsync(dto.ProductId);
             if (rieltor == null)

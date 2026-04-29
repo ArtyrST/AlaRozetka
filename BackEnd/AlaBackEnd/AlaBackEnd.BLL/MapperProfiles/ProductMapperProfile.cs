@@ -7,7 +7,6 @@ using AlaBackEnd.DAL.Entity.Products;
 using AlaBackEnd.DAL.Entity.Users;
 using AlaBackEnd.Entity.Products;
 using AutoMapper;
-using AlaBackEnd.BLL.dto;
 
 
 namespace AlaBackEnd.BLL.MapperProfiles
@@ -74,7 +73,8 @@ namespace AlaBackEnd.BLL.MapperProfiles
             CreateMap<CreateOrderDto, OrderItemEntity>()
                 .ForMember(dest => dest.Id, opt => opt.Ignore())
                 .ForMember(dest => dest.UserId, opt => opt.Ignore())
-                .ForMember(dest => dest.TotalPrice, opt => opt.Ignore());
+                .ForMember(dest => dest.TotalPrice, opt => opt.Ignore())
+                .ForMember(dest => dest.AdditionalServices, opt => opt.Ignore());
 
             //CreateFeedBackDto -> FeedBackDto
             CreateMap<CreateFeedBackDto, FeedBackEntity>()
@@ -103,11 +103,13 @@ namespace AlaBackEnd.BLL.MapperProfiles
                 .ForMember(dest => dest.Id, opt => opt.Ignore());
 
 
-            CreateMap<CreateAdditionalServiceDto, AdditionalServicesEntity>();
-                //.ForMember(dest => dest.Id, opt => opt.Ignore());
+            CreateMap<CreateAdditionalServiceDto, AdditionalServicesEntity>()
+                .ForMember(dest => dest.Id, opt => opt.Ignore())
+    .ForMember(dest => dest.Products, opt => opt.Ignore());
 
-            
-                
+            CreateMap<AdditionalServicesEntity, GetAdditionalServicesDto>()
+                .ForMember(dest => dest.Id, opt => opt.Ignore());
+
         }
     }
 }

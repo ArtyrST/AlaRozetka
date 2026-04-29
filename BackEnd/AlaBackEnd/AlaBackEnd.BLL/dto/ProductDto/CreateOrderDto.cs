@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AlaBackEnd.DAL.Entity.Products;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -10,6 +11,7 @@ namespace AlaBackEnd.BLL.dto
         public int VisitorsCount { get; set; }
         public string From {  get; set; } = string.Empty;
         public string To { get; set; } = string.Empty;
+        public List<int> AdditionalServices { get; set; } = [];
         
     }
 }
