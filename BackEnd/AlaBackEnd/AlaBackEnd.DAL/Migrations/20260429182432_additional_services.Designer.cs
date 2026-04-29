@@ -3,6 +3,7 @@ using System;
 using AlaBackEnd.DAL;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace AlaBackEnd.DAL.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260429182432_additional_services")]
+    partial class additional_services
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -21,21 +24,6 @@ namespace AlaBackEnd.DAL.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
-
-            modelBuilder.Entity("AdditionalServicesWithProducts", b =>
-                {
-                    b.Property<int>("AdditionalServicesId")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("ProductsId")
-                        .HasColumnType("integer");
-
-                    b.HasKey("AdditionalServicesId", "ProductsId");
-
-                    b.HasIndex("ProductsId");
-
-                    b.ToTable("AdditionalServicesWithProducts");
-                });
 
             modelBuilder.Entity("AlaBackEnd.DAL.Entity.BaseProductEntity", b =>
                 {
@@ -215,7 +203,7 @@ namespace AlaBackEnd.DAL.Migrations
                     b.ToTable("OrderItems");
                 });
 
-            modelBuilder.Entity("AlaBackEnd.DAL.Entity.Products.AdditionalServicesEntity", b =>
+            modelBuilder.Entity("AlaBackEnd.DAL.Entity.Products.AdditionalServices", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -223,14 +211,18 @@ namespace AlaBackEnd.DAL.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("text");
+                    b.Property<int>("Name")
+                        .HasColumnType("integer");
 
-                    b.Property<double>("Price")
+                    b.Property<int>("ProductId")
+                        .HasColumnType("integer");
+
+                    b.Property<double>("price")
                         .HasColumnType("double precision");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("ProductId");
 
                     b.ToTable("AdditionalServices");
                 });
@@ -449,21 +441,6 @@ namespace AlaBackEnd.DAL.Migrations
                     b.ToTable("UserRoles");
                 });
 
-            modelBuilder.Entity("AdditionalServicesWithProducts", b =>
-                {
-                    b.HasOne("AlaBackEnd.DAL.Entity.Products.AdditionalServicesEntity", null)
-                        .WithMany()
-                        .HasForeignKey("AdditionalServicesId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("AlaBackEnd.DAL.Entity.BaseProductEntity", null)
-                        .WithMany()
-                        .HasForeignKey("ProductsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("AlaBackEnd.DAL.Entity.BaseProductEntity", b =>
                 {
                     b.HasOne("AlaBackEnd.Entity.Products.CategoryEntity", "Category")
@@ -555,6 +532,17 @@ namespace AlaBackEnd.DAL.Migrations
                     b.Navigation("Rieltor");
                 });
 
+            modelBuilder.Entity("AlaBackEnd.DAL.Entity.Products.AdditionalServices", b =>
+                {
+                    b.HasOne("AlaBackEnd.DAL.Entity.BaseProductEntity", "Product")
+                        .WithMany("AdditionalServices")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.SetNull)
+                        .IsRequired();
+
+                    b.Navigation("Product");
+                });
+
             modelBuilder.Entity("ProductsTags", b =>
                 {
                     b.HasOne("AlaBackEnd.DAL.Entity.BaseProductEntity", null)
@@ -587,6 +575,8 @@ namespace AlaBackEnd.DAL.Migrations
 
             modelBuilder.Entity("AlaBackEnd.DAL.Entity.BaseProductEntity", b =>
                 {
+                    b.Navigation("AdditionalServices");
+
                     b.Navigation("Feedbacks");
 
                     b.Navigation("Images");

@@ -43,8 +43,9 @@ namespace AlaBackEnd.BLL.MapperProfiles
                 .ForMember(dest => dest.Tags, opt => opt.Ignore())
                 .ForMember(dest => dest.Category, opt => opt.Ignore())
                 .ForMember(dest => dest.DateFrom, opt => opt.MapFrom(src => DateTime.Parse(src.CreateDateFrom).ToUniversalTime()))
-                .ForMember(dest => dest.DateTo, opt => opt.MapFrom(src => DateTime.Parse(src.CreateDateTo).ToUniversalTime()));
-
+                .ForMember(dest => dest.DateTo, opt => opt.MapFrom(src => DateTime.Parse(src.CreateDateTo).ToUniversalTime()))
+                .ForMember(dest => dest.AdditionalServices, opt => opt.Ignore());
+                
             //CreateMap<CategoryEntity, CategoryDto>();
 
 
@@ -101,6 +102,12 @@ namespace AlaBackEnd.BLL.MapperProfiles
             CreateMap<RieltorRequestsDto, RieltorAcceptEntity>()
                 .ForMember(dest => dest.Id, opt => opt.Ignore());
 
+
+            CreateMap<CreateAdditionalServiceDto, AdditionalServicesEntity>();
+                //.ForMember(dest => dest.Id, opt => opt.Ignore());
+
+            
+                
         }
     }
 }

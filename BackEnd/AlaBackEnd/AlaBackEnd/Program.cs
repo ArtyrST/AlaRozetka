@@ -41,6 +41,7 @@ namespace AlaBackEnd
             builder.Services.AddScoped<PandingUserPerository>();
             builder.Services.AddScoped<ProductCartRepository>();
             builder.Services.AddScoped<RieltorRequestsRepository>();
+            builder.Services.AddScoped<AdditionalServicesRepository>();
 
 
             //add services

@@ -18,7 +18,7 @@ namespace AlaBackEnd.DAL.Repositories
             int res = await _context.SaveChangesAsync();
             return res != 0;
         }
-        public async Task<bool> CreateRangeAsync(IEnumerable<TEntity> entitis)
+        public virtual async Task<bool> CreateRangeAsync(IEnumerable<TEntity> entitis)
         {
             await _context.Set<TEntity>().AddRangeAsync(entitis);
             int res = await _context.SaveChangesAsync();

@@ -46,7 +46,7 @@ namespace AlaBackEnd.API.Controllers
             var response = await _productService.GetByTagAsync(tagIds);
             return this.GetResult(response);
         }
-        [Authorize(Roles = "Rieltor")]
+        //[Authorize(Roles = "Rieltor")]
         [HttpPost("from-form")]
         public async Task<IActionResult> CreateProductAsync([FromForm] CreateProductDto dto)
         {

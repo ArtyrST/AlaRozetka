@@ -4,6 +4,7 @@ using AlaBackEnd.DAL.Entity.Products;
 using AlaBackEnd.DAL.Entity.Users;
 using AlaBackEnd.Entity.Products;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Internal;
 
 
 
@@ -27,6 +28,7 @@ namespace AlaBackEnd.DAL
         public DbSet<EmailCodeEntity> OtpCodes { get; set; }
         public DbSet<PandingUserEntity> PandingUsers {  get; set; }
         public DbSet<RieltorAcceptEntity> RieltorBecomingRequests { get; set; }
+        public DbSet<AdditionalServicesEntity> AdditionalServices { get; set; }
         
         
         
@@ -35,7 +37,11 @@ namespace AlaBackEnd.DAL
 
             base.OnModelCreating(builder);
 
-            
+            builder.Entity<AdditionalServicesEntity>(entity =>
+            {
+                entity.HasKey(a => a.Id);
+
+            });
 
             builder.Entity<BaseProductEntity>()
                 .Navigation(p => p.Tags)
@@ -231,6 +237,16 @@ namespace AlaBackEnd.DAL
                 .WithOne(u => u.Rieltor)
                 .HasForeignKey(u => u.UserId)
                 .OnDelete(DeleteBehavior.SetNull);
+            });
+
+            //product with additional services
+            builder.Entity<AdditionalServicesEntity>(entity =>
+            {
+                entity
+                .HasMany(a => a.Products)
+                .WithMany(a => a.AdditionalServices)
+                .UsingEntity("AdditionalServicesWithProducts");
+                
             });
 
 
