@@ -90,12 +90,12 @@ const prevSlide = () => {
       </div>
 
       <div className="buttons">
-        <button className="prev" onClick={prevSlide} type="button">
-          <img src={arrowImg} alt="Previous" />
+        <button  className="prev" onClick={prevSlide} type="button">
+          <img className="arrow-prev" src={arrowImg} alt="Previous" />
         </button>
 
         <button className="next" onClick={nextSlide} type="button">
-          <img src={arrowImg} alt="Next" />
+          <img className="arrow-next" src={arrowImg} alt="Next" />
         </button>
       </div>
     </div>

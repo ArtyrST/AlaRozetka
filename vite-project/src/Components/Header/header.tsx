@@ -1,14 +1,16 @@
 import { Link } from "react-router-dom";
 import { useEffect, useState } from 'react';
 import './header.scss';
+import ProtectedRoute from "../ProtectedRoute";
 
 type Language = 'uk' | 'en';
 
 function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isLangMenuOpen, setIsLangMenuOpen] = useState(false);
+  const [isRegistMenuOpen, setIsRegistMenuOpen] = useState(false);
   const [language, setLanguage] = useState<Language>('uk');
-
+  const token = localStorage.getItem('token');
   useEffect(() => {
     const savedLanguage = localStorage.getItem('siteLanguage') as Language | null;
 
@@ -48,6 +50,11 @@ function Header() {
     setIsLangMenuOpen((prev) => !prev);
   };
 
+ const toggleRegistMenu = (): void => {
+    setIsRegistMenuOpen((prev) => !prev);
+  };
+
+
   const selectLanguage = (lang: Language): void => {
     setLanguage(lang);
     localStorage.setItem('siteLanguage', lang);
@@ -85,7 +92,7 @@ function Header() {
         <a href="/Main-Page/index.html" className="logo">
           <img src="/src/assets/Group 3.svg" alt="Logo" />
         </a>
-
+ 
         <div className="center-section">
           <a  className="pages">
             <Link to="/">Головна</Link>
@@ -139,12 +146,31 @@ function Header() {
             </Link>
             </a>
 
+          <div>
+            <button  title="Реєстрація"
+              onClick={toggleRegistMenu}
+              type="button"
+              aria-label="Toggle registration menu"   
+            >
+            <img src="/src/assets/User_fill.png" alt="User" />
+            </button>
+          
+           <div className={`register-menu ${isRegistMenuOpen ? 'active' : ''}`}>
+            {token ? (
+              <>
+                <Link className="register-link" to="/realtor-profile"><button>Профіль</button></Link>
+                <Link className="register-link" to="/logout"><button>Вихід</button></Link>
+              </>
+            ) : (
+              <>
+                <Link className="register-link" to="/login"><button>Увійти</button></Link>
+                <Link className="register-link" to="/register"><button>Реєстрація</button></Link>
+              </>
+            )}
+            </div>
 
-            <a  title="Реєстрація">
-              <Link to="/protected" type="button">
-                <img src="/src/assets/User_fill.png" alt="User" />
-              </Link>
-            </a>
+            
+            </div>
           </div>
         </div>
 

@@ -1,15 +1,22 @@
 ////ТЕСТ ХУЙНЯ!!!!!!!!!!!!!!!!!!!
 
-import {Navigate} from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
+import { type ReactNode } from 'react';
 
-const ProtectedRoute = () => {
-    const token = localStorage.getItem('token');
+interface Props {
+  children: ReactNode;
+}
 
-    if (!token) {
-        return <Navigate to="/login" replace />;
-    }
+const ProtectedRoute = ({ children }: Props) => {
+  const token = localStorage.getItem('token');
 
-    return <Navigate to="/realtor-profile" replace />;
+  // Якщо токена немає — відправляємо на логін
+  if (!token) {
+    return <Navigate to="/login" replace />;
+  }
+
+  // Якщо токен є — показуємо те, що "загорнуто" в цей компонент
+  return <>{children}</>;
 };
 
 export default ProtectedRoute;
