@@ -1,36 +1,33 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import './add-hotel.scss';
 
-interface ProductFormData {
-  name: string;
-  price: number;
-  country: string;
-  city: string;
-  description: string;
-  categoryId: number;
-  createDateFrom: string;
-  createDateTo: string;
-  tags: number[];
-  images: File[];
-  previewImageIndex: number;
-}
+const AMENITIES = [
+  { id: 1, label: 'Письмовий стіл та стілець' },
+  { id: 2, label: 'Шафа або гардероб' },
+  { id: 3, label: 'Бар' },
+  { id: 4, label: 'Телевізор' },
+  { id: 5, label: 'Телефон' },
+  { id: 6, label: 'Кондиціонер' },
+  { id: 7, label: 'Сейф' },
+  { id: 8, label: 'Фен для волосся' },
+  { id: 9, label: 'Зубна щітка та паста' },
+  { id: 10, label: 'Рушники' }
+];
 
 export default function AddHotel() {
-  const navigate = useNavigate();
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
-
-  const [formData, setFormData] = useState<ProductFormData>({
+ 
+  const [formData, setFormData] = useState({
     name: '',
     price: 0,
     country: '',
     city: '',
     description: '',
-    categoryId: 1, 
+    categoryId: 1,
     createDateFrom: '',
     createDateTo: '',
-    tags: [1], 
-    images: [],
+    tags: [] as number[],
+    images: [] as File[],
     previewImageIndex: 0,
   });
 
@@ -42,152 +39,109 @@ export default function AddHotel() {
     }));
   };
 
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files) {
-      setFormData(prev => ({
-        ...prev,
-        images: Array.from(e.target.files!)
-      }));
-    }
+  const handleTagChange = (tagId: number) => {
+    setFormData(prev => ({
+      ...prev,
+      tags: prev.tags.includes(tagId) ? prev.tags.filter(id => id !== tagId) : [...prev.tags, tagId]
+    }));
   };
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setError(null);
-    setLoading(true);
-
-
-    const tokenDataRaw = localStorage.getItem('token');
-    if (!tokenDataRaw) {
-      setError("Ви не авторизовані. Будь ласка, увійдіть в систему.");
-      setLoading(false);
-      return;
-    }
-
-    let cleanToken = "";
-    try {
-
-      const parsedData = JSON.parse(tokenDataRaw);
-      cleanToken = parsedData.payLoad || tokenDataRaw; 
-    } catch {
-      cleanToken = tokenDataRaw;
-    }
-
-    try {
-      const data = new FormData();
-
-
-      data.append('Name', formData.name);
-      data.append('Price', formData.price.toString());
-      data.append('Country', formData.country);
-      data.append('City', formData.city);
-      data.append('Description', formData.description);
-      data.append('CategoryId', formData.categoryId.toString());
-      data.append('CreateDateFrom', formData.createDateFrom);
-      data.append('CreateDateTo', formData.createDateTo);
-      
- 
-      data.append('PreviewImageId', formData.previewImageIndex.toString());
-
-
-      formData.tags.forEach(tag => data.append('Tags', tag.toString()));
-
-      formData.images.forEach((file) => {
-        data.append('Images', file);
-      });
-
-      const response = await fetch('https://localhost:7147/api/products/from-form', {
-        method: 'POST',
-        headers: {
-          'Authorization': `Bearer ${cleanToken}`
-        },
-        body: data,
-      });
-
-      if (response.status === 401) throw new Error("Помилка: Неавторизовано (401)");
-      if (response.status === 403) throw new Error("Доступ заборонено: Ви не рієлтор (403)");
-
-      if (!response.ok) {
-        const errorText = await response.text();
-        throw new Error(errorText || "Помилка сервера");
-      }
-
-      alert("Готель успішно додано!");
-      navigate('/dashboard'); // Або інша сторінка
-
-    } catch (err: any) {
-      setError(err.message);
-    } finally {
-      setLoading(false);
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files) {
+      setFormData(prev => ({ ...prev, images: [...prev.images, ...Array.from(e.target.files!)] }));
     }
   };
 
   return (
-    <div style={{ maxWidth: '600px', margin: '20px auto', padding: '20px', border: '1px solid #ddd', borderRadius: '8px' }}>
-      <h2>Додати новий готель</h2>
-      <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
+    <div className="gh-container">
+      <div className="gh-card">
+        <h2 className="gh-title">Інформація про кімнату</h2>
         
-        <input name="name" placeholder="Назва готелю" onChange={handleChange} required />
-        <input name="price" type="number" placeholder="Ціна за ніч" onChange={handleChange} required />
-        
-        <div style={{ display: 'flex', gap: '10px' }}>
-          <input name="country" placeholder="Країна" onChange={handleChange} required style={{ flex: 1 }} />
-          <input name="city" placeholder="Місто" onChange={handleChange} required style={{ flex: 1 }} />
-        </div>
-
-        <textarea name="description" placeholder="Детальний опис" onChange={handleChange} required style={{ height: '100px' }} />
-
-        <div style={{ display: 'flex', gap: '10px' }}>
-          <div style={{ flex: 1 }}>
-            <label>Дата з:</label>
-            <input name="createDateFrom" type="date" onChange={handleChange} style={{ width: '100%' }} />
-          </div>
-          <div style={{ flex: 1 }}>
-            <label>Дата до:</label>
-            <input name="createDateTo" type="date" onChange={handleChange} style={{ width: '100%' }} />
-          </div>
-        </div>
-
-        <div>
-          <label>Фотографії:</label>
-          <input type="file" multiple onChange={handleFileChange} accept="image/*" style={{ display: 'block', marginTop: '5px' }} />
-        </div>
-
-        {/* Секція вибору прев'ю */}
-        {formData.images.length > 0 && (
-          <div style={{ background: '#f9f9f9', padding: '10px', borderRadius: '5px' }}>
-            <p style={{ fontSize: '14px', margin: '0 0 10px 0' }}>Оберіть головне фото:</p>
-            <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
-              {formData.images.map((file, index) => (
-                <div 
-                  key={index} 
-                  onClick={() => setFormData(p => ({ ...p, previewImageIndex: index }))}
-                  style={{
-                    width: '70px', height: '70px', borderRadius: '4px', overflow: 'hidden',
-                    border: formData.previewImageIndex === index ? '3px solid #007bff' : '1px solid #ccc',
-                    cursor: 'pointer', position: 'relative'
-                  }}
-                >
-                  <img src={URL.createObjectURL(file)} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-                </div>
-              ))}
+        <form className="gh-form">
+          {/* 1. Період оренди */}
+          <div className="gh-section">
+            <div className="gh-num">1</div>
+            <div className="gh-content">
+              <label className="gh-label">Доступний період оренди</label>
+              <div className="gh-grid">
+                <input type="date" name="createDateFrom" className="gh-input" onChange={handleChange} />
+                <input type="date" name="createDateTo" className="gh-input" onChange={handleChange} />
+              </div>
             </div>
           </div>
-        )}
 
-        {error && <div style={{ color: 'red', fontSize: '14px', padding: '10px', background: '#fff5f5' }}>{error}</div>}
+          {/* 2. Назва */}
+          <div className="gh-section">
+            <div className="gh-num">2</div>
+            <div className="gh-content">
+              <label className="gh-label">Назва номеру</label>
+              <input type="text" name="name" className="gh-input gh-full" placeholder="Наприклад: Double Luxury Room" onChange={handleChange} />
+            </div>
+          </div>
 
-        <button 
-          type="submit" 
-          disabled={loading}
-          style={{
-            padding: '12px', background: '#007bff', color: 'white', border: 'none', 
-            borderRadius: '5px', cursor: loading ? 'not-allowed' : 'pointer'
-          }}
-        >
-          {loading ? 'Надсилання...' : 'Зберегти готель'}
-        </button>
-      </form>
+          {/* 3. Тип та локація */}
+          <div className="gh-section">
+            <div className="gh-num">3</div>
+            <div className="gh-content">
+              <label className="gh-label">Тип номеру та локація</label>
+              <div className="gh-grid">
+                <select name="categoryId" className="gh-input gh-select" onChange={handleChange}>
+                  <option value={1}>Готель</option>
+                  <option value={2}>Хостел</option>
+                </select>
+                <input type="text" name="country" className="gh-input" placeholder="Країна" onChange={handleChange} />
+              </div>
+              <input type="text" name="city" className="gh-input gh-full gh-mt" placeholder="Місто" onChange={handleChange} />
+            </div>
+          </div>
+
+          {/* 4. Опис */}
+          <div className="gh-section">
+            <div className="gh-num">4</div>
+            <div className="gh-content">
+              <label className="gh-label">Опис</label>
+              <textarea name="description" className="gh-input gh-textarea" placeholder="Опишіть номер..." onChange={handleChange} />
+            </div>
+          </div>
+
+          {/* 5. Зручності */}
+          <div className="gh-section">
+            <div className="gh-num">5</div>
+            <div className="gh-content">
+              <label className="gh-label">Чим гості можуть користуватися у кімнаті?</label>
+              <div className="gh-tags-box">
+                {AMENITIES.map(tag => (
+                  <label key={tag.id} className="gh-tag-item">
+                    <input type="checkbox" checked={formData.tags.includes(tag.id)} onChange={() => handleTagChange(tag.id)} />
+                    <span>{tag.label}</span>
+                  </label>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* 6. Фото */}
+          <div className="gh-section">
+            <div className="gh-num">6</div>
+            <div className="gh-content">
+              <label className="gh-label">Фотографії</label>
+              <div className="gh-upload">
+                <input type="file" multiple id="gh-file" onChange={handleFileChange} hidden />
+                <label htmlFor="gh-file" className="gh-upload-btn">+ Додати фото</label>
+              </div>
+              <div className="gh-previews">
+                {formData.images.map((img, i) => (
+                  <div key={i} className={`gh-img-card ${formData.previewImageIndex === i ? 'active' : ''}`} onClick={() => setFormData(p => ({...p, previewImageIndex: i}))}>
+                    <img src={URL.createObjectURL(img)} alt="" />
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          <button type="submit" className="gh-submit">Добавити</button>
+        </form>
+      </div>
     </div>
   );
 }
