@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState, type JSX } from 'react';
 import { hotelService } from '../../Services/hotelService';
 import type { Hotel } from '../../Services/types/hotel.types';
+import { Link } from 'react-router-dom';
 import './catalog.scss';
 
 function Catalog(): JSX.Element {
@@ -289,7 +290,7 @@ const toggleRating = (value: number): void => {
                   </div>
 
                   <div className="apartment-cta">
-                    <button type="button">Обрати</button>
+                    <button type="button"><Link className="choice-link" to="/hotel">Обрати</Link></button>
                   </div>
                 </div>
               </div>
