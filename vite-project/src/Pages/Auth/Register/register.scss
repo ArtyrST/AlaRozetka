@@ -182,7 +182,9 @@ $font-main: 'Nunito', sans-serif;
 .register-cta {
   margin-top: 12px;
   text-align: center;
-
+   display: flex;
+  justify-content: center;
+  align-items: center;
   button {
     background: $primary-color;
     color: #fff;
