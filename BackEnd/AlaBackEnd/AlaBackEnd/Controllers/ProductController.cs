@@ -1,6 +1,7 @@
 ﻿using AlaBackEnd.API.Extensions;
 using AlaBackEnd.BLL.dto;
 using AlaBackEnd.BLL.Services;
+using AlaBackEnd.BLL.Services.ProductsService;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using NpgsqlTypes;
@@ -15,13 +16,15 @@ namespace AlaBackEnd.API.Controllers
         private readonly ProductService _productService;
         private readonly OrderItemService _orderItemService;
         private readonly FeedBackService _feedbackService;
+        private readonly AdditionalServicesService _addService;
         
 
-        public ProductController(ProductService productService, OrderItemService orderItemService, FeedBackService feedBackService)
+        public ProductController(AdditionalServicesService addService, ProductService productService, OrderItemService orderItemService, FeedBackService feedBackService)
         {
             _productService = productService;
             _orderItemService = orderItemService;
             _feedbackService = feedBackService;
+            _addService = addService;
         }
         //[Authorize]
         [HttpGet] 
@@ -86,6 +89,13 @@ namespace AlaBackEnd.API.Controllers
         public async Task<IActionResult> CreateFeedBackAsync([FromForm] CreateFeedBackDto dto)
         {
             var response = await _feedbackService.CreateAsync(dto);
+            return this.GetResult(response);
+        }
+        [Authorize(Roles = "Guest")]
+        [HttpGet("get-additional-services")]
+        public async Task<IActionResult> GetAdditionalServices()
+        {
+            var response = await _addService.GetAllServices();
             return this.GetResult(response);
         }
 

@@ -7,7 +7,6 @@ using AlaBackEnd.DAL.Entity.Products;
 using AlaBackEnd.DAL.Entity.Users;
 using AlaBackEnd.Entity.Products;
 using AutoMapper;
-using AlaBackEnd.BLL.dto;
 
 
 namespace AlaBackEnd.BLL.MapperProfiles
@@ -43,8 +42,9 @@ namespace AlaBackEnd.BLL.MapperProfiles
                 .ForMember(dest => dest.Tags, opt => opt.Ignore())
                 .ForMember(dest => dest.Category, opt => opt.Ignore())
                 .ForMember(dest => dest.DateFrom, opt => opt.MapFrom(src => DateTime.Parse(src.CreateDateFrom).ToUniversalTime()))
-                .ForMember(dest => dest.DateTo, opt => opt.MapFrom(src => DateTime.Parse(src.CreateDateTo).ToUniversalTime()));
-
+                .ForMember(dest => dest.DateTo, opt => opt.MapFrom(src => DateTime.Parse(src.CreateDateTo).ToUniversalTime()))
+                .ForMember(dest => dest.AdditionalServices, opt => opt.Ignore());
+                
             //CreateMap<CategoryEntity, CategoryDto>();
 
 
@@ -73,7 +73,8 @@ namespace AlaBackEnd.BLL.MapperProfiles
             CreateMap<CreateOrderDto, OrderItemEntity>()
                 .ForMember(dest => dest.Id, opt => opt.Ignore())
                 .ForMember(dest => dest.UserId, opt => opt.Ignore())
-                .ForMember(dest => dest.TotalPrice, opt => opt.Ignore());
+                .ForMember(dest => dest.TotalPrice, opt => opt.Ignore())
+                .ForMember(dest => dest.AdditionalServices, opt => opt.Ignore());
 
             //CreateFeedBackDto -> FeedBackDto
             CreateMap<CreateFeedBackDto, FeedBackEntity>()
@@ -100,6 +101,21 @@ namespace AlaBackEnd.BLL.MapperProfiles
             CreateMap<RieltorAcceptEntity, RieltorRequestsDto>();
             CreateMap<RieltorRequestsDto, RieltorAcceptEntity>()
                 .ForMember(dest => dest.Id, opt => opt.Ignore());
+
+
+            CreateMap<CreateAdditionalServiceDto, AdditionalServicesEntity>()
+                .ForMember(dest => dest.Id, opt => opt.Ignore())
+                .ForMember(dest => dest.Products, opt => opt.Ignore());
+
+            CreateMap<AdditionalServicesEntity, GetAdditionalServicesDto>()
+                .ForMember(dest => dest.Id, opt => opt.Ignore());
+
+
+            CreateMap<UpdateUserDto, UserEntity>()
+                .ForMember(dest => dest.Gender, opt => opt.MapFrom(src => src.Gender.ToString()))
+                .ForMember(dest => dest.Avatar, opt => opt.Ignore())
+                .ForAllMembers(o => o.Condition((src, dest, srcMember) => srcMember != null));
+
 
         }
     }

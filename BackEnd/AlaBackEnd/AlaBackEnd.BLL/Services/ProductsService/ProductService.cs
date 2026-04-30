@@ -1,5 +1,5 @@
 ﻿using AlaBackEnd.BLL.dto;
-using AlaBackEnd.BLL.Services.ImagesService;
+using AlaBackEnd.BLL.Services;
 using AlaBackEnd.DAL.Entity;
 using AlaBackEnd.DAL.Entity.Products;
 using AlaBackEnd.DAL.Repositories;
@@ -20,8 +20,9 @@ namespace AlaBackEnd.BLL.Services
         private readonly TagRepository _Tags;
         private readonly ImageService _Image;
         private readonly IHttpContextAccessor _httpAccessor;
+        private readonly AdditionalServicesRepository _additionalServices;
 
-        public ProductService(IHttpContextAccessor httpAccessor, ProductRepository ProductRepository, IMapper mapper, TagRepository tags, CategoryRepository categoryRepository, ImageService image)
+        public ProductService(AdditionalServicesRepository additionalServices, IHttpContextAccessor httpAccessor, ProductRepository ProductRepository, IMapper mapper, TagRepository tags, CategoryRepository categoryRepository, ImageService image)
         {
             _ProductRepository = ProductRepository;
             _Mapper = mapper;
@@ -29,6 +30,7 @@ namespace AlaBackEnd.BLL.Services
             _CategoryRepository = categoryRepository;
             _Image = image;
             _httpAccessor = httpAccessor;
+            _additionalServices = additionalServices;
         }
         public async Task<ServiceResponse> GetAllAsync(int PageNumber, int PageSize)
         {
@@ -87,10 +89,22 @@ namespace AlaBackEnd.BLL.Services
 
             
             var entity = _Mapper.Map<BaseProductEntity>(dto);
-
-            var userId = _httpAccessor.HttpContext?.User.FindFirstValue(ClaimTypes.NameIdentifier);
-            entity.UserId = int.Parse(userId);
             
+            //var userId = _httpAccessor.HttpContext?.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            //entity.UserId = int.Parse(userId);
+            
+            if (dto.AdditionalServices != null && dto.AdditionalServices.Count > 0)
+            {
+                var mapped = _Mapper.Map<List<AdditionalServicesEntity>>(dto.AdditionalServices);
+                entity.AdditionalServices.AddRange(mapped); // замість циклу
+                //var addServicesMapped = _Mapper.Map<List<AdditionalServicesEntity>>(dto.AdditionalServices);
+                //bool addingRes = await _additionalServices.CreateRangeListAsync(addServicesMapped);
+                //if (!addingRes)
+                //{
+                //    return ServiceResponse.Error("Something wrong with adding additional");
+                //}
+            }
+
             if (dto.Images != null && dto.Images.Count > 0)
             {
                 for (int i = 0; i < dto.Images.Count; i++)

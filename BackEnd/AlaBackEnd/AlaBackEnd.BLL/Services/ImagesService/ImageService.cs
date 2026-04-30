@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using AutoMapper;
 
 
-namespace AlaBackEnd.BLL.Services.ImagesService
+namespace AlaBackEnd.BLL.Services
 {
     // AlaBackEnd.BLL/Services/ImageService.cs
     public class ImageService : IImageInterface

@@ -18,6 +18,41 @@ namespace AlaBackEnd.DAL.Seeders
 
             await dbContext.Database.MigrateAsync();
 
+            var addServices = new List<AdditionalServicesEntity>();
+            if (!dbContext.AdditionalServices.Any())
+            {
+                addServices = new List<AdditionalServicesEntity>
+                {
+                    new AdditionalServicesEntity { Name = "Сніданок у номер", Price = 350 },
+                    new AdditionalServicesEntity { Name = "Трансфер до аеропорту", Price = 800 },
+                    new AdditionalServicesEntity { Name = "Оренда конференц-залу (1 година)", Price = 1200 },
+                    new AdditionalServicesEntity { Name = "Послуги пральні та прасування", Price = 250 },
+                    new AdditionalServicesEntity { Name = "Міні-бар (стандартне наповнення)", Price = 500 },
+                    new AdditionalServicesEntity { Name = "Відвідування SPA-зони", Price = 600 },
+                    new AdditionalServicesEntity { Name = "Масаж класичний (60 хв)", Price = 1100 },
+                    new AdditionalServicesEntity { Name = "Оренда велосипеда (день)", Price = 400 },
+                    new AdditionalServicesEntity { Name = "Додаткове спальне місце", Price = 700 },
+                    new AdditionalServicesEntity { Name = "Проживання з тваринами", Price = 500 },
+                    new AdditionalServicesEntity { Name = "Ранній заїзд", Price = 900 },
+                    new AdditionalServicesEntity { Name = "Пізній виїзд", Price = 900 },
+                    new AdditionalServicesEntity { Name = "Екскурсія містом з гідом", Price = 1500 },
+                    new AdditionalServicesEntity { Name = "Парковка під охороною (доба)", Price = 200 },
+                    new AdditionalServicesEntity { Name = "Пляшка ігристого вина у номер", Price = 750 },
+                    new AdditionalServicesEntity { Name = "Фруктова корзина", Price = 450 },
+                    new AdditionalServicesEntity { Name = "Послуги няні (1 година)", Price = 300 },
+                    new AdditionalServicesEntity { Name = "Оренда автомобіля", Price = 2500 },
+                    new AdditionalServicesEntity { Name = "Квитки на театральну виставу", Price = 1000 },
+                    new AdditionalServicesEntity { Name = "Хімчистка взуття", Price = 150 }
+                };
+                await dbContext.AdditionalServices.AddRangeAsync(addServices);
+                await dbContext.SaveChangesAsync();
+            }
+            else
+            {
+                addServices = await dbContext.AdditionalServices.AsNoTracking().ToListAsync();
+
+            }
+
             var roles = new List<RoleEntity>();
             if (!dbContext.Roles.Any())
             {

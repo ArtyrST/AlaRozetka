@@ -22,6 +22,7 @@ namespace AlaBackEnd.BLL.Services
             {
                 IsSuccess = false,
                 Message = message,
+                
             };
         }
     }

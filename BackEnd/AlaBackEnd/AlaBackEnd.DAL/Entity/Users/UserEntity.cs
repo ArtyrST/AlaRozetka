@@ -14,6 +14,10 @@ namespace AlaBackEnd.DAL.Entity.Users
         public string Login { get; set; } = string.Empty;
         public string Password { get; set; } = string.Empty;
         public int UserRate { get; set; }
+        public string? Gender { get; set; } = string.Empty;
+        public string? Description {  get; set; } = string.Empty;
+        public string? PhoneNumber { get; set; } = string.Empty;
+        public ImageEntity? Avatar { get; set; }
 
         //Relation with role
         public virtual List<RoleEntity> Roles { get; set; } = [];

@@ -1,6 +1,6 @@
 
 using AlaBackEnd.BLL.Services;
-using AlaBackEnd.BLL.Services.ImagesService;
+using AlaBackEnd.BLL.Services;
 using AlaBackEnd.BLL.Services.Interfaces;
 using AlaBackEnd.BLL.Services.LoginService;
 using AlaBackEnd.BLL.Services.ProductsService;
@@ -14,6 +14,7 @@ using Microsoft.Extensions.FileProviders;
 using Microsoft.IdentityModel.Tokens;
 using Scalar.AspNetCore;
 using System.Text;
+using System.Text.Json.Serialization;
 
 
 
@@ -41,6 +42,7 @@ namespace AlaBackEnd
             builder.Services.AddScoped<PandingUserPerository>();
             builder.Services.AddScoped<ProductCartRepository>();
             builder.Services.AddScoped<RieltorRequestsRepository>();
+            builder.Services.AddScoped<AdditionalServicesRepository>();
 
 
             //add services
@@ -55,6 +57,7 @@ namespace AlaBackEnd
             builder.Services.AddScoped<EmailVerifService>();
             builder.Services.AddScoped<IProductCartInterface, ProductCartService>();
             builder.Services.AddScoped<IRieltorAcceptService, RieltorRequestsService>();
+            builder.Services.AddScoped<AdditionalServicesService>();
             
             //add automapper
             builder.Services.AddAutoMapper(cfg =>
@@ -101,7 +104,11 @@ namespace AlaBackEnd
 
             // Add services to the container.
 
-            builder.Services.AddControllers();
+            builder.Services.AddControllers()
+            .AddJsonOptions(options =>
+            {
+                options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
+            });
             // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
             // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
             builder.Services.AddOpenApi();
@@ -154,7 +161,7 @@ namespace AlaBackEnd
             app.UseAuthorization();
 
 
-            
+            app.UseStaticFiles();
             app.MapControllers();
 
             //await app.SeedAsync();

@@ -39,7 +39,8 @@ namespace AlaBackEnd.DAL.Entity
         //with order
         public int? OrderId { get; set; }
         public OrderItemEntity? Order { get; set; }
-       
+        // with additional services
+        public List<AdditionalServicesEntity> AdditionalServices { get; set; } = [];
         
         
 

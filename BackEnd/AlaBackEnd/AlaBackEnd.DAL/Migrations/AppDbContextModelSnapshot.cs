@@ -22,6 +22,36 @@ namespace AlaBackEnd.DAL.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
+            modelBuilder.Entity("AdditionalServicesWithOrders", b =>
+                {
+                    b.Property<int>("AdditionalServicesId")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("ServicesId")
+                        .HasColumnType("integer");
+
+                    b.HasKey("AdditionalServicesId", "ServicesId");
+
+                    b.HasIndex("ServicesId");
+
+                    b.ToTable("AdditionalServicesWithOrders");
+                });
+
+            modelBuilder.Entity("AdditionalServicesWithProducts", b =>
+                {
+                    b.Property<int>("AdditionalServicesId")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("ProductsId")
+                        .HasColumnType("integer");
+
+                    b.HasKey("AdditionalServicesId", "ProductsId");
+
+                    b.HasIndex("ProductsId");
+
+                    b.ToTable("AdditionalServicesWithProducts");
+                });
+
             modelBuilder.Entity("AlaBackEnd.DAL.Entity.BaseProductEntity", b =>
                 {
                     b.Property<int>("Id")
@@ -128,12 +158,18 @@ namespace AlaBackEnd.DAL.Migrations
                         .HasMaxLength(150)
                         .HasColumnType("character varying(150)");
 
-                    b.Property<int>("ProductId")
+                    b.Property<int?>("ProductId")
+                        .HasColumnType("integer");
+
+                    b.Property<int?>("UserId")
                         .HasColumnType("integer");
 
                     b.HasKey("Id");
 
                     b.HasIndex("ProductId");
+
+                    b.HasIndex("UserId")
+                        .IsUnique();
 
                     b.ToTable("Images");
                 });
@@ -198,6 +234,26 @@ namespace AlaBackEnd.DAL.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("OrderItems");
+                });
+
+            modelBuilder.Entity("AlaBackEnd.DAL.Entity.Products.AdditionalServicesEntity", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<double>("Price")
+                        .HasColumnType("double precision");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("AdditionalServices");
                 });
 
             modelBuilder.Entity("AlaBackEnd.DAL.Entity.Products.ProductTagEntity", b =>
@@ -334,6 +390,9 @@ namespace AlaBackEnd.DAL.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
+                    b.Property<string>("Description")
+                        .HasColumnType("text");
+
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasMaxLength(80)
@@ -344,6 +403,9 @@ namespace AlaBackEnd.DAL.Migrations
                         .HasMaxLength(20)
                         .HasColumnType("character varying(20)");
 
+                    b.Property<string>("Gender")
+                        .HasColumnType("text");
+
                     b.Property<string>("Login")
                         .IsRequired()
                         .HasMaxLength(30)
@@ -351,6 +413,9 @@ namespace AlaBackEnd.DAL.Migrations
 
                     b.Property<string>("Password")
                         .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("PhoneNumber")
                         .HasColumnType("text");
 
                     b.Property<string>("SecondName")
@@ -414,6 +479,36 @@ namespace AlaBackEnd.DAL.Migrations
                     b.ToTable("UserRoles");
                 });
 
+            modelBuilder.Entity("AdditionalServicesWithOrders", b =>
+                {
+                    b.HasOne("AlaBackEnd.DAL.Entity.Products.AdditionalServicesEntity", null)
+                        .WithMany()
+                        .HasForeignKey("AdditionalServicesId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("AlaBackEnd.DAL.Entity.ProductCart.OrderItemEntity", null)
+                        .WithMany()
+                        .HasForeignKey("ServicesId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("AdditionalServicesWithProducts", b =>
+                {
+                    b.HasOne("AlaBackEnd.DAL.Entity.Products.AdditionalServicesEntity", null)
+                        .WithMany()
+                        .HasForeignKey("AdditionalServicesId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("AlaBackEnd.DAL.Entity.BaseProductEntity", null)
+                        .WithMany()
+                        .HasForeignKey("ProductsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("AlaBackEnd.DAL.Entity.BaseProductEntity", b =>
                 {
                     b.HasOne("AlaBackEnd.Entity.Products.CategoryEntity", "Category")
@@ -461,10 +556,16 @@ namespace AlaBackEnd.DAL.Migrations
                     b.HasOne("AlaBackEnd.DAL.Entity.BaseProductEntity", "Product")
                         .WithMany("Images")
                         .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("AlaBackEnd.DAL.Entity.Users.UserEntity", "User")
+                        .WithOne("Avatar")
+                        .HasForeignKey("AlaBackEnd.DAL.Entity.ImageEntity", "UserId")
+                        .OnDelete(DeleteBehavior.SetNull);
 
                     b.Navigation("Product");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("AlaBackEnd.DAL.Entity.ProductCart.CartEntity", b =>
@@ -549,6 +650,8 @@ namespace AlaBackEnd.DAL.Migrations
 
             modelBuilder.Entity("AlaBackEnd.DAL.Entity.Users.UserEntity", b =>
                 {
+                    b.Navigation("Avatar");
+
                     b.Navigation("Cart");
 
                     b.Navigation("FeedBacks");

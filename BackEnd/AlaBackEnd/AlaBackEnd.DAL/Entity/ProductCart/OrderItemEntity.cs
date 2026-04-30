@@ -1,6 +1,7 @@
 ﻿
 using AlaBackEnd.DAL.Entity.Users;
 using AlaBackEnd.DAL.Entity.BaseEntity;
+using AlaBackEnd.DAL.Entity.Products;
 
 namespace AlaBackEnd.DAL.Entity.ProductCart
 {
@@ -26,8 +27,9 @@ namespace AlaBackEnd.DAL.Entity.ProductCart
         //with user
         public UserEntity? Rieltor { get; set; }
         public int? RieltorId { get; set; }
-        
-        
+
+        //with AdditionalServices
+        public List<AdditionalServicesEntity> AdditionalServices { get; set; } = [];
 
               
         
