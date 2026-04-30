@@ -17,7 +17,11 @@ namespace AlaBackEnd.DAL.Entity
         //product
         
         public BaseProductEntity? Product { get; set; }
-        public int ProductId { get; set; }
+        public int? ProductId { get; set; }
+
+        //user
+        public UserEntity? User { get; set; }
+        public int? UserId { get; set; } 
 
     }
 }

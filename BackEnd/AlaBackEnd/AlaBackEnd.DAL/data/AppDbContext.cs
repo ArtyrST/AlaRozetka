@@ -257,6 +257,15 @@ namespace AlaBackEnd.DAL
 
             });
 
+            builder.Entity<UserEntity>(entity =>
+            {
+                entity
+                .HasOne(u => u.Avatar)
+                .WithOne(u => u.User)
+                .HasForeignKey<ImageEntity>(u => u.UserId)
+                .OnDelete(DeleteBehavior.SetNull);
+            });
+
 
         }        
     }

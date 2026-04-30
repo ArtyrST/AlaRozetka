@@ -158,12 +158,18 @@ namespace AlaBackEnd.DAL.Migrations
                         .HasMaxLength(150)
                         .HasColumnType("character varying(150)");
 
-                    b.Property<int>("ProductId")
+                    b.Property<int?>("ProductId")
+                        .HasColumnType("integer");
+
+                    b.Property<int?>("UserId")
                         .HasColumnType("integer");
 
                     b.HasKey("Id");
 
                     b.HasIndex("ProductId");
+
+                    b.HasIndex("UserId")
+                        .IsUnique();
 
                     b.ToTable("Images");
                 });
@@ -384,6 +390,9 @@ namespace AlaBackEnd.DAL.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
+                    b.Property<string>("Description")
+                        .HasColumnType("text");
+
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasMaxLength(80)
@@ -394,6 +403,9 @@ namespace AlaBackEnd.DAL.Migrations
                         .HasMaxLength(20)
                         .HasColumnType("character varying(20)");
 
+                    b.Property<string>("Gender")
+                        .HasColumnType("text");
+
                     b.Property<string>("Login")
                         .IsRequired()
                         .HasMaxLength(30)
@@ -401,6 +413,9 @@ namespace AlaBackEnd.DAL.Migrations
 
                     b.Property<string>("Password")
                         .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("PhoneNumber")
                         .HasColumnType("text");
 
                     b.Property<string>("SecondName")
@@ -541,10 +556,16 @@ namespace AlaBackEnd.DAL.Migrations
                     b.HasOne("AlaBackEnd.DAL.Entity.BaseProductEntity", "Product")
                         .WithMany("Images")
                         .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("AlaBackEnd.DAL.Entity.Users.UserEntity", "User")
+                        .WithOne("Avatar")
+                        .HasForeignKey("AlaBackEnd.DAL.Entity.ImageEntity", "UserId")
+                        .OnDelete(DeleteBehavior.SetNull);
 
                     b.Navigation("Product");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("AlaBackEnd.DAL.Entity.ProductCart.CartEntity", b =>
@@ -629,6 +650,8 @@ namespace AlaBackEnd.DAL.Migrations
 
             modelBuilder.Entity("AlaBackEnd.DAL.Entity.Users.UserEntity", b =>
                 {
+                    b.Navigation("Avatar");
+
                     b.Navigation("Cart");
 
                     b.Navigation("FeedBacks");

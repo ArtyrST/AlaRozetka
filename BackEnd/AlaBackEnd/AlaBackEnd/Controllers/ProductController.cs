@@ -49,7 +49,7 @@ namespace AlaBackEnd.API.Controllers
             var response = await _productService.GetByTagAsync(tagIds);
             return this.GetResult(response);
         }
-        //[Authorize(Roles = "Rieltor")]
+        [Authorize(Roles = "Rieltor")]
         [HttpPost("from-form")]
         public async Task<IActionResult> CreateProductAsync([FromForm] CreateProductDto dto)
         {
@@ -91,7 +91,7 @@ namespace AlaBackEnd.API.Controllers
             var response = await _feedbackService.CreateAsync(dto);
             return this.GetResult(response);
         }
-        //[Authorize(Roles = "Guest")]
+        [Authorize(Roles = "Guest")]
         [HttpGet("get-additional-services")]
         public async Task<IActionResult> GetAdditionalServices()
         {

@@ -70,6 +70,15 @@ namespace AlaBackEnd.Controllers
             var response = await _request.CreateRequest(dto);
             return this.GetResult(response);
         }
+        [Authorize(Roles = "Guest,Rieltor")]
+        [HttpPut("update-user-profile")]
+        public async Task<IActionResult> UpdateProfileAsync([FromForm] UpdateUserDto dto)
+        {
+            var response = await _user.UpdateUserAsync(dto);
+            return this.GetResult(response);
+        }
+
+
 
     }
 }

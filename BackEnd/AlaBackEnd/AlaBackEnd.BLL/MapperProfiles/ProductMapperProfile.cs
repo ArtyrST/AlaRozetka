@@ -105,10 +105,17 @@ namespace AlaBackEnd.BLL.MapperProfiles
 
             CreateMap<CreateAdditionalServiceDto, AdditionalServicesEntity>()
                 .ForMember(dest => dest.Id, opt => opt.Ignore())
-    .ForMember(dest => dest.Products, opt => opt.Ignore());
+                .ForMember(dest => dest.Products, opt => opt.Ignore());
 
             CreateMap<AdditionalServicesEntity, GetAdditionalServicesDto>()
                 .ForMember(dest => dest.Id, opt => opt.Ignore());
+
+
+            CreateMap<UpdateUserDto, UserEntity>()
+                .ForMember(dest => dest.Gender, opt => opt.MapFrom(src => src.Gender.ToString()))
+                .ForMember(dest => dest.Avatar, opt => opt.Ignore())
+                .ForAllMembers(o => o.Condition((src, dest, srcMember) => srcMember != null));
+
 
         }
     }

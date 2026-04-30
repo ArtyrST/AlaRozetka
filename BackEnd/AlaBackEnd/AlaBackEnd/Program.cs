@@ -1,6 +1,6 @@
 
 using AlaBackEnd.BLL.Services;
-using AlaBackEnd.BLL.Services.ImagesService;
+using AlaBackEnd.BLL.Services;
 using AlaBackEnd.BLL.Services.Interfaces;
 using AlaBackEnd.BLL.Services.LoginService;
 using AlaBackEnd.BLL.Services.ProductsService;
@@ -14,6 +14,7 @@ using Microsoft.Extensions.FileProviders;
 using Microsoft.IdentityModel.Tokens;
 using Scalar.AspNetCore;
 using System.Text;
+using System.Text.Json.Serialization;
 
 
 
@@ -103,7 +104,11 @@ namespace AlaBackEnd
 
             // Add services to the container.
 
-            builder.Services.AddControllers();
+            builder.Services.AddControllers()
+            .AddJsonOptions(options =>
+            {
+                options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
+            });
             // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
             // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
             builder.Services.AddOpenApi();
@@ -156,7 +161,7 @@ namespace AlaBackEnd
             app.UseAuthorization();
 
 
-            
+            app.UseStaticFiles();
             app.MapControllers();
 
             //await app.SeedAsync();

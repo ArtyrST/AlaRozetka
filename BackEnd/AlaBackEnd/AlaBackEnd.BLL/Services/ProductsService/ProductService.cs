@@ -1,5 +1,5 @@
 ﻿using AlaBackEnd.BLL.dto;
-using AlaBackEnd.BLL.Services.ImagesService;
+using AlaBackEnd.BLL.Services;
 using AlaBackEnd.DAL.Entity;
 using AlaBackEnd.DAL.Entity.Products;
 using AlaBackEnd.DAL.Repositories;

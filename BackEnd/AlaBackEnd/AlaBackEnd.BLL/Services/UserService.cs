@@ -4,6 +4,10 @@ using AlaBackEnd.DAL.Repositories;
 using AutoMapper;
 using AlaBackEnd.BLL.Services.LoginService;
 using AlaBackEnd.DAL.Entity.ProductCart;
+using AlaBackEnd.DAL.Entity;
+using Microsoft.AspNetCore.Http;
+using System.Security.Claims;
+
 
 
 
@@ -16,14 +20,18 @@ namespace AlaBackEnd.BLL.Services
         private readonly RoleRepository _role;
         private readonly PandingUserPerository _panding;
         private readonly EmailVerifService _emailv;
+        private readonly ImageService _image;
+        private readonly IHttpContextAccessor _httpAccessor;
         
-        public UserService(EmailVerifService emailv, IMapper mapper, UserRepository userRepository, RoleRepository role, PandingUserPerository panding)
+        public UserService(IHttpContextAccessor httpAccessor, ImageService image, EmailVerifService emailv, IMapper mapper, UserRepository userRepository, RoleRepository role, PandingUserPerository panding)
         {
             _mapper = mapper;
             _userRepository = userRepository;
             _role = role;
             _panding = panding;
             _emailv = emailv;
+            _image = image;
+            _httpAccessor = httpAccessor;
         }
         public async Task<ServiceResponse> RegisterUserAsync(PandingUserDto dto)
         {
@@ -88,6 +96,56 @@ namespace AlaBackEnd.BLL.Services
 
             return ServiceResponse.Success("Successfuly verificate account", null);
 
+        } 
+        public async Task<ServiceResponse> UpdateUserAsync (UpdateUserDto dto)
+        {
+            if (dto == null)
+            {
+                return ServiceResponse.Error("The form is null");
+            }
+            dto.Id = int.Parse(_httpAccessor.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier));
+            var entity = await _userRepository.GetByIdAsync(dto.Id);
+
+            if (entity == null)
+            {
+                return ServiceResponse.Error("User was not found");
+            }
+
+            _mapper.Map(dto, entity);
+
+            if (dto.Avatar != null)
+            {
+                var saveImage = await _image.SaveImageAsync(dto.Avatar, "Avatars");
+
+                if (entity.Avatar != null)
+                {
+                    // видали старий файл з диску
+                    _image.DeleteImage(entity.Avatar.Path);
+                    // онови існуючий запис замість створення нового
+                    entity.Avatar.Path = saveImage;
+                    entity.Avatar.IsPreview = true;
+                }
+                else
+                {
+                    entity.Avatar = new ImageEntity
+                    {
+                        Path = saveImage,
+                        IsPreview = true,
+                        ProductId = null
+                    };
+                }
+            }
+
+            var res = await _userRepository.UpdateAsync(entity);
+
+            if (!res)
+            {
+                return ServiceResponse.Error("Something wrong");
+            }
+            return ServiceResponse.Success("Successfuly updated profile",null);
+
+
+            
         }
     }
 }

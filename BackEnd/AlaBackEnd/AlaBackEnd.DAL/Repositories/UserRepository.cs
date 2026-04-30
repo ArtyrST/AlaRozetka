@@ -17,6 +17,7 @@ namespace AlaBackEnd.DAL.Repositories
         public IQueryable<UserEntity> users => GetAll()
             .Include(u => u.Roles)
             .Include(u => u.Cart)
+            .Include(u => u.Avatar)
             .AsSplitQuery();
 
         public async Task<UserEntity?> GetByMailAsync(string mail)
