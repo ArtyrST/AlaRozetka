@@ -16,7 +16,11 @@ const AMENITIES = [
 ];
 
 export default function AddHotel() {
- 
+  const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+
   const [formData, setFormData] = useState({
     name: '',
     price: 0,
@@ -30,7 +34,7 @@ export default function AddHotel() {
     images: [] as File[],
     previewImageIndex: 0,
   });
-
+ 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({
@@ -52,23 +56,95 @@ export default function AddHotel() {
     }
   };
 
+  const handleSubmit = async (e: React.FormEvent) => {
+      e.preventDefault();
+      setError(null);
+      setLoading(true); 
+
+      const tokenDataRaw = localStorage.getItem('token');
+      if (!tokenDataRaw) {
+        setError("Ви не авторизовані. Будь ласка, увійдіть в систему.");
+        setLoading(false);
+        return;
+      }
+
+      let cleanToken = "";
+      try {
+        const parsedData = JSON.parse(tokenDataRaw);
+        cleanToken = parsedData.payLoad || tokenDataRaw;
+      } catch {
+        cleanToken = tokenDataRaw;
+      }
+
+      try {
+        const data = new FormData();
+        
+        data.append('Name', formData.name);
+        data.append('Price', formData.price.toString());
+        data.append('Country', formData.country);
+        data.append('City', formData.city);
+        data.append('Description', formData.description);
+        data.append('CategoryId', formData.categoryId.toString());
+        data.append('CreateDateFrom', formData.createDateFrom);
+        data.append('CreateDateTo', formData.createDateTo);
+        data.append('PreviewImageId', formData.previewImageIndex.toString());
+
+        formData.tags.forEach(tag => data.append('Tags', tag.toString()));
+        formData.images.forEach((file) => data.append('Images', file));
+
+        const response = await fetch('https://localhost:7147/api/products/from-form', {
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${cleanToken}`
+          },
+          body: data,
+        });
+
+        if (!response.ok) {
+          const errorText = await response.text();
+          throw new Error(errorText || "Помилка сервера");
+        }
+
+        alert("Готель успішно додано!");
+        navigate('/Catalog');
+
+      } catch (err: any) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+
+
   return (
     <div className="gh-container">
       <div className="gh-card">
-        <h2 className="gh-title">Інформація про кімнату</h2>
-        
-        <form className="gh-form">
+      <h2 className="gh-title">Інформація про кімнату</h2>
+      
+      {error && <div style={{ color: 'red', marginBottom: '15px', padding: '10px', backgroundColor: '#ffe6e6', borderRadius: '5px' }}>{error}</div>}
+      
+      <form className="gh-form" onSubmit={handleSubmit}>
           {/* 1. Період оренди */}
           <div className="gh-section">
-            <div className="gh-num">1</div>
-            <div className="gh-content">
-              <label className="gh-label">Доступний період оренди</label>
-              <div className="gh-grid">
-                <input type="date" name="createDateFrom" className="gh-input" onChange={handleChange} />
-                <input type="date" name="createDateTo" className="gh-input" onChange={handleChange} />
-              </div>
+          <div className="gh-num">1</div>
+          <div className="gh-content">
+            <label className="gh-label">Доступний період оренди та Вартість</label>
+            <div className="gh-grid">
+              <input type="date" name="createDateFrom" className="gh-input" onChange={handleChange} required />
+              <input type="date" name="createDateTo" className="gh-input" onChange={handleChange} required />
             </div>
+            {/* ДОДАНО ПОЛЕ ДЛЯ ЦІНИ */}
+            <input 
+              type="number" 
+              name="price" 
+              className="gh-input gh-mt" 
+              placeholder="Вартість за добу (грн)" 
+              onChange={handleChange} 
+              required 
+            />
           </div>
+        </div>
 
           {/* 2. Назва */}
           <div className="gh-section">
@@ -87,7 +163,10 @@ export default function AddHotel() {
               <div className="gh-grid">
                 <select name="categoryId" className="gh-input gh-select" onChange={handleChange}>
                   <option value={1}>Готель</option>
-                  <option value={2}>Хостел</option>
+                  <option value={2}>Апартаменти</option>
+                  <option value={3}>Хостел</option>
+                  <option value={4}>Вілли</option>
+                  <option value={5}>Глемпінги</option>
                 </select>
                 <input type="text" name="country" className="gh-input" placeholder="Країна" onChange={handleChange} />
               </div>
@@ -139,7 +218,11 @@ export default function AddHotel() {
             </div>
           </div>
 
-          <button type="submit" className="gh-submit">Добавити</button>
+          <div className="gh-footer">
+            <button type="submit" className="gh-submit" disabled={loading}>
+              {loading ? 'Надсилання...' : 'Добавити'}
+            </button>
+          </div>
         </form>
       </div>
     </div>
